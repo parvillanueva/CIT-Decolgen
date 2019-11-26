@@ -178,6 +178,7 @@
       height: auto;
       transition: .5s ease;
       backface-visibility: hidden;
+      background-color: #9c9c9c;
     }
 
     .middle {
@@ -481,7 +482,7 @@
 
     var current_path = "./uploads";
 
-    var allowed_mimes = "image/*, video/mp4, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/msword, text/plain, application/vnd.ms-excel, application/msexcel, application/x-msexcel, application/x-ms-excel, application/x-excel, application/x-dos_ms_excel, application/xls, application/x-xls, application/excel, application/vnd.ms-office, text/x-comma-separated-values, text/comma-separated-values, application/x-csv, text/x-csv, text/csv, application/csv, application/vnd.msexcel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, .txt";
+    var allowed_mimes = "image/*, video/mp4, application/pdf, application/svg, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/msword, text/plain, application/vnd.ms-excel, application/msexcel, application/x-msexcel, application/x-ms-excel, application/x-excel, application/x-dos_ms_excel, application/xls, application/x-xls, application/excel, application/vnd.ms-office, text/x-comma-separated-values, text/comma-separated-values, application/x-csv, text/x-csv, text/csv, application/csv, application/vnd.msexcel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, .txt";
 
     Dropzone.options.FileManagerDropZone = {
         paramName: "file", 
@@ -510,7 +511,7 @@
                     }else{
                         modal.alert('File size for Videos is limited to 50MB only.');
                     }
-                }else if(filename.match(/(\.pdf)|(\.docx)|(\.doc)|(\.txt)|(\.xls)|(\.csv)|(\.xlsx)/gi)){
+                }else if(filename.match(/(\.pdf)|(\.svg)|(\.docx)|(\.doc)|(\.txt)|(\.xls)|(\.csv)|(\.xlsx)/gi)){
                     data.append("path", current_path);
                     data.append("quality", $('#quality').val());
                 }else{
@@ -619,6 +620,7 @@
             case "png":
             case "gif":
             case "jpeg":
+            case "svg":
                 modal.image_view("<?= base_url();?>" + path.substr(2, path.length),identifier);
                 break;
             case "mp4":
@@ -839,12 +841,14 @@
                     case "png":
                     case "gif":
                     case "jpeg":
+                    case "svg":
                         var icon = "<?= base_url();?>"+current_path+'/'+y.value;
                         break;
                     case "mp4":
                         var icon = "<?= base_url();?>cms/extensions/" + ext + ".png";
                         break;
                     case "pdf":
+                    case "svg":
                         var icon = "<?= base_url();?>cms/extensions/" + ext + ".png";
                         break;
                     default:

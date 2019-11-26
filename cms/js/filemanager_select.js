@@ -5,12 +5,19 @@ $(document).on("click", ".btn_insert", function(e){
 	//path of file 
 	var path = $('#file_url').val();
 	var ext =  path.split('.').pop();
-	switch(ext.toLowerCase()) {
+    switch(ext.toLowerCase()) {
         case 'jpg':
         case 'png':
+        case 'jpeg':
         case 'gif':
-           var preview = '<img class="img_banner_preview" src="'+base_url+path+'" width="100%" />';
-        break;                         // the alert ended with pdf instead of gif.
+           var preview = '<img class="img_banner_preview" id="img_ban_'+data_id+'" src="'+base_url+path+'" style="max-width:200px; background-color:#9c9c9c;" />';
+        break;  
+        case 'svg':
+           var preview = '<img class="img_banner_preview" id="img_ban_'+data_id+'" src="'+base_url+path+'" style="max-width:200px; background-color:#9c9c9c;" />';
+        break;  
+        case 'pdf':
+           var preview = '<iframe class="img_banner_preview" id="img_ban_'+data_id+'" src="'+base_url+path+'" style="width:100%"></iframe>';
+        break;                      // the alert ended with pdf instead of gif.  
         case 'mp4':
             var preview = '<video class="img_banner_preview" style="width : 100%" controls>';
             preview += '<source src="'+base_url+path+'" type="video/mp4">';
@@ -18,7 +25,7 @@ $(document).on("click", ".btn_insert", function(e){
             preview += '</video>';
         break;
         default:
-			var preview = '<span class="img_banner_preview"></span>';
+            var preview = '<span class="img_banner_preview"></span>';
 
     }
 

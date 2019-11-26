@@ -450,8 +450,8 @@ $config['status']           = array(
                                 'placeholder'   => 'Status',
                                 'label'         => 'Status',
                                 'list_value'    => array(
-                                                    '0'     => 'Inactive',
-                                                    '1'     => 'Active'
+                                                    '1'     => 'Active',
+                                                    '0'     => 'Inactive'
                                                 )
                             );
 
@@ -2002,5 +2002,1191 @@ $config['media_video'] = array(
                                 'placeholder'   => 'Image Thumbnail',
                                 'label'         => 'Image Thumbnail',
                                 
-                            );							
+                            );
+
+$config['wid_image_banner']           = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'image_banner',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'image_banner',
+                                'accept'        => 'jpg,gif,png,jpeg',
+                                'required'      => true,
+                                'placeholder'   => 'Image Banner',
+                                'label'         => 'Image Banner',
+                            );
+
+$config['landing_title']       = array(
+                                'type'          => 'text',
+                                'name'          => 'title',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'title',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Title',
+                                'label'         => 'Title',
+                            );
+
+$config['landing_asc']       = array(
+                                'type'          => 'text',
+                                'name'          => 'landing_asc',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'landing_asc',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'ASC Ref No.',
+                                'label'         => 'ASC Ref No.',
+                            );
+
+$config['landing_bg_img']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'landing_bg',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'landing_bg',
+                                'accept'        => 'jpg,gif,png,jpeg',
+                                'required'      => true,
+                                'placeholder'   => 'Background Image',
+                                'label'         => 'Background Image',
+                            );
+
+$config['landing_logo_image']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'landing_logo',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'landing_logo',
+                                'accept'        => 'jpg,gif,png,jpeg',
+                                'required'      => true,
+                                'placeholder'   => 'Logo Image',
+                                'label'         => 'Logo Image',
+                            );
+
+
+$config['sub_title']       = array(
+                                'type'          => 'text',
+                                'name'          => 'sub_title',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'sub_title',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Sub Title',
+                                'label'         => 'Sub Title',
+                            );
+
+$config['landing_third_title']       = array(
+                                'type'          => 'text',
+                                'name'          => 'mini-description',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'mini_description',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Mini Description',
+                                'label'         => 'Mini Description',
+                            );
+
+$config['try_now_separator_title']       = array(
+                                'type'          => 'text',
+                                'name'          => 'separator-title',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'separator_title',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Separator Title',
+                                'label'         => 'Separator Title',
+                            );
+
+$config['landing_description']       = array(
+                                'type'          => 'text',
+                                'name'          => 'description',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'description',
+                                'required'      => true,
+                                'placeholder'   => 'Description',
+                                'label'         => 'Description',
+                            );
+
+$config['landing_image_banner']           = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'image_banner',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'image_banner',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'required'      => true,
+                                'placeholder'   => 'Image Banner',
+                                'label'         => 'Image Banner',
+                            );
+
+$config['landing_redirect_url']      = array(
+                                'type'          => 'text',
+                                'name'          => 'redirect_url',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control redirect_url_input',
+                                'id'            => 'redirect_url',
+                                'placeholder'   => 'Redirect URL',
+                                'required'      => true,
+                                'label'         => 'Redirect URL',
+                                
+                            );
+
+$config['try_now_title']       = array(
+                                'type'          => 'text',
+                                'name'          => 'title',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'title',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Title',
+                                'label'         => 'Title',
+                            );
+
+$config['try_now_sub_title']       = array(
+                                'type'          => 'text',
+                                'name'          => 'sub_title',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'sub_title',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Sub Title',
+                                'label'         => 'Sub Title',
+                            );
+$config['tn_product_name']       = array(
+                                'type'          => 'text',
+                                'name'          => 'name',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'name',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Name',
+                                'label'         => 'Name',
+                            );
+
+$config['tn_product_dosage']       = array(
+                                'type'          => 'text',
+                                'name'          => 'dosage',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'dosage',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'dosage',
+                                'label'         => 'dosage',
+                            );
+
+$config['tn_product_content']       = array(
+                                'type'          => 'text',
+                                'name'          => 'content',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'content',
+                                'placeholder'   => 'content',
+                                'label'         => 'content',
+                            );
+
+$config['tn_image_banner']           = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'image_banner',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'image_banner',
+                                'accept'        => 'jpg,gif,png,jpeg',
+                                'required'      => true,
+                                'placeholder'   => 'Image Banner',
+                                'label'         => 'Image Banner',
+                            );
+
+$config['try_now_image_banner']           = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'image_banner',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'image_banner',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'required'      => true,
+                                'placeholder'   => 'Image Banner',
+                                'label'         => 'Image Banner',
+                            );
+
+$config['try_now_image_background']           = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'background_image',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'background_image',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'required'      => true,
+                                'placeholder'   => 'Background Image',
+                                'label'         => 'Background Image',
+                            );
+
+$config['try_now_image_background_two']           = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'background_image_two',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'background_image_two',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'required'      => true,
+                                'placeholder'   => 'Background Image 2',
+                                'label'         => 'Background Image 2',
+                            );
+
+$config['try_now_image_banner_product']           = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'image_banner_product',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'image_banner_product',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'required'      => true,
+                                'placeholder'   => 'Image Banner Product',
+                                'label'         => 'Image Banner Product',
+                            );
+
+$config['try_now_image_banner_details']           = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'image_banner_details',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'image_banner_details',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'required'      => true,
+                                'placeholder'   => 'Image Banner Details',
+                                'label'         => 'Image Banner Details',
+                            );
+
+$config['try_now_banner_details']       = array(
+                                'type'          => 'text',
+                                'name'          => 'image_details',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'image_details',
+                                'required'      => true,
+                                'placeholder'   => 'Details',
+                                'label'         => 'Details',
+                            );
+
+$config['try_now_details_first_title']       = array(
+                                'type'          => 'text',
+                                'name'          => 'first_title',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'first_title',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Title 1',
+                                'label'         => 'Title 1',
+                            );
+
+$config['try_now_first_description']      = array(
+                                'type'          => 'text',
+                                'name'          => 'first_description',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'first_description',
+                                'placeholder'   => 'Description 1',
+                                'label'         => 'Description 1',
+                            );
+
+$config['try_now_details_second_title']       = array(
+                                'type'          => 'text',
+                                'name'          => 'second_title',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'second_title',
+                                'placeholder'   => 'Title 2',
+                                'label'         => 'Title 2',
+                            );
+
+$config['try_now_second_description']      = array(
+                                'type'          => 'text',
+                                'name'          => 'second_description',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'second_description',
+                                'placeholder'   => 'Description 2',
+                                'label'         => 'Description 2',
+                            );
+
+$config['try_now_name']       = array(
+                                'type'          => 'text',
+                                'name'          => 'name',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'name',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Name',
+                                'label'         => 'Name',
+                            );
+
+$config['try_now_image']           = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'try_now_image',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'try_now_image',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => 'Image',
+                                'label'         => 'Image',
+                                
+                            );
+
+$config['try_now_brief_description']      = array(
+                                'type'          => 'ckeditor',
+                                'name'          => 'try_now_brief_description',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'try_now_brief_description',
+                                'required'      => true,
+                                'no_html'      => false,
+                                'filemanager'   => false,
+                                'youtube'       => false,
+                                'placeholder'   => 'Brief Description',
+                                'label'         => 'Brief Description',
+                            );
+
+$config['wid_title']       = array(
+                                'type'          => 'text',
+                                'name'          => 'title',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'title',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Title',
+                                'label'         => 'Title',
+                            );
+
+$config['wid_background_image']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'background_image',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'background_image',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => 'Background Image',
+                                'label'         => 'Background Image',
+                            );
+
+$config['decolgen_img_title']       = array(
+                                'type'          => 'text',
+                                'name'          => 'decolgen_img_title',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'decolgen_img_title',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Decolgen Label',
+                                'label'         => 'Decolgen Label',
+                            );
+
+$config['others_img_title']       = array(
+                                'type'          => 'text',
+                                'name'          => 'others_img_title',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'others_img_title',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Others Label',
+                                'label'         => 'Others Label',
+                            );
+
+$config['decolgen_img_sub_title']       = array(
+                                'type'          => 'text',
+                                'name'          => 'decolgen_img_sub_title',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'decolgen_img_sub_title',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Decolgen Label',
+                                'label'         => 'Decolgen Label',
+                            );
+
+$config['others_img_sub_title']       = array(
+                                'type'          => 'text',
+                                'name'          => 'others_img_sub_title',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'others_img_sub_title',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Others Label',
+                                'label'         => 'Others Label',
+                            );
+
+$config['decolgen_img_1']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'decolgen_img_1',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'decolgen_img_1',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => 'Decolgen Image 1',
+                                'label'         => 'Decolgen Image 1',
+                            );
+
+$config['decolgen_img_2']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'decolgen_img_2',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'decolgen_img_2',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => 'Decolgen Image 2',
+                                'label'         => 'Decolgen Image 2',
+                            );
+
+$config['decolgen_img_3']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'decolgen_img_3',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'decolgen_img_3',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => 'Decolgen Image 3',
+                                'label'         => 'Decolgen Image 3',
+                            );
+
+$config['others_img_1']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'others_img_1',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'others_img_1',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => 'Others Image 1',
+                                'label'         => 'Others Image 1',
+                            );
+
+$config['others_img_2']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'others_img_2',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'others_img_2',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => 'Others Image 2',
+                                'label'         => 'Others Image 2',
+                            );
+
+$config['others_img_3']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'others_img_3',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'others_img_3',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => 'Others Image 3',
+                                'label'         => 'Others Image 3',
+                            );
+
+$config['vs_img']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'vs_img',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'vs_img',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => 'Vs Image',
+                                'label'         => 'Vs Image',
+                            );
+
+$config['vs_img_title_1']       = array(
+                                'type'          => 'text',
+                                'name'          => 'vs_img_title_1',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'vs_img_title_1',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Vs Title',
+                                'label'         => 'Vs Title',
+                            );
+
+$config['vs_img_sub_title_2']       = array(
+                                'type'          => 'text',
+                                'name'          => 'vs_img_sub_title_2',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'vs_img_sub_title_2',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Vs Sub Title 2',
+                                'label'         => 'Vs Sub Title 2',
+                            );
+
+$config['vs_img_title_2']       = array(
+                                'type'          => 'text',
+                                'name'          => 'vs_img_title_2',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'vs_img_title_2',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Vs Title 2',
+                                'label'         => 'Vs Title 2',
+                            );
+
+$config['vs_img_title_3']       = array(
+                                'type'          => 'text',
+                                'name'          => 'vs_img_title_3',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'vs_img_title_3',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Vs Title 3',
+                                'label'         => 'Vs Title 3',
+                            );
+
+$config['wid_sub_title_1']       = array(
+                                'type'          => 'text',
+                                'name'          => 'wid_sub_title_1',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'wid_sub_title_1',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Sub Title 1',
+                                'label'         => 'Sub Title 1',
+                            );
+
+$config['wid_sub_title_2']       = array(
+                                'type'          => 'text',
+                                'name'          => 'wid_sub_title_2',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'wid_sub_title_2',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Sub Title 2',
+                                'label'         => 'Sub Title 2',
+                            );
+
+$config['wid_brief_description']      = array(
+                                'type'          => 'ckeditor',
+                                'name'          => 'description',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'description',
+                                'required'      => true,
+                                'no_html'      => false,
+                                'filemanager'   => false,
+                                'youtube'       => false,
+                                'placeholder'   => 'Description',
+                                'label'         => 'Description',
+                            );
+
+$config['wid_image']           = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'image',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'image',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => 'Image',
+                                'label'         => 'Image',
+                                
+                            );
+
+$config['no_drowse_title']       = array(
+                                'type'          => 'text',
+                                'name'          => 'no_drowse_title',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'no_drowse_title',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Title',
+                                'label'         => 'Title',
+                            );
+
+$config['no_drowse_sub_title']       = array(
+                                'type'          => 'text',
+                                'name'          => 'no_drowse_sub_title',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'no_drowse_sub_title',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Sub Title',
+                                'label'         => 'Sub Title',
+                            );
+
+$config['no_drowse_decolgen']           = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'no_drowse_decolgen',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'no_drowse_decolgen',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => 'No Drowse Decolgen',
+                                'label'         => 'No Drowse Decolgen',
+                                
+                            );
+
+$config['no_drowse_decolgen_image']           = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'no_drowse_decolgen_image',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'no_drowse_decolgen_image',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => 'No Drowse Decolgen Image',
+                                'label'         => 'No Drowse Decolgen Image',
+                                
+                            );
+
+$config['no_drowse_15mins_image']           = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'no_drowse_15mins_image',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'no_drowse_15mins_image',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => '15 Mins Image',
+                                'label'         => '15 Mins Image',
+                                
+                            );
+
+$config['no_drowse_small_text']       = array(
+                                'type'          => 'text',
+                                'name'          => 'no_drowse_small_text',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'no_drowse_small_text',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Small Text',
+                                'label'         => 'Small Text',
+                            );
+
+$config['no_drowse_details_title1']       = array(
+                                'type'          => 'text',
+                                'name'          => 'no_drowse_details_title1',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'no_drowse_details_title1',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Details Title 1',
+                                'label'         => 'Details Title 1',
+                            );
+
+$config['no_drowse_details1']       = array(
+                                'type'          => 'text',
+                                'name'          => 'no_drowse_details1',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'no_drowse_details1',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Details 1',
+                                'label'         => 'Details 1',
+                            );
+
+
+$config['no_drowse_details_title2']       = array(
+                                'type'          => 'text',
+                                'name'          => 'no_drowse_details_title2',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'no_drowse_details_title2',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Details Title 2',
+                                'label'         => 'Details Title 2',
+                            );
+
+$config['no_drowse_details2']       = array(
+                                'type'          => 'text',
+                                'name'          => 'no_drowse_details2',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'no_drowse_details2',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Details 2',
+                                'label'         => 'Details 2',
+                            );
+
+$config['power_title1']       = array(
+                                'type'          => 'text',
+                                'name'          => 'power_title1',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'power_title1',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Power Title 1',
+                                'label'         => 'Power Title 1',
+                            );
+
+$config['power_title2']       = array(
+                                'type'          => 'text',
+                                'name'          => 'power_title2',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'power_title2',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Power Title 2',
+                                'label'         => 'Power Title 2',
+                            );
+
+$config['power_title3']       = array(
+                                'type'          => 'text',
+                                'name'          => 'power_title3',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'power_title3',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Power Title 3',
+                                'label'         => 'Power Title 3',
+                            );
+
+$config['power_details1']       = array(
+                                'type'          => 'text',
+                                'name'          => 'power_details1',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'power_details1',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Power Details 1',
+                                'label'         => 'Power Details 1',
+                            );
+
+$config['power_details2']       = array(
+                                'type'          => 'text',
+                                'name'          => 'power_details2',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'power_details2',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Power Details 2',
+                                'label'         => 'Power Details 2',
+                            );
+
+$config['power_details3']       = array(
+                                'type'          => 'text',
+                                'name'          => 'power_details3',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'power_details3',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Power Details 3',
+                                'label'         => 'Power Details 3',
+                            );
+
+$config['power_img1']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'power_img1',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'power_img1',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => 'Power Image 1',
+                                'label'         => 'Power Image 1',
+                            );
+
+$config['power_img2']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'power_img2',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'power_img2',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => 'Power Image 2',
+                                'label'         => 'Power Image 2',
+                            );
+
+$config['power_img3']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'power_img3',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'power_img3',
+                                'required'      => true,
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'placeholder'   => 'Power Image 3',
+                                'label'         => 'Power Image 3',
+                            );
+
+$config['try_decolgen_title']       = array(
+                                'type'          => 'text',
+                                'name'          => 'try_decolgen_title',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'try_decolgen_title',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Try Decolgen Title',
+                                'label'         => 'Try Decolgen Title',
+                            );
+
+$config['try_decolgen_brief_des']       = array(
+                                'type'          => 'text',
+                                'name'          => 'try_decolgen_brief_des',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'try_decolgen_brief_des',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Brief Description',
+                                'label'         => 'Brief Description',
+                            );
+
+$config['nd_product_name']       = array(
+                                'type'          => 'text',
+                                'name'          => 'nd_product_name',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'nd_product_name',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Product Name',
+                                'label'         => 'Product Name',
+                            );
+
+$config['nd_image_banner']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'nd_image_banner',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'nd_image_banner',
+                                'required'      => true,
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'placeholder'   => 'Image Banner',
+                                'label'         => 'Image Banner',
+                            );
+
+$config['nd_product_price']       = array(
+                                'type'          => 'text',
+                                'name'          => 'nd_product_price',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'nd_product_price',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Product Price',
+                                'label'         => 'Product Price',
+                            );
+
+$config['nd_download_label']       = array(
+                                'type'          => 'text',
+                                'name'          => 'nd_download_label',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'nd_download_label',
+                                'maxlength'     => 255,
+                                'required'      => false,
+                                'placeholder'   => 'Download Button Label',
+                                'label'         => 'Download Button Label',
+                            );
+
+$config['nd_product_pil']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'nd_product_pil',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'nd_product_pil',
+                                'required'      => false,
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'placeholder'   => 'Product PIL',
+                                'label'         => 'Product PIL',
+                            );
+
+$config['nd_product_description']       = array(
+                                'type'          => 'text',
+                                'name'          => 'nd_product_description',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'nd_product_description',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Brief Description',
+                                'label'         => 'Brief Description',
+                            );
+
+$config['faqs_title']       = array(
+                                'type'          => 'text',
+                                'name'          => 'faqs_title',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'faqs_title',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Title',
+                                'label'         => 'Title',
+                            );
+
+$config['faqs_description']       = array(
+                                'type'          => 'ckeditor',
+                                'name'          => 'faqs_description',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'faqs_description',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Description',
+                                'label'         => 'Description',
+                            );
+
+$config['footer_image_url']       = array(
+                                'type'          => 'text',
+                                'name'          => 'footer_image_url',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'footer_image_url',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Image Url',
+                                'label'         => 'Image Url',
+                            );
+
+$config['footer_image']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'footer_image_banner',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'footer_image_banner',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => 'Image',
+                                'label'         => 'Image',
+                            );
+
+$config['footer_asc_name']       = array(
+                                'type'          => 'text',
+                                'name'          => 'footer_asc_name',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'footer_asc_name',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'ASC Ref Code',
+                                'label'         => 'ASC Ref Code',
+                            );
+
+$config['footer_asc_url']       = array(
+                                'type'          => 'text',
+                                'name'          => 'footer_asc_url',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'footer_asc_url',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'ASC Ref Url',
+                                'label'         => 'ASC Ref Url',
+                            );
+
+$config['footer_policy_name']       = array(
+                                'type'          => 'text',
+                                'name'          => 'footer_policy_name',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'footer_policy_name',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Privacy Policy',
+                                'label'         => 'Privacy Policy',
+                            );
+
+$config['footer_policy_url']       = array(
+                                'type'          => 'text',
+                                'name'          => 'footer_policy_url',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'footer_policy_url',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Privacy Policy Url',
+                                'label'         => 'Privacy Policy Url',
+                            );
+
+$config['footer_copyright']       = array(
+                                'type'          => 'text',
+                                'name'          => 'footer_copyright',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'footer_copyright',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Copyright',
+                                'label'         => 'Copyright',
+                            );
+
+$config['header_image_banner']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'header_image',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'header_image',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => 'Image',
+                                'label'         => 'Image',
+                            );
+
+$config['header_image_url']       = array(
+                                'type'          => 'text',
+                                'name'          => 'header_image_url',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'header_image_url',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Image Url',
+                                'label'         => 'Image Url',
+                            );
+
+$config['home']       = array(
+                                'type'          => 'text',
+                                'name'          => 'home',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'home',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Home',
+                                'label'         => 'Home',
+                            );
+
+$config['try_now']       = array(
+                                'type'          => 'text',
+                                'name'          => 'try_now',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'try_now',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Try Now',
+                                'label'         => 'Try Now',
+                            );
+
+$config['what_is_decolgen']       = array(
+                                'type'          => 'text',
+                                'name'          => 'what_is_decolgen',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'what_is_decolgen',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'What Is Decolgen',
+                                'label'         => 'What Is Decolgen',
+                            );
+
+$config['no_drowse_decolgen']       = array(
+                                'type'          => 'text',
+                                'name'          => 'no_drowse_decolgen',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'no_drowse_decolgen',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'No Drowse Decolgen',
+                                'label'         => 'No Drowse Decolgen',
+                            );
+
+$config['faqs']       = array(
+                                'type'          => 'text',
+                                'name'          => 'faqs',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'faqs',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Faqs',
+                                'label'         => 'Faqs',
+                            );
+
+$config['validator_image']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'validator_image',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'validator_image',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => 'Validator Image',
+                                'label'         => 'Validator Image',
+                            );
+
+$config['unilab_logo']       = array(
+                                'type'          => 'filemanager',
+                                'name'          => 'unilab_logo',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'unilab_logo',
+                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'max_size'      => '50',
+                                'required'      => true,
+                                'placeholder'   => 'Unilab Logo',
+                                'label'         => 'Unilab Logo',
+                            );
+
+$config['unilab_logo_url']       = array(
+                                'type'          => 'text',
+                                'name'          => 'unilab_logo_url',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'unilab_logo_url',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Logo Url',
+                                'label'         => 'Logo Url',
+                            );
 ?>

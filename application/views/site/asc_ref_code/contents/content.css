@@ -1,0 +1,27 @@
+.asc_ref_code {
+	padding-top: 100px;
+    background-image: url("<?= base_url();?>//uploads//images/faqs_background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+	padding-bottom: 50px;
+	text-align: justify;
+}
+
+.section-content .section-title h1 {
+	text-align: center;
+ 	font-family: "Futura";
+	font-size: 36px;
+	font-weight: bold;
+	color: #ffe400;
+}
+
+.section-content .section-body {
+    text-align: center;
+}
+
+.section-content .section-body p {
+	font-family: "Gotham Light";
+	font-size: 16px;
+	color: #fff;
+}

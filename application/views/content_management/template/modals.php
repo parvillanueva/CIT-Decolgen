@@ -1,22 +1,21 @@
 <!-- UPLOAD MODAL -->
 <!-- MODAL -->
-<style type="text/css">
-    .box {
-        margin-top: 7em !important;
-    }
-</style>
-
-<script type="text/javascript">
-
-$(document).ready(function(){
-    var load_fm = $('.file_manager').attr("data-id");
-    if(load_fm != undefined){
-        $(".file-manager").load("<?php echo base_url().'content_management/file_manager_2/load_file_manager'; ?>");
-    }
-});
-
-</script>
-<div class ="file-manager"></div>
+<div id="ckeditor_filemanager_modal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="pull-right btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span></button>
+                <h4 class="modal-title">File Manager : </h4>
+            </div>
+            <div class="modal-body">
+                <?php if($this->uri->segment(2) != "file_manager"){ $this->load->view("content_management/filemanager/browser"); }?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- FOR YOUTUBE EMBED -->
 <div id="youtube_modal" class="modal fade" role="dialog">
     <div class="modal-dialog" >

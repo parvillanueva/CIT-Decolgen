@@ -118,7 +118,7 @@
 	}
 
 	.box-header.with-border {
-	    margin-top: 5px;
+	    margin-top: 0px;
 	}
 
 </style>

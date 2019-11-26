@@ -640,9 +640,11 @@ class Standard {
                             case 'jpeg':
                             case 'gif':
                             case 'png':
-                                echo '<img class="img_banner_preview" src="'. base_url() . $config["value"].'" width="100%" />';
+                                echo '<img class="img_banner_preview" style="max-width:200px; background-color:#9c9c9c;" src="'. base_url() . $config["value"].'" width="100%" />';
                                 break;
-
+                            case 'svg':
+                                echo '<img class="img_banner_preview" style="max-width:200px; background-color:#9c9c9c;" src="'. base_url() . $config["value"].'" width="100%" />';
+                                break;
                             case 'mp4':
                                 echo '<video class="img_banner_preview" style="width : 100%" controls>';
                                 echo '  <source src="' . base_url() . $config["value"].'" type="video/mp4"';
@@ -651,7 +653,7 @@ class Standard {
                                 break;
                             
                             default:
-                                echo '<span class="img_banner_preview"></span>';
+                                echo '<span class="img_banner_preview" style="background-color:#9c9c9c;"></span>';
                                 break;
                         }
                     }
