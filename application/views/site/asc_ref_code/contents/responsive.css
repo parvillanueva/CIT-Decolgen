@@ -1,0 +1,138 @@
+
+@media screen and (max-width: 1024px) and (min-width: 993px){
+.section-content .section-body p {
+    font-size: 18px;
+}
+}
+
+@media screen and (max-width:991px){
+	.faqs_content .faqs_body {
+		padding-bottom: 0px;
+	}
+
+	.violator img {
+	    height: 106px;
+	    width: auto;
+	    position: absolute;
+	    right: 0px;
+	}
+	.asc_ref_code{
+		/*padding-top: 60px;*/
+	}
+	.footer_ul_social_media {
+    	padding-top: 0px;
+    	margin-bottom: 25px;
+	}
+
+	.violator > a > img {
+    	margin: 0 !important;
+    	padding: 6px 3px 0px 0px;
+    	width: 8% !important;
+    	object-fit: contain;
+    	height: 50px;
+	}	
+
+}
+
+
+
+
+@media screen and (max-width: 736px){
+
+
+	.navbar-brand {
+	    display: block;
+	    margin-left: -6px;
+    	margin-top: -9px;
+	}
+
+	#navBarBrand {
+      	margin-left: -1px !important;
+      	background-image: url("./uploads/5292018/menu-line.png");
+	    background-repeat: repeat-x;
+	    background-size: initial;
+	}
+
+	#mainMenu {
+	    height: 73px !important;
+	    min-height: 0px !important;
+	}
+
+	.start_line, .end_line {
+	    width: 309px;
+	    background-image: url(./uploads/5292018/menu-line.png);
+	    background-repeat: repeat-x;
+	    background-size: initial;
+	}
+}
+
+@media screen and (max-width:721px){
+	.faqs_content .faqs_body {
+		padding-bottom: 0px;
+	}
+}
+
+@media screen and (max-width:640px) and (min-width:481px){
+.violator > a > img {
+    object-fit: contain;
+    height: 50px;
+}
+
+
+.footer-content > a{
+	font-size: 18px;
+}
+
+.footer-content{
+	width: 100%;
+}
+
+.footer_nav{
+	width: 100%;
+}
+
+.media-link > img{
+    width: 40px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.section-content .section-body p{
+	font-size: 18px !important;
+}
+
+
+
+}
+
+
+
+@media screen and (max-width:356px){
+	.faqs_content .faqs_header h1 {
+		font-size: 24px;
+	}
+
+	.faqs_content .faqs_header h4 {
+		font-size: 13px;
+	}
+
+	.faqs_content .faqs_body {
+		padding-bottom: 0px;
+	}
+
+	.faqs_content .faqs_record h4 {
+		font-size: 13px;
+	}
+
+	.faqs_content .faqs_record p {
+		font-size: 13px;
+	}
+
+	.violator img {
+	    height: 57px;
+	    width: auto;
+	    position: absolute;
+	    right: 0px;
+	}
+
+}

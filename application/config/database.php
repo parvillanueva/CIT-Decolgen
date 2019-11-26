@@ -4,10 +4,10 @@
 		$query_builder = TRUE;
 		$db["default"] = array(
 			"dsn"	=> "",
-			"hostname" => "",
-			"username" => "",
-			"password" => "",
-			"database" => "",
+			"hostname" => "172.29.70.125",
+			"username" => "phpdevsite",
+			"password" => "unilab123",
+			"database" => "decolgen",
 			"dbdriver" => "mysqli",
 			"dbprefix" => "",
 			"pconnect" => FALSE,

@@ -81,15 +81,21 @@ class File_manager_2 extends CI_Controller {
 
         return false;
     }
-
-	public function rename_file()
-	{
+	
+	public function scan_dir(){
+		$dir    = __DIR__;
+		$replace_dir = str_replace('application\controllers\content_management','uploads',$dir);
+		$files = glob($replace_dir, GLOB_ONLYDIR);//scandir($replace_dir);
+		return $files;
+	}
+	
+	public function rename_file(){
 		header('Content-Type: application/json');
-
 		$file_name = $_POST['file_name'];
-
 		$new_file_name = $_POST['new_file_name'];
 		$path = $_POST['path'];
+		$path_file = $path.'/'.$file_name;
+		$path_validate = str_replace('./', '', $path_file);
 
 		$old_data = [['path' => $path, 'file_name' => strtolower($file_name)]];
 		$new_data = ['path' => $path, 'file_name' => strtolower($new_file_name)];
@@ -108,7 +114,7 @@ class File_manager_2 extends CI_Controller {
 			foreach($db_fields as $dbf) {
 				$this->db->select("*");
 				$this->db->from($tbl);
-				$this->db->like($dbf, $file_name);
+				$this->db->like($dbf, $path_validate);
 				$query = $this->db->get();
 				$count = $query->num_rows();
 				array_push($counter_checker, $count);
@@ -122,26 +128,36 @@ class File_manager_2 extends CI_Controller {
 		}
 
 		if (!empty($new_file_name) || $new_file_name !== NULL) {
-
-			$searched_file = $this->search_file('uploads/', $new_file_name);
-			$filtered_files = (string) $searched_file;
-
-			if ($in_use == 1) {
-				$result = array("success" => false,"message" => "This file is in use currently.", "in_use" => $in_use);
-			} else {
-				if (!empty($filtered_files)) {
-					$result = array("success" => false,"message" => "Filename already exist.");
+			if($new_file_name != strip_tags($new_file_name)) {
+				$result = array("success" => false,"message" => "This file is using script tags.");
+			} else{
+				if ($in_use == 1) {
+					$result = array("success" => false,"message" => "This file is in use currently.", "in_use" => $in_use);
+				
 				} else {
-					if (file_exists($path . "/" . $file_name)) {
-						rename($path . "/" . $file_name, $path . "/" . $new_file_name);
-						$result = array("success" => true,"path" => $path, "new_file_name" => $new_file_name);
-						$this->file_manager_audit_trail("Rename", $new_data, $old_data);
+
+				$count_set = strcmp($file_name, $new_file_name);
+
+					if ($count_set == 0) {
+						$result = array("success" => false,"message" => "Filename already exist.");
 					} else {
-						$result = array("success" => false,"message" => "File does not exist.");
+						
+						if (file_exists($path . "/" . $file_name)) {
+
+							$rename_result = rename($path . "/" . $file_name, $path . "/" . $new_file_name);
+							if($rename_result == 1){
+								$result = array("success" => true,"message"=> "Successfully Renamed", "path" => $path, "new_file_name" => $new_file_name);
+								$this->file_manager_audit_trail("Rename", $new_data, $old_data);
+							} else{
+								$result = array("success" => true,"message"=> "File Already Exist!");
+							}
+
+						} else {
+							$result = array("success" => false,"message" => "File does not exist.");
+						}
 					}
 				}
 			}
-
 			echo json_encode($result);
 		}
 	}
@@ -176,7 +192,7 @@ class File_manager_2 extends CI_Controller {
 		$ds = DIRECTORY_SEPARATOR;
 		$storeFolder = $this->input->post('path');
 		$data = ['path' => $storeFolder, 'filename' => strtolower($_FILES['file']['name'])];
-		echo $storeFolder;
+		//echo $storeFolder;
 		if (!empty($_FILES)) {
 
 			//Setting values
@@ -215,13 +231,14 @@ class File_manager_2 extends CI_Controller {
 		$path = $_POST['path'];
 		$data = $_POST['data'];
 		$file_name = basename($data['path']);
+		$file_path = str_replace('/'.$file_name.'','',$path);
 		$old_data = [['path' => dirname($path), 'file_name' => $file_name]];
 		$new_data = ['path' => dirname($path), 'file_name' => $file_name.' (deleted)'];
-
+		$path_validate = str_replace('./', '', $path);
 		$count = 0;
 		$in_use = 0;
 		$counter_checker = [];
-		
+
 		$table = $this->db->list_tables();
 		foreach ($table as $tbl) {
 			$db_fields = $this->db->list_fields($tbl);
@@ -232,7 +249,7 @@ class File_manager_2 extends CI_Controller {
 			foreach($db_fields as $dbf) {
 				$this->db->select("*");
 				$this->db->from($tbl);
-				$this->db->like($dbf, $file_name);
+				$this->db->like($dbf, $path_validate);
 				$query = $this->db->get();
 				$count = $query->num_rows();
 				array_push($counter_checker, $count);
@@ -249,7 +266,7 @@ class File_manager_2 extends CI_Controller {
 			$result = array("success" => false,"message" => "This file is in use currently.", "in_use" => $in_use);
 		} else {
 			unlink($path);
-			$result = array("success" => true,"message" => "File deleted.", "in_use" => $in_use);
+			$result = array("success" => true,"message" => "File deleted.", "in_use" => $in_use, "path" => $file_path);
 			$this->file_manager_audit_trail("Delete", $new_data, $old_data);
 		}
 
@@ -261,6 +278,7 @@ class File_manager_2 extends CI_Controller {
 		$path = $_POST['path'];
 		$data = $_POST['data'];
 		$folder_name = basename($data['path']);
+		$file_path = str_replace('/'.$folder_name.'','',$path);
 		$old_data = [['path' => dirname($path), 'folder_name' => $folder_name]];
 		$new_data = ['path' => dirname($path), 'folder_name' => $folder_name.' (deleted)'];
 
@@ -294,7 +312,7 @@ class File_manager_2 extends CI_Controller {
 			$result = array("success" => false,"message" => "This file is in use currently.", "in_use" => $in_use);
 		} else {
 			$this->rmdir_recursive($path);
-			$result = array("success" => true,"message" => "File deleted.", "in_use" => $in_use);
+			$result = array("success" => true,"message" => "File deleted.", "in_use" => $in_use, "path" => $file_path);
 			$this->file_manager_audit_trail("Delete", $new_data, $old_data);
 		}
 
@@ -389,10 +407,11 @@ class File_manager_2 extends CI_Controller {
 
 		return $foo;
 	}
-
-	public function load_file_manager()
+	
+public function load_file_manager()
     {
         $this->load->view("content_management/template/file_manager_modal");
     }
 	
 }
+

@@ -97,6 +97,13 @@
 				text-align: center;
 				display: none;
 			}
+			
+			div#files {
+			    overflow-y: scroll;
+			    height: 250px;
+			    width: 100%;
+			
+			}
 
 		</style>
 	</head>

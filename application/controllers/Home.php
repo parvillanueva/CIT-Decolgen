@@ -19,7 +19,7 @@ class Home extends CI_Controller {
 			// "description"         =>  $this->Global_model->site_meta_og(38, 'site_menu', 'og_description'),
 			// "image"         =>  base_url().$this->Global_model->site_meta_og(38, 'site_menu', 'og_image'),
 		);
-		$this->load->view("site/layout/template",$data);
+		$this->load->view("site/layout/decolgen_template",$data);
 	}
 
 }

@@ -2,22 +2,22 @@
 AJAX.config.base_url(base_url);
 
 $(document).ready(function(){
-    // 300000 milliseconds = 5 minutes
-    var idleState = false;
-    var idleTimer = null;
-    $('*').bind('mousemove click mouseup mousedown keydown keypress keyup submit change mouseenter scroll resize dblclick', function () {
-        clearTimeout(idleTimer);
-        idleState = false;
-        idleTimer = setTimeout(function(){
-            aJax.get(content_management + '/login/unset_session', function(){});
-                modal.alert("Session has been idle over its time limit. You will be logged off automatically. ", function(){
-                    location.href = content_management + '/login/unset_session';    
-                });
-            idleState = true; 
-        }, 300000);
-        ///300000
-    });
-    $("body").trigger("mousemove"); 
+    // // 300000 milliseconds = 5 minutes
+    // var idleState = false;
+    // var idleTimer = null;
+    // $('*').bind('mousemove click mouseup mousedown keydown keypress keyup submit change mouseenter scroll resize dblclick', function () {
+    //     clearTimeout(idleTimer);
+    //     idleState = false;
+    //     idleTimer = setTimeout(function(){
+    //         aJax.get(content_management + '/login/unset_session', function(){});
+    //             modal.alert("Session has been idle over its time limit. You will be logged off automatically. ", function(){
+    //                 location.href = content_management + '/login/unset_session';    
+    //             });
+    //         idleState = true; 
+    //     }, 300000000);
+    //     ///300000
+    // });
+    // $("body").trigger("mousemove"); 
 });
 
 htm = '';

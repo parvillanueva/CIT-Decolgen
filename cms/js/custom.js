@@ -664,9 +664,9 @@ var modal = {
 	},
 	image_view : function(src, identifier){
 		if(identifier == ""){
-			var body = "<center><img src='"+src+"' style='width	: 100%; height: 100%;' /></center><hr><button class='btn btn-danger' id='download_file' path='"+src+"'>Download File</button>"
+			var body = "<center><img src='"+src+"' style='width	: 100%; height: 100%; background-color: #9c9c9c;' /></center><hr><button class='btn btn-danger' id='download_file' path='"+src+"'>Download File</button>"
 		} else {
-			var body = "<center><img src='"+src+"' style='width	: 100%; height: 100%;' /></center><hr><input id='file_url' value='"+src.replace(base_url, "")+"' class=' required hidden' style='width: 100%;' placeholder='Url'><input id='file_alt' class=' required hidden'  style='width: 100%;' placeholder='Image alt'><input id='file_width' class=' required hidden'  style='width: 100%;' value='100%'><input id='file_height' class=' required hidden'  style='width: 100%;' value='auto'><button class='btn btn-primary btn_insert' hidden identifier='"+identifier+"'>Insert File</button>"
+			var body = "<center><img src='"+src+"' style='width	: 100%; height: 100%; background-color: #9c9c9c;' /></center><hr><input id='file_url' value='"+src.replace(base_url, "")+"' class=' required hidden' style='width: 100%;' placeholder='Url'><input id='file_alt' class=' required hidden'  style='width: 100%;' placeholder='Image alt'><input id='file_width' class=' required hidden'  style='width: 100%;' value='100%'><input id='file_height' class=' required hidden'  style='width: 100%;' value='auto'><button class='btn btn-primary btn_insert' hidden identifier='"+identifier+"'>Insert File</button>"
 
 		}
 		bootbox.dialog({
