@@ -31,7 +31,7 @@
                     <th>Edit</th>
                 </tr>  
             </thead>
-            <tbody></tbody>
+            <tbody class="tbody"></tbody>
         </table>
       <div class="list_pagination"></div>
     </div>
@@ -62,20 +62,16 @@
     });
 
     get_list();
-   // get_pagination();
-    $('.selectall').prop('checked', false);
+    var sort_table = $('tbody').sortable();
 
-    var sorttable = $('tbody').sortable();
-    $('tbody').bind('sortupdate', function(event, ui) {
-      var order = 0;
-
-          $('.order').each(function() {  
-              order ++;
-              $(this).attr("data-order",order);
-          });
-
-      save_sort();
-   });      
+    $('tbody').bind('sortupdate', function(event, ui){
+        var order = 0;
+        $('.order').each(function(){  
+            order ++;
+            $(this).attr("data-order",order);
+        });
+        save_sort();
+    });       
  });
 
 //add user
@@ -160,7 +156,7 @@ function save_sort() {
 
     AJAX.update.table("pckg_decolgen_detailer");
     AJAX.update.where("id", $(this).attr("data-id"));
-    AJAX.update.params(orders, orders);
+    AJAX.update.params("orders", orders);
 
     AJAX.update.exec(function(result){});
   });

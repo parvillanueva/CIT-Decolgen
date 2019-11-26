@@ -26,8 +26,8 @@
                     <th style="width: 10px;"></th>
                     <th><input class ="selectall" type ="checkbox"></th>
                     <th class='th-setter'>Product Name</th>
-                    <th class='th-setter'>Image</th>
-                    <th class='th-setter'>Description</th>
+                    <th class='th-setter' style="width: 100px;">Image</th>
+                    <th class='th-setter' style="width: 200px;">Description</th>
                     <th class="th-setter">Update Date</th>
                     <th class="th-setter">Status</th>
                     <th>Action</th>
@@ -64,20 +64,16 @@
     });
 
     get_list();
-   // get_pagination();
-    $('.selectall').prop('checked', false);
+    var sort_table = $('tbody').sortable();
 
-    var sorttable = $('tbody').sortable();
-    $('tbody').bind('sortupdate', function(event, ui) {
-      var order = 0;
-
-          $('.order').each(function() {  
-              order ++;
-              $(this).attr("data-order",order);
-          });
-
-      save_sort();
-   });      
+    $('tbody').bind('sortupdate', function(event, ui){
+        var order = 0;
+        $('.order').each(function(){  
+            order ++;
+            $(this).attr("data-order",order);
+        });
+        save_sort();
+    });     
  });
 
 //add user
@@ -120,10 +116,10 @@ function get_list(keyword){
                 html += ' <td class="hide"><p class="order" data-order="" data-id='+y.id+'></p></td>';
                 html += ' <td style="background-color:  #c3c3c3;"><span style="color: #fff;" class="move-menu glyphicon glyphicon-th"></span></td>';
                 html += ' <td><input class = "select"  data-id="'+y.id+'" type ="checkbox"></td>';
-                html += ' <td>' +y.nd_product_name+ '</td>';
-                html += ' <td>' +y.nd_image_banner+ '</td>';
+                html += ' <td>' +set_char_limit2(y.nd_product_name)+ '</td>';
+                html += ' <td>' +set_char_limit2(y.nd_image_banner)+ '</td>';
+                html += ' <td>' +set_char_limit(y.nd_product_description)+ '</td>';
                 html += ' <td>' + moment(y.update_date).format('LLL')+ '</td>';
-                html += ' <td>' +y.nd_product_description+ '</td>';
                 if(y.status == 1){
                     status = 'Active';
                 }else{

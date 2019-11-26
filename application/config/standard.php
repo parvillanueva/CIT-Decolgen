@@ -3189,4 +3189,16 @@ $config['unilab_logo_url']       = array(
                                 'placeholder'   => 'Logo Url',
                                 'label'         => 'Logo Url',
                             );
+
+$config['header_name']       = array(
+                                'type'          => 'text',
+                                'name'          => 'name',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'name',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Name',
+                                'label'         => 'Name',
+                            );
 ?>

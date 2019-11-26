@@ -3,46 +3,24 @@
       <?php
         $data['buttons'] = ['add','search'];
         $this->load->view("content_management/template/buttons",$data);
-
-        $optionSet = '';
-        foreach($pageOption as $pageOptionLoop){
-            $optionSet .= "<option value='".$pageOptionLoop."'>".$pageOptionLoop."</option>";
-        }
       ?>
 
     <div class="box-body">
-      <div class="form-group record-entries pull-right">
-          <label>Show</label> 
-             <select id="record-entries">
-               <?php echo $optionSet;?>
-                 <option value="999">ALL</option>
-             </select>
-          <label>Entries</label>
-      </div>
     <div class="col-md-12 list-data">
         <table class= "table listdata table-striped sorted_table">
             <thead>
                 <tr id="sortable">
                     <th style="width: 10px;"></th>
                     <th><input class ="selectall" type ="checkbox"></th>
-                    <th class='th-setter'>Title</th><th class='th-setter'>Image Banner</th><th class='th-setter'>Description</th><th class='th-setter'>Redirect Url</th>
-                    <th class="th-setter">Update Date</th>
+                    <th class='th-setter'>Name</th>
                     <th class="th-setter">Status</th>
                     <th>Edit</th>
                 </tr>  
             </thead>
-            <tbody class="tbody"></tbody>
+            <tbody class="tbody" id="tbody"></tbody>
         </table>
       <div class="list_pagination"></div>
     </div>
-      <div class="form-group record-entries pull-right">
-          <label>Show</label> 
-             <select id="record-entries">
-               <?php echo $optionSet;?>
-                 <option value="999">ALL</option>
-             </select>
-          <label>Entries</label>
-      </div>
    </div>
   </div>
 </body>
@@ -72,12 +50,12 @@
             $(this).attr("data-order",order);
         });
         save_sort();
-    });            
- });
+    });           
+});
 
 //add user
 $(document).on('click', '#btn_add', function(e){
-   location.href = ('<?= base_url()."content_management/"?>site_landing_banner/add');
+   location.href = ('<?= base_url()."content_management/"?>site_header_menu/add');
 });
 
  var limit = 10;
@@ -85,10 +63,9 @@ $(document).on('click', '#btn_add', function(e){
 
 function get_list(keyword){
     modal.loading(true);
-    var search_arr = ["title","image_banner","description","redirect_url"];
 
-    AJAX.select.table("pckg_landing_banner");
-    AJAX.select.select("id, update_date, status, title, image_banner, description, redirect_url");
+    AJAX.select.table("pckg_header_menu");
+    AJAX.select.select("id, update_date, status, name");
     AJAX.select.where.greater_equal("status", 0);
     AJAX.select.offset(offset);
     AJAX.select.limit(limit);
@@ -96,12 +73,8 @@ function get_list(keyword){
 
     if(keyword)
     {
-      for (var i = 0; i < search_arr.length; i++) {
-        if (i != search_arr.length - 1) {
-          AJAX.select.where.like(search_arr[0], keyword);
-          AJAX.select.where.or.like(search_arr[i+1], keyword);
-        } 
-      }
+          AJAX.select.where.like("name", keyword);
+          AJAX.select.where.greater_equal("status",0);
     }
     // ajax get post
     AJAX.select.exec(function(result){
@@ -132,7 +105,7 @@ function get_list(keyword){
               htm += "<td data-status='"+status_action+"'>"+y[new_data]+"</td>";
             });
 
-            htm +=   "<td><a href='<?= base_url()."content_management/"?>site_landing_banner/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
+            htm +=   "<td><a href='<?= base_url()."content_management/"?>site_header_menu/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
             htm += "</tr>";
           });
         } else {
@@ -151,16 +124,16 @@ pagination.onchange(function(){
       get_list();
 });
 
-function save_sort() {
-  $('.order').each(function() {       
-    var orders = $(this).attr("data-order");
+function save_sort(){
+    $('.order').each(function(){       
+        var orders = $(this).attr("data-order");
 
-    AJAX.update.table("pckg_landing_banner");
-    AJAX.update.where("id", $(this).attr("data-id"));
-    AJAX.update.params("orders", orders);
+        AJAX.update.table("pckg_header_menu");
+        AJAX.update.where("id", $(this).attr("data-id"));
+        AJAX.update.params("orders", orders);
 
-    AJAX.update.exec(function(result){});
-  });
+        AJAX.update.exec(function(result){});
+    });
 }
 
 $(document).on('click','.btn_status',function(e){
@@ -173,7 +146,7 @@ $(document).on('click','.btn_status',function(e){
           $('.select:checked').each(function(index) { 
               id = $(this).attr('data-id');
 
-              AJAX.update.table("pckg_landing_banner");
+              AJAX.update.table("pckg_header_menu");
               AJAX.update.where("id", id);
               AJAX.update.params("status", status);
               AJAX.update.params("update_date", moment(new Date()).format('YYYY-MM-DD HH:mm:ss'));

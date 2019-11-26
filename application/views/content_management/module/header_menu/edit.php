@@ -1,28 +1,29 @@
 <div class="box">
-  <?php
-      $data['buttons'] = ['update', 'close'];
-      $this->load->view("content_management/template/buttons",$data);
-  ?>
+    <?php
+        $data['buttons'] = ['update', 'close'];
+        $this->load->view("content_management/template/buttons",$data);
+    ?>
     <div class="box-body">
-      <?php 
-        $details = $this->load->details("pckg_header", 1);
-        if ($this->uri->segment(4) !== NULL || !empty($this->uri->segment(4))) {
-            $inputs = ["header_image_banner","validator_image","unilab_logo"];
-            $values = [$details[0]->header_image,$details[0]->validator_image,$details[0]->unilab_logo];
-            $id =  $this->standard->inputs($inputs, $values);
+        <?php 
+        if (!$this->uri->segment(4) === NULL || !empty($this->uri->segment(4))) {
+            $details = $this->load->details("pckg_header_menu", $this->uri->segment(4));
+            $inputs = ["header_name","status"];
+            $values = [$details[0]->name,$details[0]->status];
+            $id = $this->standard->inputs($inputs, $values);
         } else {
-            $inputs = ["header_image_banner","validator_image","unilab_logo"];
-            $values = [$details[0]->header_image,$details[0]->validator_image,$details[0]->unilab_logo];
-            $id =  $this->standard->inputs($inputs, $values);
+            $inputs = ["header_name","status"];
+            $id = $this->standard->inputs($inputs);
         }
         ?>
     </div>
 </div>
+
 <script>
 
-    AJAX.config.base_url(base_url); 
-       
+    AJAX.config.base_url("<?=base_url();?>"); 
+
     $(document).on('click', '#btn_update', function(){
+        
         var form_data = {};
         $(':input[class*="_input"]').each(function() {
             var input_id = $(this).attr('id');
@@ -34,30 +35,34 @@
                 form_data[db_field] = eval("$('#"+input_id+"').val()");
             }
         });
-        
+
         form_data["update_date"] = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
 
         if(validate.standard("<?= $id; ?>")){
+
             var modal_obj = '<?= $this->standard->confirm("confirm_update"); ?>'; 
             modal.standard(modal_obj, function(result){
                 if(result){
                     modal.loading(true);
 
-                    AJAX.update.table("pckg_header");
-                    AJAX.update.where("id", 1);
+                    AJAX.update.table("pckg_header_menu");
+                    AJAX.update.where("id", "<?=$this->uri->segment(4);?>");
                     $.each(form_data, function(a,b) {
                         AJAX.update.params(a, b);
                     });
-                    
                     AJAX.update.exec(function(result){
                         modal.loading(false);
                         modal.alert("<?= $this->standard->dialog("update_success"); ?>", function(){
-                            location.reload();
+                            location.href = '<?=base_url("content_management/site_header_menu") ?>';
                         });
                     })
                 }
             });
         }
+    });
+
+    $(document).on('click', '#btn_close', function(e){
+        location.href = '<?=base_url("content_management/site_header_menu") ?>';
     });
 </script>
 <script type="text/javascript" > 
