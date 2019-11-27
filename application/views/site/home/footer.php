@@ -13,7 +13,7 @@
                                     <li><a href="<?=base_url("asc_ref_code");?>" ><?= $footer[0]->footer_asc_name;?></a></li>
                                     <!--
                                             -->
-                                    <li><a href="<?= $footer[0]->footer_policy_url;?>"><?= $footer[0]->footer_policy_name;?></a></li>
+                                    <li><a href="<?=base_url("privacy_policy");?>" ><?= $footer[0]->footer_policy_url;?></a></li>
                                 </ul>
                             </div>
                             <div class="row">
@@ -69,11 +69,6 @@
             }
                 new_url =  https+url;
             window.open(new_url)
-        });
-
-        $(".dc-nav-item").click(function() {
-            $(".dc-nav-item").removeClass("active");
-            $(this).addClass("active");
         });
 
         $(document).scroll(function() {

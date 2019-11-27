@@ -101,7 +101,12 @@ class Gcontroller extends CI_Controller {
 				$select =  $_POST['select'];
 				$offset =  $_POST['offset'];
 				$limit =  $_POST['limit'];
-				$query = $this->generate_query(@$_POST['query']);
+				if($_POST['custom_q'] != ""){
+					$query = $this->generate_query(@$_POST['query']) . " " . @$_POST['custom_q'];
+				} else {
+					$query = $this->generate_query(@$_POST['query']);
+				}
+				
 
 				$limit = isset($_POST['limit'])? $_POST['limit'] : 99999;
 				$offset = isset($_POST['offset'])? $_POST['offset'] : 1;
@@ -119,7 +124,11 @@ class Gcontroller extends CI_Controller {
 				$select =  $_POST['select'];
 				$offset =  $_POST['offset'];
 				$limit =  $_POST['limit'];
-				$query = $this->generate_query(@$_POST['query']);
+				if($_POST['custom_q'] != ""){
+					$query = $this->generate_query(@$_POST['query']) . " " . @$_POST['custom_q'];
+				} else {
+					$query = $this->generate_query(@$_POST['query']);
+				}
 
 				$offset = isset($_POST['offset'])? $_POST['offset'] : 1;
 				$order = isset($_POST['order'])? $_POST['order'] : null;

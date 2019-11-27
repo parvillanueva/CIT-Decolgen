@@ -1267,18 +1267,6 @@ $config['end']              = array(
                             );
 
 
-$config['redirect_url']      = array(
-                                'type'          => 'text',
-                                'name'          => 'redirect_url',
-                                'form-align'    => 'horizontal',
-                                'class'         => 'form-control redirect_url_input',
-                                'id'            => 'redirect_url',
-                                'placeholder'   => 'Redirect URL',
-                                'required'      => true,
-                                'label'         => 'Redirect URL',
-                                
-                            );
-
 $config['statement']        = array(
 
                                 'type'          => 'ckeditor', 
@@ -2124,15 +2112,16 @@ $config['landing_image_banner']           = array(
                                 'label'         => 'Image Banner',
                             );
 
-$config['landing_redirect_url']      = array(
+$config['redirect_link']          = array(
                                 'type'          => 'text',
-                                'name'          => 'redirect_url',
+                                'name'          => 'redirect_link',
                                 'form-align'    => 'horizontal',
-                                'class'         => 'form-control redirect_url_input',
-                                'id'            => 'redirect_url',
-                                'placeholder'   => 'Redirect URL',
-                                'required'      => true,
-                                'label'         => 'Redirect URL',
+                                'class'         => 'form-control',
+                                'id'            => 'redirect_link',
+                                'required'      => false,
+                                'no_html'       => true,
+                                'placeholder'   => 'eg. http:// or https://link.com',
+                                'label'         => 'Redirect Url'
                                 
                             );
 
@@ -3188,5 +3177,17 @@ $config['unilab_logo_url']       = array(
                                 'required'      => true,
                                 'placeholder'   => 'Logo Url',
                                 'label'         => 'Logo Url',
+                            );
+
+$config['header_name']       = array(
+                                'type'          => 'text',
+                                'name'          => 'name',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'name',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Name',
+                                'label'         => 'Name',
                             );
 ?>

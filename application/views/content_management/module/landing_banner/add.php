@@ -5,7 +5,7 @@
 	?>
     <div class="box-body">
     	<?php 
-            $inputs = ["landing_title","sub_title","landing_asc","landing_bg","landing_image_banner","landing_logo","landing_description","landing_redirect_url","status"];
+            $inputs = ["landing_title","sub_title","landing_asc","landing_bg_img","landing_image_banner","landing_logo_image","landing_description","redirect_link","status"];
             $id = $this->standard->inputs($inputs);
         ?>
     </div>
@@ -15,8 +15,31 @@
 
     AJAX.config.base_url("<?=base_url();?>"); 
 
-    $(document).on('click', '#btn_save', function(){
+    $(document).on('click', '#btn_save', function(e){
+        e.preventDefault();
         var form_data = {};
+        var url_counter = 0;
+        var url_validation = /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+        var url = $('#redirect_link').val();
+        if(url != ""){
+            if (!url.match(url_validation)) {
+                url_counter++;
+                $('.validate_error_message').remove();
+                $( '<span class="validate_error_message" style="color: red;">Invalid Url.<br></span>').insertAfter( "#redirect_link" );
+                $('#redirect_link').css("border-color","red");
+                return false;
+            }else{
+                $('.validate_error_message').remove();
+                $('#redirect_link').css("border-color","#c3c2c2");
+                save_data();
+                // return true;
+            }
+        } else {
+            $('.validate_error_message').remove();
+            $('#redirect_link').css("border-color","#c3c2c2");
+            save_data();
+        }
+        
         $(':input[class*="_input"]').each(function() {
             var input_id = $(this).attr('id');
             var db_field = $(this).attr('name');
@@ -28,30 +51,32 @@
             }
         });
 
-        form_data["orders"] = 1;
-        form_data["create_date"] = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
-        form_data["update_date"] = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+        function save_data(){
+            form_data["orders"] = 1;
+            form_data["create_date"] = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+            form_data["update_date"] = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
 
-        if(validate.standard("<?= $id; ?>")){
+            if(validate.standard("<?= $id; ?>")){
 
-            var modal_obj = '<?= $this->standard->confirm("confirm_save"); ?>'; 
-            modal.standard(modal_obj, function(result){
-                if(result){
-                    modal.loading(true);
+                var modal_obj = '<?= $this->standard->confirm("confirm_save"); ?>'; 
+                modal.standard(modal_obj, function(result){
+                    if(result){
+                        modal.loading(true);
 
-                    AJAX.insert.table("pckg_landing_banner");
-                    $.each(form_data, function(a,b) {
-                        AJAX.insert.params(a, b);
-                    });
-
-                    AJAX.insert.exec(function(result){
-                        modal.loading(false);
-                        modal.alert("<?= $this->standard->dialog("add_success"); ?>", function(){
-                            location.href = '<?=base_url("content_management/site_landing_banner") ?>';
+                        AJAX.insert.table("pckg_landing_banner");
+                        $.each(form_data, function(a,b) {
+                            AJAX.insert.params(a, b);
                         });
-                    })
-                }
-            });
+
+                        AJAX.insert.exec(function(result){
+                            modal.loading(false);
+                            modal.alert("<?= $this->standard->dialog("add_success"); ?>", function(){
+                                location.href = '<?=base_url("content_management/site_landing_banner") ?>';
+                            });
+                        })
+                    }
+                });
+            }
         }
     });
 

@@ -52,6 +52,7 @@
 
     <?php
     $header = str_replace(base_url(), "", $this->load->details("pckg_header",1));
+    $header_menu = $this->load->active_list("pckg_header_menu", "status = 1", "orders", "asc");
 ?> 
         <!-- HEADER -->
         <header id="mainHeader">
@@ -62,17 +63,15 @@
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar7">
                                 <i class="fas fa-bars"></i>
                             </button>
-                            <a class="navbar-brand" href="<?php base_url()?>"><img src="<?= base_url() . $header[0]->header_image;?>" alt="Decolgen&reg;">
+                            <a class="navbar-brand" href= "<?= base_url() . 'home';?>" ><img src="<?= base_url() . $header[0]->header_image;?>" alt="Decolgen&reg;">
                             </a>
                         </div>
                         <div id="navbar7" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-left">
-                                <li class="dc-nav-item active"><a href="#home"><?= $header[0]->home;?></a></li><!--
-                            --><li class="dc-nav-item"><a href="#try_now"><?= $header[0]->try_now;?></a></li><!--
-                            --><li class="dc-nav-item"><a href="#what_is_decolgen_forte" class="sup"><?= $header[0]->what_is_decolgen;?></a></li><!--
-                            --><li class="dc-nav-item"><a href="#no_drowse_decolgen" class="sup"><?= $header[0]->no_drowse_decolgen;?></a></li><!--
-                            --><li class="dc-nav-item"><a href="#faqs"><?= $header[0]->faqs;?></a></li>
-                            </ul>
+                                <?php foreach($header_menu as $key=>$value){ ?>
+                                <li class="dc-nav-item" ><a class="sup" href="#<?= str_replace(' ', '_', preg_replace('/[^A-Za-z0-9\- ]/', '', strtolower($value->name)));?>"><?= $value->name;?></a></li>
+                                <?php } ?>
+                               
                         </div>
                         <a href="<?= $header[0]->unilab_logo_url;?>" class="dc-violator" target="_Blank" title="United Laboratories, Inc.">
                             <img src="<?= base_url() . $header[0]->unilab_logo;?>" class="unilab-violator" alt="UNILAB LOGO">
@@ -89,5 +88,18 @@
             var text10 = $(this).text();
             text10 = text10.replace(/(®)/, "<sup>$1</sup>");
             $(this).html(text10);
+        });
+
+        $(".dc-nav-item").click(function() {
+            $(".dc-nav-item").removeClass("active");
+            $(this).addClass("active");
+        });
+
+        $(document).ready(function(){
+             var currentURL = window.location.href;
+             if(currentURL == currentURL){
+               $("li").first().addClass("active");
+            }
+            
         });
         </script>

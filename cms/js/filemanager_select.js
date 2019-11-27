@@ -36,5 +36,6 @@ $(document).on("click", ".btn_insert", function(e){
 	$(".modal").modal("hide");
     $('.bootbox').modal('hide');
     $('#ckeditor_filemanager_modal').modal('hide');
+    $("#img_delete_button").html("<div class='col-sm-6'><a href='#' id='btn_delete_image' id-identifier='"+data_id+"' class='btn_delete btn-sm btn btn-default cms-btn' style='width: 110px; margin-top: 5px;'><span class='fa fa-trash'></span> Remove Preview </a> </div>");
 
 });

@@ -71,6 +71,23 @@
 	
         <!--- declaring form validation error message-->
         <script type="text/javascript">
+
+        	function set_char_limit(str){
+			    if ((str).length > 50){
+			        return (str).substring(0,50) + '...';
+			    } else{
+			        return str;
+			    }
+			}
+
+			function set_char_limit2(str){
+			    if ((str).length > 20){
+			        return (str).substring(0,20) + '...';
+			    } else{
+			        return str;
+			    }
+			}
+
             var base_url = "<?= base_url();?>";
             var form_empty_error = "<?= $this->standard->dialog("form_empty");?>";
             var form_invalid_email = "<?= $this->standard->dialog("form_invalid_email");?>";
