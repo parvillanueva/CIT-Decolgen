@@ -31,6 +31,7 @@ var Select_offset = 0;
 var Select_query = {};
 var Select_query_where = [];
 var Select_query_or_where = [];
+var Select_custom_query = "";
 var where_count = 0;
 var or_where_count = 0;
 
@@ -100,6 +101,9 @@ AJAX = {
 		      	data 	: data,
 		      	beforeSend: function() {
 		      		fn.loading(true);
+		      		InsertData_url = "";
+					InsertData_table = "";
+					InsertData_data = {};
 			    },
 			    complete: function() {
 			    	InsertData_url = "";
@@ -116,10 +120,6 @@ AJAX = {
 			    },
 			    success	: cb
 		    });
-		    	
-				InsertData_url = "";
-				InsertData_table = "";
-				InsertData_data = {};
 
 	    }
 	},
@@ -160,6 +160,11 @@ AJAX = {
 		      	data 	: data,
 		      	beforeSend: function() {
 		      		fn.loading(true);
+		      		UpdateData_url = "";
+					UpdateData_table = "";
+					UpdateData_data = {};
+					UpdateData_key = "";
+					UpdateData_val = "";
 			    },
 			    complete: function() {
 			    	UpdateData_url = "";
@@ -288,6 +293,11 @@ AJAX = {
 		      	data 	: data,
 		      	beforeSend: function() {
 		      		fn.loading(true);
+		      		DeleteData_url = "";
+					DeleteData_table = "";
+					DeleteData_data = {}
+					DeleteData_key = "";
+					DeleteData_val = "";
 			    },
 			    complete: function() {
 			    	DeleteData_url = "";
@@ -461,6 +471,9 @@ AJAX = {
 				},
 			}
 		},
+		query: function(query){
+			Select_custom_query = query;
+		},
 		order : {
 			asc : function(field){
 				Select_order[order_count] = {
@@ -508,7 +521,17 @@ AJAX = {
 			},
 			inner : function(table, param1, param2){
 				Select_join[join_count] = {
-					right : {
+					inner : {
+						table : table,
+						param1 : param1,
+						param2 : param2
+					}
+				};
+				join_count++;
+			},
+			outer : function(table, param1, param2){
+				Select_join[join_count] = {
+					outer : {
 						table : table,
 						param1 : param1,
 						param2 : param2
@@ -535,6 +558,7 @@ AJAX = {
 	            table 	: Select_table, 
 	            select 	: Select_select,
 	            query 	: Select_query,
+	           	custom_q: Select_custom_query,
 	            order 	: Select_order,
 	            group 	: Select_group,
 	            join 	: Select_join,
@@ -570,6 +594,7 @@ AJAX = {
 				Select_query = {};
 				Select_query_where = [];
 				Select_query_or_where = [];
+				Select_custom_query = "";
 				where_count = 0;
 				or_where_count = 0;
 
@@ -598,6 +623,7 @@ AJAX = {
 			        table 	: Select_table, 
 			        select 	: Select_select,
 			        query 	: Select_query,
+			        custom_q: Select_custom_query,
 			        order 	: Select_order,
 			        group 	: Select_group,
 			        join 	: Select_join,
@@ -623,6 +649,7 @@ AJAX = {
 						Select_query = {};
 						Select_query_where = [];
 						Select_query_or_where = [];
+						Select_custom_query = "";
 						where_count = 0;
 						or_where_count = 0;
 
@@ -647,6 +674,7 @@ AJAX = {
 						Select_query = {};
 						Select_query_where = [];
 						Select_query_or_where = [];
+						Select_custom_query = "";
 						where_count = 0;
 						or_where_count = 0;
 
