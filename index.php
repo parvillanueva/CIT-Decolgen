@@ -56,10 +56,10 @@
 
 $root = $_SERVER['HTTP_HOST'];
 switch ($root) {
-	case 'com.ph':
+	case 'decolgen.com.ph':
 		define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'production');
 		break;
-	case 'webqa.unilab.com.ph':
+	case 'decolgen.webqa.unilab.com.ph':
 		define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'production');
 		break;
 	default:
