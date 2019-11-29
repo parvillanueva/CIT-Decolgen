@@ -666,6 +666,17 @@ $config['title']       = array(
                                 'label'         => 'Title',
                             );
 
+$config['title']       = array(
+                                'type'          => 'text',
+                                'name'          => 'name',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'name',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Name',
+                                'label'         => 'Name',
+                            );
 
 $config['description']      = array(
                                 'type'          => 'ckeditor',
@@ -740,10 +751,10 @@ $config['privacy_title']       = array(
 
 $config['privacy_statement']    = array(
                                 'type'          => 'ckeditor',
-                                'name'          => 'privacy_statement',
+                                'name'          => 'description',
                                 'form-align'    => 'horizontal',
                                 'class'         => 'form-control',
-                                'id'            => 'privacy_statement',
+                                'id'            => 'description',
                                 'required'      => true,
                                 'filemanager'   => false,
                                 'youtube'       => false,
