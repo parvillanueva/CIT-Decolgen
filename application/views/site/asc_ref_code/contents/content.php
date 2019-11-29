@@ -27,4 +27,10 @@
         url = url.replace(/[ ]/gi, '-').replace(/[®]/gi, '').toLowerCase();
         $(this).attr("href",url);
      });
+
+    $( ".sup" ).each(function( index ) {
+        var text10 = $(this).text();
+        text10 = text10.replace(/(®)/, "<sup>$1</sup>");
+        $(this).html(text10);
+    });
 </script>
