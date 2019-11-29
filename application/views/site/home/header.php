@@ -53,6 +53,8 @@
     <?php
     $header = str_replace(base_url(), "", $this->load->details("pckg_header",1));
     $header_menu = $this->load->active_list("pckg_header_menu", "status = 1", "orders", "asc");
+    $section = $this->uri->segment(1);
+
 ?> 
         <!-- HEADER -->
         <header id="mainHeader">
@@ -69,7 +71,7 @@
                         <div id="navbar7" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-left">
                                 <?php foreach($header_menu as $key=>$value){ ?>
-                                <li class="dc-nav-item" id="a<?= str_replace(' ', '_', preg_replace('/[^A-Za-z0-9\- ]/', '', strtolower($value->name)));?>" ><a class="sup" href="#<?= str_replace(' ', '_', preg_replace('/[^A-Za-z0-9\- ]/', '', strtolower($value->name)));?>"><?= $value->name;?></a></li>
+                                <li class="dc-nav-item" id="a<?= str_replace(' ', '_', preg_replace('/[^A-Za-z0-9\- ]/', '', strtolower($value->name)));?>" ><a class="sup" href="javascript:void(0);"><?= $value->name;?></a></li>
                                 <?php } ?>
                                
                         </div>
@@ -82,92 +84,4 @@
             </nav>
         </header>
 
-        <script type="text/javascript">
-
-        $( ".sup" ).each(function( index ) {
-            var text10 = $(this).text();
-            text10 = text10.replace(/(®)/, "<sup>$1</sup>");
-            $(this).html(text10);
-        });
-
-        $(".dc-nav-item").click(function() {
-            $(".dc-nav-item").removeClass("active");
-            $(this).addClass("active");
-        });
-
-
-        // Select all links with hashes
-$('a[href*="#"]')
-  // Remove links that don't actually link to anything
-  .not('[href="#"]')
-  .not('[href="#0"]')
-  .click(function(event) {
-    // On-page links
-    if (
-      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
-      && 
-      location.hostname == this.hostname
-    ) {
-      // Figure out element to scroll to
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-      // Does a scroll target exist?
-      if (target.length) {
-        // Only prevent default if animation is actually gonna happen
-        event.preventDefault();
-        $('html, body').animate({
-          scrollTop: target.offset().top
-        }, 10, function() {
-          // Callback after animation
-          // Must change focus!
-          var $target = $(target);
-          $target.focus();
-          if ($target.is(":focus")) { // Checking if the target was focused
-            return false;
-          } else {
-            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
-            $target.focus(); // Set focus again
-          };
-        });
-      }
-    }
-  });
-
-  $(window).scroll(function () {
-    var scroll = $(window).scrollTop();
-    
-    if(scroll >= $('#home').offset().top-100){
-        $(".dc-nav-item").removeClass("active");
-        $('#ahome').toggleClass('active');
-    }
-    if(scroll >= $('#try_now').offset().top){
-        $(".dc-nav-item").removeClass("active");
-        $('#atry_now').toggleClass('active');
-    }
-    if(scroll >= $('#what_is_decolgen_forte').offset().top){
-        $(".dc-nav-item").removeClass("active");
-        $('#awhat_is_decolgen_forte').toggleClass('active');
-    }
-    if(scroll >= $('#no_drowse_decolgen').offset().top){
-        $(".dc-nav-item").removeClass("active");
-        $('#ano_drowse_decolgen').toggleClass('active');
-    }
-    if(scroll >= $('.dc-srp').offset().top-80){
-        $(".dc-nav-item").removeClass("active");
-        $('#afaqs').toggleClass('active');
-    }  
-
-});
-//trigger the scroll
-$(window).scroll();
-
-$(document).ready(function(){
-
-    $( ".sup" ).click(function( index ) {
-        var test = $(this).text();
-        test = test.replace(/ /g, "_").toLowerCase().replace(/[®]+/g, "");
-        test = test;
-        window.history.replaceState("", "", test)
-    });
-});
-        </script>
+ 

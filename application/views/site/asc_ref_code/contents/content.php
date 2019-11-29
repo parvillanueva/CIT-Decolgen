@@ -21,4 +21,10 @@
         $(".dc-nav-item").removeClass("active");
         $(this).addClass("active");
     });
+
+    $( ".sup" ).on('click',function(event) {
+        var url = $(this).text();
+        url = url.replace(/[ ]/gi, '-').replace(/[®]/gi, '').toLowerCase();
+        $(this).attr("href",url);
+     });
 </script>

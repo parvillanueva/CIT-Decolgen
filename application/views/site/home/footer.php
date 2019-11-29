@@ -79,5 +79,6 @@
                 $('.dc-to-top').fadeOut();
             }
         });
+        
 
     </script>
