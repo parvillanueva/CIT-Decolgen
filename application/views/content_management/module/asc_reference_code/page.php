@@ -3,22 +3,9 @@
       <?php
         $data['buttons'] = ['add','search'];
         $this->load->view("content_management/template/buttons",$data);
-
-        $optionSet = '';
-        foreach($pageOption as $pageOptionLoop){
-            $optionSet .= "<option value='".$pageOptionLoop."'>".$pageOptionLoop."</option>";
-        }
       ?>
 
     <div class="box-body">
-      <div class="form-group record-entries pull-right">
-        <label>Show</label> 
-           <select id="record-entries">
-             <?php echo $optionSet;?>
-               <option value="999">ALL</option>
-           </select>
-        <label>Entries</label>
-      </div>
     <div class="col-md-12 list-data">
         <table class= "table listdata table-striped sorted_table">
             <thead>
@@ -26,25 +13,15 @@
                     <th style="width: 10px;"></th>
                     <th><input class ="selectall" type ="checkbox"></th>
                     <th class='th-setter'>Name</th>
-                   <!--  <th class='th-setter'>Content</th> -->
-                    <th class='th-setter'>Content</th>
-                   <!--  <th class="th-setter">Update Date</th> -->
+                    <th class="th-setter">Update Date</th>
                     <th class="th-setter">Status</th>
-                    <th>Action</th>
+                    <th>Edit</th>
                 </tr>  
             </thead>
             <tbody class="tbody"></tbody>
         </table>
       <div class="list_pagination"></div>
     </div>
-      <div class="form-group record-entries pull-right">
-        <label>Show</label> 
-           <select id="record-entries">
-             <?php echo $optionSet;?>
-               <option value="999">ALL</option>
-           </select>
-        <label>Entries</label>
-      </div>
    </div>
   </div>
 </body>
@@ -64,21 +41,25 @@
     });
 
     get_data();
-    var sort_table = $('tbody').sortable();
+   // get_pagination();
+    $('.selectall').prop('checked', false);
 
-    $('tbody').bind('sortupdate', function(event, ui){
-        var order = 0;
-        $('.order').each(function(){  
-            order ++;
-            $(this).attr("data-order",order);
-        });
-        save_sort();
-    });      
+    var sorttable = $('tbody').sortable();
+    $('tbody').bind('sortupdate', function(event, ui) {
+      var order = 0;
+
+          $('.order').each(function() {  
+              order ++;
+              $(this).attr("data-order",order);
+          });
+
+      save_sort();
+   });      
  });
 
 //add user
 $(document).on('click', '#btn_add', function(e){
-   location.href = ('<?= base_url()."content_management/"?>site_try_now_products/add');
+   location.href = ('<?= base_url()."content_management/"?>site_asc_reference_code/add');
 });
 
  var limit = 10;
@@ -86,10 +67,10 @@ $(document).on('click', '#btn_add', function(e){
 
 function get_data(keyword){
     modal.loading(true);
-    var search_arr = [" name","content"];
+    var search_arr = ["name"];
 
-    AJAX.select.table("pckg_try_now_products");
-    AJAX.select.select("id, status, name, image_banner, dosage, content");
+    AJAX.select.table("pckg_asc_reference_code");
+    AJAX.select.select("id, update_date, status, name");
     AJAX.select.where.greater_equal("status", 0);
     AJAX.select.offset(offset);
     AJAX.select.limit(limit);
@@ -133,7 +114,7 @@ function get_data(keyword){
               htm += "<td data-status='"+status_action+"'>"+y[new_data]+"</td>";
             });
 
-            htm +=   "<td class='center-content'><a href='<?= base_url()."content_management/"?>site_try_now_products/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
+            htm +=   "<td><a href='<?= base_url()."content_management/"?>site_asc_reference_code/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
             htm += "</tr>";
           });
         } else {
@@ -156,9 +137,9 @@ function save_sort() {
   $('.order').each(function() {       
     var orders = $(this).attr("data-order");
 
-    AJAX.update.table("pckg_try_now_products");
+    AJAX.update.table("pckg_asc_reference_code");
     AJAX.update.where("id", $(this).attr("data-id"));
-    AJAX.update.params("orders", orders);
+    AJAX.update.params(orders, orders);
 
     AJAX.update.exec(function(result){});
   });
@@ -175,7 +156,7 @@ $(document).on('click','.btn_status',function(e){
           $('.select:checked').each(function(index) { 
               id = $(this).attr('data-id');
 
-              AJAX.update.table("pckg_try_now_products");
+              AJAX.update.table("pckg_asc_reference_code");
               AJAX.update.where("id", id);
               AJAX.update.params("status", status);
               AJAX.update.params("update_date", moment(new Date()).format('YYYY-MM-DD HH:mm:ss'));

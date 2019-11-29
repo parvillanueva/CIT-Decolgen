@@ -13,7 +13,7 @@
 
         </div>
 
-        <?php $this->load->view("site/layout/footer"); ?>
+        <?php $this->load->view("site/home/footer"); ?>
         
     </body>
 </html>

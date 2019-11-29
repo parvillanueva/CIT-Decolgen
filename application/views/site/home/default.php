@@ -9,5 +9,3 @@
 <?php $this->load->view("site/home/no_drowse_decolgen"); ?>
 
 <?php $this->load->view("site/home/faqs"); ?>
-
-<?php $this->load->view("site/home/footer"); ?>

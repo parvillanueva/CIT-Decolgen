@@ -59,11 +59,11 @@
       query = "";                          
       if (e.keyCode == 13) {
           var keyword = $(this).val();
-          get_list(keyword);
+          get_data(keyword);
       }
     });
 
-    get_list();
+    get_data();
     var sort_table = $('tbody').sortable();
 
     $('tbody').bind('sortupdate', function(event, ui){
@@ -84,7 +84,7 @@ $(document).on('click', '#btn_add', function(e){
  var limit = 10;
  var offset = 1;
 
-function get_list(keyword){
+function get_data(keyword){
     modal.loading(true);
     var search_arr = ["no_drowse_image","description"];
 
@@ -137,13 +137,13 @@ function get_list(keyword){
         $('.table_body').html(html);
         modal.loading(false); //hide loading
     }, function (obj){
-       pagination.generate(obj.total_page, ".list_pagination", get_list);
+       pagination.generate(obj.total_page, ".list_pagination", get_data);
     });
 }
 
 pagination.onchange(function(){
       offset = $(this).val();
-      get_list();
+      get_data();
 });
 
 function save_sort() {
@@ -177,7 +177,7 @@ $(document).on('click','.btn_status',function(e){
               AJAX.update.exec(function(result){
                 var obj = result;
                 if (obj.length > 0) {
-                  get_list();
+                  get_data();
                   $('.status_action').hide();
                 } else {
                   console.log(obj);
