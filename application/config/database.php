@@ -12,10 +12,10 @@
 				break;
 
 			case 'decolgen.webqa.unilab.com.ph':
-				$db_host = "";
-				$db_username = "";
-				$db_password = "";
-				$db_database = "";
+				$db_host = 'app-ulch-phg-server-02.cklr8bwd3nrd.ap-southeast-1.rds.amazonaws.com:3306';
+				$db_username = 'decol_user';
+				$db_password = '8Vlu@d21';
+				$db_database = 'decolgenqa_db';
 				break;
 			
 			default:
