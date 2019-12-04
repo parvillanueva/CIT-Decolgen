@@ -14,17 +14,18 @@ class Site_try_now_products extends GS_Controller {
 	public function index()
 	{
 		$data["title"] = "Content Management";
-		$data["PageName"] = ("Try Now Products");
+		$data["PageName"] = ("Info");
 		$data['edit_title'] = true;
 		$data["content"] = "content_management/module/try_now/products/page";
-		$data['breadcrumb'] = array('Try Now Products' => '');
+		$data['breadcrumb'] = array('Info' => '');
 		$this->load->view("content_management/template/layout", $data);	
 	}
 
 	public function add()
 {
 	$data["title"] = "Content Management";
-	$data["PageName"] = ("Try Now Products");
+	$data["PageName"] = ("Info Create");
+	$data['breadcrumb'] = array('Info' => '', "Create" => "");
 	//$data["breadcrumb"] = array('Try New' => base_url('content_management/Site_try_now/add'),'Add Try Now' => '','TEST' => '','Another one' => '');
 	$data["content"] = "content_management/module/try_now/products/add";
 	$this->load->view("content_management/template/layout", $data);	
@@ -33,7 +34,8 @@ class Site_try_now_products extends GS_Controller {
 public function update()
 {
 	$data["title"] = "Content Management";
-	$data["PageName"] = ("Try Now Products");
+	$data["PageName"] = ("Info Update");
+	$data['breadcrumb'] = array('Info' => '', "Update" => "");
 	$data["content"] = "content_management/module/try_now/products/edit";
 	$this->load->view("content_management/template/layout", $data);	
 }

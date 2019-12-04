@@ -2125,10 +2125,10 @@ $config['landing_image_banner']           = array(
 
 $config['redirect_link']          = array(
                                 'type'          => 'text',
-                                'name'          => 'redirect_link',
+                                'name'          => 'redirect_url',
                                 'form-align'    => 'horizontal',
                                 'class'         => 'form-control',
-                                'id'            => 'redirect_link',
+                                'id'            => 'redirect_url',
                                 'required'      => false,
                                 'no_html'       => true,
                                 'placeholder'   => 'eg. http:// or https://link.com',
@@ -2272,8 +2272,8 @@ $config['try_now_banner_details']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'image_details',
                                 'required'      => true,
-                                'placeholder'   => 'Details',
-                                'label'         => 'Details',
+                                'placeholder'   => 'Small Text Label',
+                                'label'         => 'Small Text Label',
                             );
 
 $config['try_now_details_first_title']       = array(
@@ -2284,8 +2284,8 @@ $config['try_now_details_first_title']       = array(
                                 'id'            => 'first_title',
                                 'maxlength'     => 255,
                                 'required'      => true,
-                                'placeholder'   => 'Title 1',
-                                'label'         => 'Title 1',
+                                'placeholder'   => 'Article Title 1',
+                                'label'         => 'Article Title 1',
                             );
 
 $config['try_now_first_description']      = array(
@@ -2294,8 +2294,8 @@ $config['try_now_first_description']      = array(
                                 'form-align'    => 'horizontal',
                                 'class'         => 'form-control',
                                 'id'            => 'first_description',
-                                'placeholder'   => 'Description 1',
-                                'label'         => 'Description 1',
+                                'placeholder'   => 'Article Description 1',
+                                'label'         => 'Article Description 1',
                             );
 
 $config['try_now_details_second_title']       = array(
@@ -2304,8 +2304,8 @@ $config['try_now_details_second_title']       = array(
                                 'form-align'    => 'horizontal',
                                 'class'         => 'form-control',
                                 'id'            => 'second_title',
-                                'placeholder'   => 'Title 2',
-                                'label'         => 'Title 2',
+                                'placeholder'   => 'Article Title 2',
+                                'label'         => 'Article Title 2',
                             );
 
 $config['try_now_second_description']      = array(
@@ -2314,8 +2314,8 @@ $config['try_now_second_description']      = array(
                                 'form-align'    => 'horizontal',
                                 'class'         => 'form-control',
                                 'id'            => 'second_description',
-                                'placeholder'   => 'Description 2',
-                                'label'         => 'Description 2',
+                                'placeholder'   => 'Article Description 2',
+                                'label'         => 'Article Description 2',
                             );
 
 $config['try_now_name']       = array(
@@ -2933,14 +2933,14 @@ $config['nd_download_label']       = array(
                                 'label'         => 'Download Button Label',
                             );
 
-$config['nd_product_pil']       = array(
+$config['no_drowse_pil']       = array(
                                 'type'          => 'filemanager',
                                 'name'          => 'nd_product_pil',
                                 'form-align'    => 'horizontal',
                                 'class'         => 'form-control',
                                 'id'            => 'nd_product_pil',
-                                'required'      => false,
-                                'accept'        => 'jpg,gif,png,jpeg,svg',
+                                'required'      => true,
+                                'accept'        => 'jpg,gif,png,jpeg,pdf',
                                 'max_size'      => '50',
                                 'placeholder'   => 'Product PIL',
                                 'label'         => 'Product PIL',

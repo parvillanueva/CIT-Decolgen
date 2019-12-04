@@ -7,11 +7,11 @@
         <?php 
         if (!$this->uri->segment(4) === NULL || !empty($this->uri->segment(4))) {
             $details = $this->load->details("pckg_no_drowse_products", $this->uri->segment(4));
-            $inputs = ["nd_product_name","nd_image_banner","nd_product_price","nd_download_label","nd_product_pil","nd_product_description","status"];
+            $inputs = ["nd_product_name","nd_image_banner","nd_product_price","nd_download_label","no_drowse_pil","nd_product_description","status"];
             $values = [$details[0]->nd_product_name,$details[0]->nd_image_banner,$details[0]->nd_product_price,$details[0]->nd_download_label,$details[0]->nd_product_pil,$details[0]->nd_product_description,$details[0]->status];
             $id = $this->standard->inputs($inputs, $values);
         } else {
-            $inputs = ["nd_product_name","nd_image_banner","nd_product_price","nd_download_label","nd_product_pil","nd_product_description","status"];
+            $inputs = ["nd_product_name","no_drowse_pil","nd_product_price","nd_download_label","test","nd_product_description","status"];
             $id = $this->standard->inputs($inputs);
         }
         ?>

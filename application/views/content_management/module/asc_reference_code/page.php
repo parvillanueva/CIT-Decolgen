@@ -3,11 +3,24 @@
       <?php
         $data['buttons'] = ['add','search'];
         $this->load->view("content_management/template/buttons",$data);
+      
+        $optionSet = '';
+        foreach($pageOption as $pageOptionLoop){
+            $optionSet .= "<option value='".$pageOptionLoop."'>".$pageOptionLoop."</option>";
+        }
       ?>
 
     <div class="box-body">
+      <div class="form-group record-entries pull-right">
+          <label>Show</label> 
+             <select id="record-entries">
+               <?php echo $optionSet;?>
+                 <option value="999">ALL</option>
+             </select>
+          <label>Entries</label>
+      </div>
     <div class="col-md-12 list-data">
-        <table class= "table listdata table-striped sorted_table">
+        <table class= "table listdata table-bordered sorted_table">
             <thead>
                 <tr id="sortable">
                     <th style="width: 10px;"></th>
@@ -15,13 +28,21 @@
                     <th class='th-setter'>Name</th>
                     <th class="th-setter">Update Date</th>
                     <th class="th-setter">Status</th>
-                    <th>Edit</th>
+                    <th style="width: 40px; text-align:center;">Action</th>
                 </tr>  
             </thead>
             <tbody class="tbody"></tbody>
         </table>
       <div class="list_pagination"></div>
     </div>
+      <div class="form-group record-entries pull-right">
+          <label>Show</label> 
+             <select id="record-entries">
+               <?php echo $optionSet;?>
+                 <option value="999">ALL</option>
+             </select>
+          <label>Entries</label>
+      </div>
    </div>
   </div>
 </body>
@@ -114,7 +135,7 @@ function get_data(keyword){
               htm += "<td data-status='"+status_action+"'>"+y[new_data]+"</td>";
             });
 
-            htm +=   "<td><a href='<?= base_url()."content_management/"?>site_asc_reference_code/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
+            htm +=   "<td class='center-content'><a href='<?= base_url()."content_management/"?>site_asc_reference_code/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
             htm += "</tr>";
           });
         } else {

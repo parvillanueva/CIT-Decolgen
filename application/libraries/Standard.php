@@ -739,7 +739,9 @@ class Standard {
                             case 'svg':
                                 echo '<img class="img_banner_preview" id="img_ban_'.$config['id'].'" src="'. base_url() . $config["value"].'" style="max-width:200px; background-color: #9c9c9c;" /><br>';
                                 break;
-
+                             case 'pdf':
+                                echo '<iframe class="img_banner_preview" id="img_ban_'.$config['id'].'" src="'. base_url() . $config["value"].'" style="width:100%; height: 300px;"></iframe>';
+                                break;
                             case 'mp4':
                                 echo '<video class="img_banner_preview" style="width : 100%" controls>';
                                 echo '  <source src="' . base_url() . $config["value"].'" type="video/mp4"';

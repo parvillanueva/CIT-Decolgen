@@ -20,7 +20,7 @@
         <label>Entries</label>
       </div>
     <div class="col-md-12 list-data">
-        <table class= "table listdata table-striped sorted_table">
+        <table class= "table listdata table-bordered sorted_table">
             <thead>
                 <tr id="sortable">
                     <th style="width: 10px;"></th>
@@ -30,7 +30,7 @@
                     <th class='th-setter' style="width: 200px;">Description</th>
                     <th class="th-setter">Update Date</th>
                     <th class="th-setter">Status</th>
-                    <th>Action</th>
+                    <th style="width: 40px; text-align:center;">Action</th>
                 </tr>  
             </thead>
             <tbody id="table_body" class="table_body"></tbody>
@@ -86,7 +86,7 @@ $(document).on('click', '#btn_add', function(e){
 
 function get_data(keyword){
     modal.loading(true);
-    var search_arr = ["no_drowse_image","description"];
+    var search_arr = ["no_drowse_image","nd_product_description"];
 
     AJAX.select.table("pckg_no_drowse_products");
     AJAX.select.select("id, nd_product_name, status, nd_image_banner, nd_product_price, nd_product_pil, nd_product_description");
@@ -97,12 +97,8 @@ function get_data(keyword){
 
     if(keyword)
     {
-      for (var i = 0; i < search_arr.length; i++) {
-        if (i != search_arr.length - 1) {
-          AJAX.select.where.like(search_arr[0], keyword);
-          AJAX.select.where.or.like(search_arr[i+1], keyword);
-        } 
-      }
+      AJAX.select.where.like("nd_product_name",keyword);
+      AJAX.select.where.or.like("nd_product_description", keyword);
     }
     // ajax get post
     AJAX.select.exec(function(result){
@@ -126,18 +122,18 @@ function get_data(keyword){
                     status = 'Inactive';
                 }
                 html += '<td>'+status+'</td>';
-                html +=" <td><a href='"+content_management+"/site_no_drowse_products/update/"+y.id+"' class='edit' title='edit'><span class='glyphicon glyphicon-pencil'></span></a></td>";
+                html +=" <td class='center-content'><a href='"+content_management+"/site_no_drowse_products/update/"+y.id+"' class='edit' title='edit'><span class='glyphicon glyphicon-pencil'></span></a></td>";
                 html += '</tr>';
 
             });
         }else{
-            html = '<tr><td colspan=12 style="text-align: center;">No records to show.</td></tr>';
+           html += '<tr><td colspan="8" style="text-align: center;"><b>No records to show!</b></td></tr>';
         }
         
         $('.table_body').html(html);
         modal.loading(false); //hide loading
     }, function (obj){
-       pagination.generate(obj.total_page, ".list_pagination", get_data);
+       pagination.generate(obj.total_page, ".list_pagination", limit, 'table_body', 8);
     });
 }
 
