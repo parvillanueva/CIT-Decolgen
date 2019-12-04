@@ -25,6 +25,7 @@ class Site_header_menu extends GS_Controller {
 {
 	$data["title"] = "Content Management";
 	$data["PageName"] = ("Section Menu");
+	$data['breadcrumb'] = array('Section menu' => '', "Create" => "");
 	$data["content"] = "content_management/module/header_menu/add";
 	$this->load->view("content_management/template/layout", $data);	
 }
@@ -33,6 +34,7 @@ public function update()
 {
 	$data["title"] = "Content Management";
 	$data["PageName"] = ("Section Menu");
+	$data['breadcrumb'] = array('Section menu' => '', "Update" => "");
 	$data["content"] = "content_management/module/header_menu/edit";
 	$this->load->view("content_management/template/layout", $data);	
 }

@@ -14,10 +14,10 @@ class Site_try_now_details extends GS_Controller {
 	public function index()
 	{
 		$data["title"] = "Content Management";
-		$data["PageName"] = ("Try Now Details");
+		$data["PageName"] = ("Details");
 		$data['edit_title'] = true;
 		$data["content"] = "content_management/module/try_now/details/page";
-		$data['breadcrumb'] = array('Try Now Details' => '');
+		$data['breadcrumb'] = array('Details' => '');
 		$this->load->view("content_management/template/layout", $data);	
 	}
 

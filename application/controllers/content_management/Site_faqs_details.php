@@ -17,7 +17,7 @@ class Site_faqs_details extends GS_Controller {
 		$data["PageName"] = ("details");
 		$data['edit_title'] = true;
 		$data["content"] = "content_management/module/faqs/details/page";
-		$data['breadcrumb'] = array('detailss' => '');
+		$data['breadcrumb'] = array('details' => '');
 		$this->load->view("content_management/template/layout", $data);	
 	}
 

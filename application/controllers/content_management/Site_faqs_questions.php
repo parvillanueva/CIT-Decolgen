@@ -25,6 +25,7 @@ class Site_faqs_questions extends GS_Controller {
 {
 	$data["title"] = "Content Management";
 	$data["PageName"] = ("Faqs");
+	$data['breadcrumb'] = array('Faqs' => '', "Create" => "");
 	$data["content"] = "content_management/module/faqs/questions/add";
 	$this->load->view("content_management/template/layout", $data);	
 }
@@ -33,6 +34,7 @@ public function update()
 {
 	$data["title"] = "Content Management";
 	$data["PageName"] = ("Faqs");
+	$data['breadcrumb'] = array('Faqs' => '', "Update" => "");
 	$data["content"] = "content_management/module/faqs/questions/edit";
 	$this->load->view("content_management/template/layout", $data);	
 }

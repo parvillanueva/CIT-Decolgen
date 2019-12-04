@@ -5,7 +5,7 @@
 	?>
     <div class="box-body">
         <?php 
-            $inputs = ["nd_product_name","nd_image_banner","nd_product_price","nd_download_label","nd_product_pil","nd_product_description","status"];
+            $inputs = ["nd_product_name","nd_image_banner","nd_product_price","nd_download_label","no_drowse_pil","nd_product_description","status"];
             $id = $this->standard->inputs($inputs);
         ?>
     </div>
