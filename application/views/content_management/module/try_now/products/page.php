@@ -20,17 +20,15 @@
         <label>Entries</label>
       </div>
     <div class="col-md-12 list-data">
-        <table class= "table listdata table-striped sorted_table">
+        <table class= "table listdata table-bordered sorted_table">
             <thead>
                 <tr id="sortable">
                     <th style="width: 10px;"></th>
                     <th><input class ="selectall" type ="checkbox"></th>
                     <th class='th-setter'>Name</th>
-                   <!--  <th class='th-setter'>Content</th> -->
                     <th class='th-setter'>Content</th>
-                   <!--  <th class="th-setter">Update Date</th> -->
                     <th class="th-setter">Status</th>
-                    <th>Action</th>
+                    <th style="width: 40px; text-align:center;">Action</th>
                 </tr>  
             </thead>
             <tbody class="tbody"></tbody>
@@ -137,13 +135,13 @@ function get_data(keyword){
             htm += "</tr>";
           });
         } else {
-          htm = "<td colspan='10'>No data found.</td>";
+          htm += '<tr><td colspan="6" style="text-align: center;"><b>No records to show!</b></td></tr>';
         }
 
         $('.listdata tbody').html(htm);
         modal.loading(false);
     }, function(obj){
-        pagination.generate(obj.total_page, '.list_pagination', get_data);
+        pagination.generate(obj.total_page, '.list_pagination', limit, 'tbody', 6);
     });
   }
 

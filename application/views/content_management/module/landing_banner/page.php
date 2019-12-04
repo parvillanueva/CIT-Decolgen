@@ -20,15 +20,18 @@
           <label>Entries</label>
       </div>
     <div class="col-md-12 list-data">
-        <table class= "table listdata table-striped sorted_table">
+        <table class= "table listdata table-bordered sorted_table">
             <thead>
                 <tr id="sortable">
                     <th style="width: 10px;"></th>
                     <th><input class ="selectall" type ="checkbox"></th>
-                    <th class='th-setter'>Title</th><th class='th-setter'>Image Banner</th><th class='th-setter'>Description</th><th class='th-setter'>Redirect Url</th>
-                    <th class="th-setter">Update Date</th>
-                    <th class="th-setter">Status</th>
-                    <th>Edit</th>
+                    <th class='th-setter' style="width: 80px;">Title</th>
+                    <th class='th-setter' style="width: 100px;">Image Banner</th>
+                    <th class='th-setter'>Description</th>
+                    <th class='th-setter' style="width: 100px;">Redirect Url</th>
+                    <th class="th-setter" style="width: 100px;">Update Date</th>
+                    <th class="th-setter" style="width: 20px;">Status</th>
+                    <th style="width: 40px; text-align:center;">Action</th>
                 </tr>  
             </thead>
             <tbody class="tbody"></tbody>
@@ -132,17 +135,17 @@ function get_data(keyword){
               htm += "<td data-status='"+status_action+"'>"+y[new_data]+"</td>";
             });
 
-            htm +=   "<td><a href='<?= base_url()."content_management/"?>site_landing_banner/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
+            htm +=   "<td class='center-content'><a href='<?= base_url()."content_management/"?>site_landing_banner/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
             htm += "</tr>";
           });
         } else {
-          htm = "<td colspan='10'>No data found.</td>";
+          htm += '<tr><td colspan="9" style="text-align: center;"><b>No records to show!</b></td></tr>';
         }
 
         $('.listdata tbody').html(htm);
         modal.loading(false);
     }, function(obj){
-        pagination.generate(obj.total_page, '.list_pagination', get_data);
+        pagination.generate(obj.total_page, '.list_pagination', limit, 'tbody', 9);
     });
   }
 

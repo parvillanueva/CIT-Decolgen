@@ -3,24 +3,45 @@
       <?php
         $data['buttons'] = ['add','search'];
         $this->load->view("content_management/template/buttons",$data);
+      
+      $optionSet = '';
+        foreach($pageOption as $pageOptionLoop){
+            $optionSet .= "<option value='".$pageOptionLoop."'>".$pageOptionLoop."</option>";
+        }
       ?>
 
     <div class="box-body">
+      <div class="form-group record-entries pull-right">
+          <label>Show</label> 
+             <select id="record-entries">
+               <?php echo $optionSet;?>
+                 <option value="999">ALL</option>
+             </select>
+          <label>Entries</label>
+      </div>
     <div class="col-md-12 list-data">
-        <table class= "table listdata table-striped sorted_table">
+        <table class= "table listdata table-bordered sorted_table">
             <thead>
                 <tr id="sortable">
                     <th style="width: 10px;"></th>
                     <th><input class ="selectall" type ="checkbox"></th>
                     <th class='th-setter'>Name</th>
                     <th class="th-setter">Status</th>
-                    <th>Edit</th>
+                    <th style="width: 40px; text-align:center;">Action</th>
                 </tr>  
             </thead>
-            <tbody class="tbody" id="tbody"></tbody>
+            <tbody class="table_body" id="table_body"></tbody>
         </table>
       <div class="list_pagination"></div>
     </div>
+        <div class="form-group record-entries pull-right">
+          <label>Show</label> 
+             <select id="record-entries">
+               <?php echo $optionSet;?>
+                 <option value="999">ALL</option>
+             </select>
+          <label>Entries</label>
+      </div>
    </div>
   </div>
 </body>
@@ -35,15 +56,15 @@
       query = "";                          
       if (e.keyCode == 13) {
           var keyword = $(this).val();
-          get_list(keyword);
+          get_data(keyword);
       }
     });
 
     $('.selectall').prop('checked', false);
-    get_list();
-    var sort_table = $('tbody').sortable();
+    get_data();
+    var sort_table = $('#table_body').sortable();
 
-    $('tbody').bind('sortupdate', function(event, ui){
+    $('#table_body').bind('sortupdate', function(event, ui){
         var order = 0;
         $('.order').each(function(){  
             order ++;
@@ -61,7 +82,7 @@ $(document).on('click', '#btn_add', function(e){
  var limit = 10;
  var offset = 1;
 
-function get_list(keyword){
+function get_data(keyword){
     modal.loading(true);
 
     AJAX.select.table("pckg_header_menu");
@@ -105,23 +126,23 @@ function get_list(keyword){
               htm += "<td data-status='"+status_action+"'>"+y[new_data]+"</td>";
             });
 
-            htm +=   "<td><a href='<?= base_url()."content_management/"?>site_header_menu/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
+            htm +=   "<td class='center-content'><a href='<?= base_url()."content_management/"?>site_header_menu/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
             htm += "</tr>";
           });
         } else {
-          htm = "<td colspan='10'>No data found.</td>";
+          htm += '<tr><td colspan="5" style="text-align: center;"><b>No records to show!</b></td></tr>';
         }
 
-        $('.listdata tbody').html(htm);
+        $('#table_body').html(htm);
         modal.loading(false);
     }, function(obj){
-        pagination.generate(obj.total_page, '.list_pagination', get_list);
+        pagination.generate(obj.total_page, '.list_pagination', limit,'table_body', 5);
     });
   }
 
 pagination.onchange(function(){
       offset = $(this).val();
-      get_list();
+      get_data();
 });
 
 function save_sort(){
@@ -154,7 +175,7 @@ $(document).on('click','.btn_status',function(e){
               AJAX.update.exec(function(result){
                 var obj = result;
                 if (obj.length > 0) {
-                  get_list();
+                  get_data();
                   $('.status_action').hide();
                 } else {
                   console.log(obj);

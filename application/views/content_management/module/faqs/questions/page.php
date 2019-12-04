@@ -20,7 +20,7 @@
         <label>Entries</label>
       </div>
     <div class="col-md-12 list-data">
-        <table class= "table listdata table-striped sorted_table">
+        <table class= "table listdata table-bordered sorted_table">
             <thead>
                 <tr id="sortable">
                     <th style="width: 10px;"></th>
@@ -28,7 +28,7 @@
                     <th class='th-setter'>Question</th><th class='th-setter'>Answer</th>
                     <th class="th-setter">Update Date</th>
                     <th class="th-setter">Status</th>
-                    <th>Edit</th>
+                    <th style="width: 40px; text-align:center;">Action</th>
                 </tr>  
             </thead>
             <tbody class="tbody"></tbody>
@@ -131,7 +131,7 @@ function get_list(keyword){
               htm += "<td data-status='"+status_action+"'>"+y[new_data]+"</td>";
             });
 
-            htm +=   "<td><a href='<?= base_url()."content_management/"?>site_faqs_questions/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
+            htm +=   "<td class='center-content'><a href='<?= base_url()."content_management/"?>site_faqs_questions/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
             htm += "</tr>";
           });
         } else {
