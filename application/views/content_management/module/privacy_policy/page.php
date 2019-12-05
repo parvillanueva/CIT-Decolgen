@@ -7,12 +7,12 @@
     	<?php 
         $details = $this->load->details("pckg_privacy_policy", 1);
         if ($this->uri->segment(4) !== NULL || !empty($this->uri->segment(4))) {
-            $inputs = ["title","privacy_statement"];
-            $values = [$details[0]->title,$details[0]->description];
+            $inputs = ["privacy_title","privacy_statement"];
+            $values = [$details[0]->title,$details[0]->privacy_statement_description];
             $id =  $this->standard->inputs($inputs, $values);
         } else {
-            $inputs = ["title","privacy_statement"];
-            $values = [$details[0]->title,$details[0]->description];
+            $inputs = ["privacy_title","privacy_statement"];
+            $values = [$details[0]->title,$details[0]->privacy_statement_description];
             $id = $this->standard->inputs($inputs, $values);
         }
         ?>
@@ -21,7 +21,9 @@
 <script>
 
     AJAX.config.base_url(base_url); 
-       
+    $(document).ready(function(){
+        $("<small>Maximum character count is 500.</small>").insertAfter("#cke_1_bottom");
+    });
     $(document).on('click', '#btn_update', function(){
         var form_data = {};
         $(':input[class*="_input"]').each(function() {
