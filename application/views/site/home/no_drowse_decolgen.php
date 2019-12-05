@@ -5,7 +5,9 @@
 </style>
 <?php
     $details = str_replace(base_url(), "", $this->load->details("pckg_no_drowse_details",1));
-    $products = $this->load->active_list("pckg_no_drowse_products", "status = 1", "id", "asc");
+    $products = $this->load->active_list("pckg_no_drowse_products", "status = 1", "orders", "asc");
+    $try_now_decolen_info = $this->load->active_list("pckg_no_drowse_decolgen_info", "status = 1", "orders", "asc");
+    $try_now_decolen_details = str_replace(base_url(), "", $this->load->details("pckg_try_decolgen_now_details",1));
 ?> 
 
     <!-- SECTION 3 -->
@@ -46,54 +48,23 @@
                         <div class="dc-padding dc-mid">
                             <div class="dc-power">
 
-                                <div class="dc-power-item">
-                                    <div class="dc-power-content">
-                                        <div class="dc-power-title">
-                                            <span class="dc-h5"><?= $details[0]->power_title1;?></span>
+                                <?php foreach($try_now_decolen_info as $key=>$value){ ?>
+                                    <div class="dc-power-item">
+                                        <div class="dc-power-content">
+                                            <div class="dc-power-title">
+                                                <span class="dc-h5"><?= $value->power_title;?></span>
+                                            </div>
+                                            <div class="dc-power-desc">
+                                                <p><?= $value->power_details;?></p>
+                                            </div>
                                         </div>
-                                        <div class="dc-power-desc">
-                                            <p><?= $details[0]->power_details1;?></p>
-                                        </div>
-                                    </div>
-                                    <div class="dc-image">
-                                        <div class="dc-inner">
-                                            <img src="<?= base_url() . $details[0]->power_img1;?>">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="dc-power-item">
-                                    <div class="dc-power-content">
-                                        <div class="dc-power-title">
-                                            <span class="dc-h5"><?= $details[0]->power_title2;?></span>
-                                        </div>
-                                        <div class="dc-power-desc">
-                                            <p><?= $details[0]->power_details2;?></p>
+                                        <div class="dc-image">
+                                            <div class="dc-inner">
+                                                <img src="<?= base_url() . $value->power_img;?>">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="dc-image">
-                                        <div class="dc-inner">
-                                            <img src="<?= base_url() . $details[0]->power_img2;?>">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="dc-power-item">
-                                    <div class="dc-power-content">
-                                        <div class="dc-power-title">
-                                            <span class="dc-h5"><?= $details[0]->power_title3;?></span>
-                                        </div>
-                                        <div class="dc-power-desc">
-                                            <p><?= $details[0]->power_details3;?></p>
-                                        </div>
-                                    </div>
-                                    <div class="dc-image">
-                                        <div class="dc-inner">
-                                            <img src="<?= base_url() . $details[0]->power_img3;?>">
-                                        </div>
-                                    </div>
-                                </div>
-
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -107,8 +78,8 @@
         <div class="dc-fade-dark-blue dc-noise">
             <div class="dc-container">
                 <div class="text-center">
-                    <span class="dc-h3 sup-reg"><?= $details[0]->try_decolgen_title;?></span>
-                    <p class="dc-main-desc"><?= $details[0]->try_decolgen_brief_des;?></p>
+                    <span class="dc-h3 sup-reg"><?= $try_now_decolen_details[0]->try_decolgen_title;?></span>
+                    <p class="dc-main-desc"><?= $try_now_decolen_details[0]->try_decolgen_brief_des;?></p>
                 </div>
                 <div class="row dc-product">
                     <?php foreach($products as $key=>$value){ ?>
