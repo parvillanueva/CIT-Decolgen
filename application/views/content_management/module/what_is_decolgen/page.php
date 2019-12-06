@@ -214,7 +214,11 @@
 <script>
 
     AJAX.config.base_url(base_url); 
+    
     $(document).ready(function(){
+
+        $('.size_filter').addClass("sample_input");
+
         $('.img_banner_preview').attr("style","width: 130px; background-color: #9c9c9c;");
 
         $('.decolgen_img_1_label').attr("id","decolgen_img_1_label");
