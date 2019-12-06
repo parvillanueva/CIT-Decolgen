@@ -22,7 +22,7 @@
         <div class="dc-section" id="try_now">
             <div class="dc-strip-title">
                 <div class="dc-container">
-                    <span class="dc-h1"><?= $try_now_details[0]->title;?></span>
+                    <span class="dc-h1"><?= $try_now_details[0]->try_now_title;?></span>
                     <span class="dc-h2"><?= $try_now_details[0]->sub_title;?></span>
                 </div>
             </div>

@@ -757,12 +757,11 @@ $config['privacy_statement']    = array(
                                 'class'         => 'form-control',
                                 'id'            => 'privacy_statement_description',
                                 'required'      => true,
-                                'filemanager'   => false,
                                 'youtube'       => false,
-                                'maxlength'     => 500,
+                                'filemanager'   => false,
                                 'placeholder'   => 'Privacy Statement',
                                 'label'         => 'Privacy Statement',
-                                
+
                             );
 
 $config['terms_title']       = array(

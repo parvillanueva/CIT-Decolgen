@@ -18,12 +18,10 @@
         ?>
     </div>
 </div>
+
 <script>
 
     AJAX.config.base_url(base_url); 
-    $(document).ready(function(){
-        $("<small>Maximum character count is 500.</small>").insertAfter("#cke_1_bottom");
-    });
     $(document).on('click', '#btn_update', function(){
         var form_data = {};
         $(':input[class*="_input"]').each(function() {

@@ -7,7 +7,7 @@
                 <div class="text-center">
                     <span class="dc-h3"><?= $details[0]->title;?></span>
                     <p class="dc-main-desc" style="text-align: justify;" value="">
-                        <?= strip_tags($details[0]->description,"<br>");?>
+                        <?= strip_tags($details[0]->privacy_statement_description,"<br>");?>
 
                     </p>
                 </div>
