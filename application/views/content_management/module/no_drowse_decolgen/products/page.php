@@ -63,6 +63,7 @@
       }
     });
 
+    $('.selectall').prop('checked', false);
     get_data();
     var sort_table = $('tbody').sortable();
 
@@ -73,7 +74,7 @@
             $(this).attr("data-order",order);
         });
         save_sort();
-    });     
+    });            
  });
 
 //add user
@@ -89,7 +90,7 @@ function get_data(keyword){
     var search_arr = ["no_drowse_image","nd_product_description"];
 
     AJAX.select.table("pckg_no_drowse_products");
-    AJAX.select.select("id, nd_product_name, status, nd_image_banner, nd_product_price, nd_product_pil, nd_product_description");
+    AJAX.select.select("id, nd_product_name, status, nd_image_banner, nd_product_price, nd_product_pil, nd_product_description, update_date");
     AJAX.select.where.greater_equal("status", 0);
     AJAX.select.offset(offset);
     AJAX.select.limit(limit);
@@ -148,7 +149,7 @@ function save_sort() {
 
     AJAX.update.table("pckg_no_drowse_products");
     AJAX.update.where("id", $(this).attr("data-id"));
-    AJAX.update.params(orders, orders);
+    AJAX.update.params("orders", orders);
 
     AJAX.update.exec(function(result){});
   });

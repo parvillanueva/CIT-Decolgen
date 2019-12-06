@@ -15,6 +15,10 @@
 
     AJAX.config.base_url("<?=base_url();?>"); 
 
+    $(document).ready(function(){
+        $('.size_filter').addClass("sample_input");
+    });
+    
     $(document).on('click', '#btn_save', function(){
         var form_data = {};
         $(':input[class*="_input"]').each(function() {
