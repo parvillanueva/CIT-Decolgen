@@ -1273,3 +1273,36 @@ function is_exists(table, field, value, status){
     return exists;
 }
 
+var entityMap_e = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+  '/': '&#x2F;',
+  '`': '&#x60;',
+  '=': '&#x3D;'
+};
+
+function encode_Html (string) {
+  return String(string).replace(/[&<>"'`=\/]/g, function (s) {
+    return entityMap_e[s];
+  });
+}
+
+var entityMap_d = {
+  '&amp;':  '&',
+  '&lt;':   '<',
+  '&gt;':   '>',
+  '&quot;': '"',
+  '&#39;':  "'",
+  '&#x2F;': '/',
+  '&#x60;': '`',
+  '&#x3D;': '='
+};
+
+function decode_Html (string) {
+  return String(string).replace('&amp;&lt;&gt;&quot;&#39;&#x2F;&#x60;&#x3D;', function (s) {
+    return entityMap_d[s];
+  });
+}
