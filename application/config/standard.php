@@ -2440,8 +2440,8 @@ $config['decolgen_img_sub_title']       = array(
                                 'id'            => 'decolgen_img_sub_title',
                                 'maxlength'     => 255,
                                 'required'      => true,
-                                'placeholder'   => 'Decolgen Label',
-                                'label'         => 'Decolgen Label',
+                                'placeholder'   => 'Decolgen Sub Label',
+                                'label'         => 'Decolgen Sub Label',
                             );
 
 $config['others_img_sub_title']       = array(
@@ -2452,8 +2452,8 @@ $config['others_img_sub_title']       = array(
                                 'id'            => 'others_img_sub_title',
                                 'maxlength'     => 255,
                                 'required'      => true,
-                                'placeholder'   => 'Others Label',
-                                'label'         => 'Others Label',
+                                'placeholder'   => 'Others Sub Label',
+                                'label'         => 'Others Sub Label',
                             );
 
 $config['decolgen_img_1']       = array(
