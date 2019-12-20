@@ -52,6 +52,7 @@
 <script type="text/javascript">
   
   AJAX.config.base_url("<?=base_url();?>"); 
+  var update_success = '<?=$this->standard->dialog("update_success");?>';
 
   $(document).ready(function(){
     
@@ -175,8 +176,12 @@ $(document).on('click','.btn_status',function(e){
                 var obj = result;
                 if (obj.length > 0) {
                   get_data();
+                
                   $('.status_action').hide();
                 } else {
+                  modal.alert(update_success, function(){ 
+                    location.href = content_management + '/site_no_drowse_products';  
+                });
                   console.log(obj);
                 }
               });
