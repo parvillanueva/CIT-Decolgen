@@ -2127,10 +2127,10 @@ $config['landing_description']       = array(
 
 $config['landing_image_banner']           = array(
                                 'type'          => 'filemanager',
-                                'name'          => 'image_banner',
+                                'name'          => 'landing_banner',
                                 'form-align'    => 'horizontal',
                                 'class'         => 'form-control',
-                                'id'            => 'image_banner',
+                                'id'            => 'landing_banner',
                                 'accept'        => 'jpg,gif,png,jpeg,svg',
                                 'required'      => false,
                                 'max_size'      => '5',

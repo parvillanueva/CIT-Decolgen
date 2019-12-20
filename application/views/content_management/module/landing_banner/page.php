@@ -26,9 +26,7 @@
                     <th style="width: 10px;"></th>
                     <th><input class ="selectall" type ="checkbox"></th>
                     <th class='th-setter' style="width: 80px;">Title</th>
-                    <th class='th-setter' style="width: 100px;">Image Banner</th>
-                    <th class='th-setter'>Description</th>
-                    <th class='th-setter' style="width: 100px;">Redirect Url</th>
+                    <th class='th-setter' style="width: 100px;">Landing Banner</th>
                     <th class="th-setter" style="width: 100px;">Update Date</th>
                     <th class="th-setter" style="width: 20px;">Status</th>
                     <th style="width: 40px; text-align:center;">Action</th>
@@ -88,10 +86,10 @@ $(document).on('click', '#btn_add', function(e){
 
 function get_data(keyword){
     modal.loading(true);
-    var search_arr = ["title","image_banner","description","redirect_url"];
+    var search_arr = ["title","landing_banner","description","redirect_url"];
 
     AJAX.select.table("pckg_landing_banner");
-    AJAX.select.select("id, update_date, status, title, image_banner, description, redirect_url");
+    AJAX.select.select("id, update_date, status, title, landing_banner, description, redirect_url");
     AJAX.select.where.greater_equal("status", 0);
     AJAX.select.offset(offset);
     AJAX.select.limit(limit);

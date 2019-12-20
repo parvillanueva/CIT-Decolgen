@@ -8,7 +8,7 @@
         if (!$this->uri->segment(4) === NULL || !empty($this->uri->segment(4))) {
             $details = $this->load->details("pckg_landing_banner", $this->uri->segment(4));
             $inputs = ["landing_title","sub_title","landing_asc","landing_bg_img","landing_image_banner","landing_logo_image","status"];
-            $values = [$details[0]->title,$details[0]->sub_title,$details[0]->landing_asc,$details[0]->landing_bg,$details[0]->image_banner,$details[0]->landing_logo,$details[0]->status];
+            $values = [$details[0]->title,$details[0]->sub_title,$details[0]->landing_asc,$details[0]->landing_bg,$details[0]->landing_banner,$details[0]->landing_logo,$details[0]->status];
             $id = $this->standard->inputs($inputs, $values);
         } else {
             $inputs = ["landing_title","sub_title","landing_asc","landing_bg_img","landing_image_banner","landing_logo_image","status"];
