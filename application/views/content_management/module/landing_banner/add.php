@@ -5,7 +5,7 @@
 	?>
     <div class="box-body">
     	<?php 
-            $inputs = ["landing_title","sub_title","landing_asc","landing_bg_img","landing_image_banner","landing_logo_image","status"];
+           $inputs = ["landing_title","sub_title","landing_asc","landing_bg_img","landing_image_banner","landing_logo_image","status"];
             $id = $this->standard->inputs($inputs);
         ?>
     </div>
@@ -25,25 +25,7 @@
         var url_counter = 0;
         var url_validation = /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
         var url = $('#redirect_link').val();
-        if(url != ""){
-            if (!url.match(url_validation)) {
-                url_counter++;
-                $('.validate_error_message').remove();
-                $( '<span class="validate_error_message" style="color: red;">Invalid Url.<br></span>').insertAfter( "#redirect_link" );
-                $('#redirect_link').css("border-color","red");
-                return false;
-            }else{
-                $('.validate_error_message').remove();
-                $('#redirect_link').css("border-color","#c3c2c2");
-                save_data();
-                // return true;
-            }
-        } else {
-            $('.validate_error_message').remove();
-            $('#redirect_link').css("border-color","#c3c2c2");
             save_data();
-        }
-        
         $(':input[class*="_input"]').each(function() {
             var input_id = $(this).attr('id');
             var db_field = $(this).attr('name');
