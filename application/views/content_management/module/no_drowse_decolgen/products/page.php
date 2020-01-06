@@ -11,14 +11,8 @@
       ?>
 
     <div class="box-body">
-      <div class="form-group record-entries pull-right">
-        <label>Show</label> 
-           <select id="record-entries">
-             <?php echo $optionSet;?>
-               <option value="999">ALL</option>
-           </select>
-        <label>Entries</label>
-      </div>
+      <?php echo $this->page_sort->count_records();?>
+      <?php echo $this->page_sort->page_number();?>
     <div class="col-md-12 list-data">
         <table class= "table listdata table-bordered sorted_table">
             <thead>
@@ -38,14 +32,7 @@
         </table>
       <div class="list_pagination"></div>
     </div>
-      <div class="form-group record-entries pull-right">
-        <label>Show</label> 
-           <select id="record-entries">
-             <?php echo $optionSet;?>
-               <option value="999">ALL</option>
-           </select>
-        <label>Entries</label>
-      </div>
+      <?php echo $this->page_sort->page_number();?>
    </div>
   </div>
 </body>
@@ -57,7 +44,8 @@
 
   $(document).ready(function(){
     $(".table").addSortWidget();
-    $("#rem img").remove();  
+    $("#rem img").remove(); 
+    record_number();
     $(document).on('keypress', '#search_query', function(e) {
       query = "";                          
       if (e.keyCode == 13) {
@@ -137,13 +125,30 @@ function get_data(keyword){
         $('.table_body').html(html);
         modal.loading(false); //hide loading
     }, function (obj){
+       $('.total-record').html('of '+obj.total_record);
        pagination.generate(obj.total_page, ".list_pagination", limit, 'table_body', 8);
     });
 }
 
-pagination.onchange(function(){
-      offset = $(this).val();
-      get_data();
+function record_number() {
+  setInterval(function(){
+    var tbody = $('.table_body tr');
+    var texts = tbody.text();
+    if(texts == "No records to show!"){
+      $('.num-record').html('0');
+    }else{  
+    $('.num-record').html(tbody.length);
+    }
+  }, 10);
+}
+
+$(document).on('change','.record-entries',function(e){
+  var filter_text = $( ".record-entries option:selected" ).text();
+  if(filter_text == "ALLALL"){
+    $('.total-record').hide();
+  }else{
+    $('.total-record').show();
+  }
 });
 
 function save_sort() {

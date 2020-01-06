@@ -11,14 +11,8 @@
       ?>
 
     <div class="box-body">
-      <div class="form-group record-entries pull-right">
-        <label>Show</label> 
-           <select id="record-entries">
-             <?php echo $optionSet;?>
-               <option value="999">ALL</option>
-           </select>
-        <label>Entries</label>
-      </div>
+      <?php echo $this->page_sort->count_records();?>
+      <?php echo $this->page_sort->page_number();?>
     <div class="col-md-12 list-data">
         <table class= "table listdata table-bordered sorted_table">
             <thead>
@@ -36,14 +30,7 @@
         </table>
       <div class="list_pagination"></div>
     </div>
-      <div class="form-group record-entries pull-right">
-        <label>Show</label> 
-           <select id="record-entries">
-             <?php echo $optionSet;?>
-               <option value="999">ALL</option>
-           </select>
-        <label>Entries</label>
-      </div>
+      <?php echo $this->page_sort->page_number();?>
    </div>
   </div>
 </body>
@@ -55,16 +42,17 @@
 
   $(document).ready(function(){
     $(".table").addSortWidget();
-    $("#rem img").remove();  
+    $("#rem img").remove();
+    record_number();
     $(document).on('keypress', '#search_query', function(e) {
       query = "";                          
       if (e.keyCode == 13) {
           var keyword = $(this).val();
-          get_list(keyword);
+          get_data(keyword);
       }
     });
 
-    get_list();
+    get_data();
     var sort_table = $('tbody').sortable();
 
     $('tbody').bind('sortupdate', function(event, ui){
@@ -85,7 +73,7 @@ $(document).on('click', '#btn_add', function(e){
  var limit = 10;
  var offset = 1;
 
-function get_list(keyword){
+function get_data(keyword){
     modal.loading(true);
     var search_arr = ["question","answer"];
 
@@ -144,13 +132,30 @@ function get_list(keyword){
         $('.listdata tbody').html(htm);
         modal.loading(false);
     }, function(obj){
-        pagination.generate(obj.total_page, '.list_pagination', get_list);
+        $('.total-record').html('of '+obj.total_record);
+        pagination.generate(obj.total_page, ".list_pagination", limit, 'tbody', 7);
     });
   }
 
-pagination.onchange(function(){
-      offset = $(this).val();
-      get_list();
+function record_number() {
+  setInterval(function(){
+    var tbody = $('.tbody tr');
+    var texts = tbody.text();
+    if(texts == "No records to show!"){
+      $('.num-record').html('0');
+    }else{  
+    $('.num-record').html(tbody.length);
+    }
+  }, 10);
+}
+
+$(document).on('change','.record-entries',function(e){
+  var filter_text = $( ".record-entries option:selected" ).text();
+  if(filter_text == "ALLALL"){
+    $('.total-record').hide();
+  }else{
+    $('.total-record').show();
+  }
 });
 
 function save_sort() {
@@ -184,7 +189,7 @@ $(document).on('click','.btn_status',function(e){
               AJAX.update.exec(function(result){
                 var obj = result;
                 if (obj.length > 0) {
-                  get_list();
+                  get_data();
                   $('.status_action').hide();
                 } else {
                   modal.alert(update_success, function(){ 
