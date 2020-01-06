@@ -21,20 +21,20 @@ class Site_landing_banner extends GS_Controller {
 		$this->load->view("content_management/template/layout", $data);	
 	}
 
-	public function add()
-{
-	$data["title"] = "Content Management";
-	$data["PageName"] = ("Landing Banner");
-	$data["content"] = "content_management/module/landing_banner/add";
-	$this->load->view("content_management/template/layout", $data);	
-}
+// 	public function add()
+// {
+// 	$data["title"] = "Content Management";
+// 	$data["PageName"] = ("Landing Banner");
+// 	$data["content"] = "content_management/module/landing_banner/add";
+// 	$this->load->view("content_management/template/layout", $data);	
+// }
 
-public function update()
-{
-	$data["title"] = "Content Management";
-	$data["PageName"] = ("Landing Banner");
-	$data["content"] = "content_management/module/landing_banner/edit";
-	$this->load->view("content_management/template/layout", $data);	
-}
+// public function update()
+// {
+// 	$data["title"] = "Content Management";
+// 	$data["PageName"] = ("Landing Banner");
+// 	$data["content"] = "content_management/module/landing_banner/edit";
+// 	$this->load->view("content_management/template/layout", $data);	
+// }
 }
 	    

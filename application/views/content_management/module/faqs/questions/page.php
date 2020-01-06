@@ -23,12 +23,13 @@
         <table class= "table listdata table-bordered sorted_table">
             <thead>
                 <tr id="sortable">
-                    <th style="width: 10px;"></th>
-                    <th><input class ="selectall" type ="checkbox"></th>
+                    <th id="rem" style="width: 10px;" class="hide"></th>
+                    <th id="rem" style="width: 10px;"></th>
+                    <th id="rem" style="width: 10px;"><input class ="selectall" type ="checkbox"></th>
                     <th class='th-setter'>Question</th><th class='th-setter'>Answer</th>
-                    <th class="th-setter">Update Date</th>
-                    <th class="th-setter">Status</th>
-                    <th style="width: 40px; text-align:center;">Action</th>
+                    <th class="th-setter" style="width: 130px;">Update Date</th>
+                    <th class="th-setter" style="width: 90px;">Status</th>
+                    <th id="rem" style="width: 40px; text-align:center;">Action</th>
                 </tr>  
             </thead>
             <tbody class="tbody"></tbody>
@@ -50,9 +51,11 @@
 <script type="text/javascript">
   
   AJAX.config.base_url("<?=base_url();?>"); 
+  var update_success = '<?=$this->standard->dialog("update_success");?>';
 
   $(document).ready(function(){
-    
+    $(".table").addSortWidget();
+    $("#rem img").remove();  
     $(document).on('keypress', '#search_query', function(e) {
       query = "";                          
       if (e.keyCode == 13) {
@@ -184,7 +187,10 @@ $(document).on('click','.btn_status',function(e){
                   get_list();
                   $('.status_action').hide();
                 } else {
-                  console.log(obj);
+                  modal.alert(update_success, function(){ 
+                    location.href = content_management + '/site_faqs_questions';  
+                });
+                 // console.log(obj);
                 }
               });
           });

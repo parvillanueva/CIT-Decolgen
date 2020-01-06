@@ -10,13 +10,14 @@
         <table class= "table listdata table-bordered sorted_table">
             <thead>
                 <tr id="sortable">
-                    <th style="width: 10px;"></th>
-                    <th class='center-content'><input class ="selectall" type ="checkbox"></th>
+                    <th id="rem" style="width: 10px;" class="hide"></th>
+                    <th id="rem" style="width: 10px;"></th>
+                    <th id="rem" style="width: 10px;" class='center-content'><input class ="selectall" type ="checkbox"></th>
                     <th class='center-content'>Title</th>
-                    <th class='center-content'>Brief Description</th>
-                    <th class='center-content'>Image Banner</th>
-                    <th class="center-content">Status</th>
-                    <th style="width: 40px; text-align:center;">Action</th>
+                    <th class='center-content' style="width: 150px;">Brief Description</th>
+                    <th class='center-content' style="width: 100px;">Image Banner</th>
+                    <th class="center-content" style="width: 90px;">Status</th>
+                    <th id="rem" style="width: 40px; text-align:center;">Action</th>
                 </tr>  
             </thead>
             <tbody class="tbody"></tbody>
@@ -30,9 +31,11 @@
 <script type="text/javascript">
   
   AJAX.config.base_url("<?=base_url();?>"); 
-
+  var update_success = '<?=$this->standard->dialog("update_success");?>';
+  
   $(document).ready(function(){
-    
+    $(".table").addSortWidget();
+    $("#rem img").remove();     
     $(document).on('keypress', '#search_query', function(e) {
       query = "";                          
       if (e.keyCode == 13) {
@@ -99,9 +102,9 @@ function get_data(keyword){
             htm += "<td class='hide'><p class='order' data-order='' data-id="+y.id+"></p></td>";
             htm += "<td style='background:#c3c3c3;'><span style='color: #fff;' class='move-menu glyphicon glyphicon-th'></span></td>"; 
             htm +=   "<td class='center-content'><input class='select' data-status='"+y.status+"' data-id='"+y.id+"' type='checkbox'></td>";
-            htm+="    <td class='center-content'>"+y.power_title+"</td>";
-            htm+="    <td class='center-content'>"+y.power_details+"</td>";
-            htm+="    <td class='center-content'>"+y.power_img+"</td>";
+            htm+="    <td class='center-content'>"+set_char_limit(y.power_title)+"</td>";
+            htm+="    <td class='center-content'>"+set_char_limit(y.power_details)+"</td>";
+            htm+="    <td class='center-content'>"+set_char_limit2(y.power_img)+"</td>";
             htm+="    <td class='center-content'>"+status+"</td>";            
             htm +=   "<td class='center-content'><a href='<?= base_url()."content_management/"?>site_no_drowse_decolgen_info/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
             htm += "</tr>";
@@ -155,7 +158,10 @@ $(document).on('click','.btn_status',function(e){
                 if (obj.length > 0) {
                   get_data();
                   $('.status_action').hide();
-                } else {
+                }else {
+                  modal.alert(update_success, function(){ 
+                    location.href = content_management + '/site_no_drowse_decolgen_info';  
+                });
                   console.log(obj);
                 }
               });

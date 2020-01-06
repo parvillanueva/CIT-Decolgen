@@ -23,14 +23,15 @@
         <table class= "table listdata table-bordered sorted_table">
             <thead>
                 <tr id="sortable">
-                    <th style="width: 10px;"></th>
-                    <th><input class ="selectall" type ="checkbox"></th>
-                    <th class='th-setter'>Product Name</th>
+                    <th id="rem" class="hide"></th>
+                    <th id="rem" style="width: 10px;"></th>
+                    <th id="rem"><input class ="selectall" type ="checkbox"></th>
+                    <th class='th-setter' style="width: 100px;">Product Name</th>
                     <th class='th-setter' style="width: 100px;">Image</th>
-                    <th class='th-setter' style="width: 200px;">Description</th>
-                    <th class="th-setter">Update Date</th>
-                    <th class="th-setter">Status</th>
-                    <th style="width: 40px; text-align:center;">Action</th>
+                    <th class='th-setter' style="width: 130px;">Description</th>
+                    <th class="th-setter" style="width: 140px;">Update Date</th>
+                    <th class="th-setter" style="width: 90px;">Status</th>
+                    <th id="rem" style="width: 40px; text-align:center;">Action</th>
                 </tr>  
             </thead>
             <tbody id="table_body" class="table_body"></tbody>
@@ -55,7 +56,8 @@
   var update_success = '<?=$this->standard->dialog("update_success");?>';
 
   $(document).ready(function(){
-    
+    $(".table").addSortWidget();
+    $("#rem img").remove();  
     $(document).on('keypress', '#search_query', function(e) {
       query = "";                          
       if (e.keyCode == 13) {

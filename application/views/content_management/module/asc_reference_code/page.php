@@ -23,12 +23,13 @@
         <table class= "table listdata table-bordered sorted_table">
             <thead>
                 <tr id="sortable">
-                    <th style="width: 10px;"></th>
-                    <th><input class ="selectall" type ="checkbox"></th>
+                    <th id="rem" class="hide"></th>
+                    <th id="rem" style="width: 10px;"></th>
+                    <th id="rem"><input class ="selectall" type ="checkbox"></th>
                     <th class='th-setter'>Name</th>
                     <th class="th-setter">Update Date</th>
                     <th class="th-setter">Status</th>
-                    <th style="width: 40px; text-align:center;">Action</th>
+                    <th id="rem" style="width: 40px; text-align:center;">Action</th>
                 </tr>  
             </thead>
             <tbody class="tbody"></tbody>
@@ -50,9 +51,11 @@
 <script type="text/javascript">
   
   AJAX.config.base_url("<?=base_url();?>"); 
+  var update_success = '<?=$this->standard->dialog("update_success");?>';
 
   $(document).ready(function(){
-    
+    $(".table").addSortWidget();
+    $("#rem img").remove(); 
     $(document).on('keypress', '#search_query', function(e) {
       query = "";                          
       if (e.keyCode == 13) {
@@ -183,12 +186,18 @@ $(document).on('click','.btn_status',function(e){
               AJAX.update.params("update_date", moment(new Date()).format('YYYY-MM-DD HH:mm:ss'));
 
               AJAX.update.exec(function(result){
+                //modal.loading(true);
                 var obj = result;
                 if (obj.length > 0) {
                   get_data();
                   $('.status_action').hide();
+                 
                 } else {
-                  console.log(obj);
+                  modal.alert(update_success, function(){
+                   // modal.loading(false);
+                    location.href = content_management + '/site_asc_reference_code';  
+                });
+                 // console.log(obj);
                 }
               });
           });

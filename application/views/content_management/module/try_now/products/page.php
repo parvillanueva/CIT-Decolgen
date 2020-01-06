@@ -23,12 +23,13 @@
         <table class= "table listdata table-bordered sorted_table">
             <thead>
                 <tr id="sortable">
-                    <th style="width: 10px;"></th>
-                    <th><input class ="selectall" type ="checkbox"></th>
+                  <th class="hide"></th>
+                    <th id="rem" style="width: 10px;"></th>
+                    <th id="rem" style="width: 10px;"><input class ="selectall" type ="checkbox"></th>
                     <th class='th-setter'>Name</th>
                     <th class='th-setter'>Content</th>
-                    <th class="th-setter">Status</th>
-                    <th style="width: 40px; text-align:center;">Action</th>
+                    <th class="th-setter" style="width: 90px;">Status</th>
+                    <th id="rem" style="width: 40px; text-align:center;">Action</th>
                 </tr>  
             </thead>
             <tbody class="tbody"></tbody>
@@ -49,10 +50,12 @@
 
 <script type="text/javascript">
   
+  var update_success = '<?=$this->standard->dialog("update_success");?>';
   AJAX.config.base_url("<?=base_url();?>"); 
 
   $(document).ready(function(){
-    
+      $(".table").addSortWidget();
+      $("#rem img").remove();  
     $(document).on('keypress', '#search_query', function(e) {
       query = "";                          
       if (e.keyCode == 13) {
@@ -115,21 +118,14 @@ function get_data(keyword){
             htm += "<td class='hide'><p class='order' data-order='' data-id="+y.id+"></p></td>";
             htm += "<td style='background:#c3c3c3;'><span style='color: #fff;' class='move-menu glyphicon glyphicon-th'></span></td>"; 
             htm +=   "<td><input class='select' data-status='"+y.status+"' data-id='"+y.id+"' type='checkbox'></td>";
-
-            $("table th.th-setter").each(function(){
-              var data = [$(this).text().toLowerCase()];
-              var new_data =  data.map(replace_in_array);
-              
-              if (y['status'] == 1) {
-                  y['status'] = 'Active';
-                  status_action = 1;
-              } else if (y['status'] == 0) {
-                  y['status'] = 'Inactive';
-                  status_action = 0;
-              }
-
-              htm += "<td data-status='"+status_action+"'>"+y[new_data]+"</td>";
-            });
+            htm += ' <td>' +set_char_limit(y.name)+ '</td>';
+            htm += ' <td>' +set_char_limit(y.content)+ '</td>';
+            if(y.status == 1){
+                status = 'Active';
+            }else{
+                status = 'Inactive';
+            }
+            htm += '<td>'+status+'</td>';
 
             htm +=   "<td class='center-content'><a href='<?= base_url()."content_management/"?>site_try_now_products/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
             htm += "</tr>";
@@ -184,6 +180,9 @@ $(document).on('click','.btn_status',function(e){
                   get_data();
                   $('.status_action').hide();
                 } else {
+                  modal.alert(update_success, function(){ 
+                    location.href = content_management + '/site_try_now_products';  
+                });
                   console.log(obj);
                 }
               });

@@ -23,11 +23,12 @@
         <table class= "table listdata table-bordered sorted_table">
             <thead>
                 <tr id="sortable">
-                    <th style="width: 10px;"></th>
-                    <th><input class ="selectall" type ="checkbox"></th>
-                    <th class='th-setter'>Name</th>
-                    <th class="th-setter">Status</th>
-                    <th style="width: 40px; text-align:center;">Action</th>
+                    <th id="rem" style="width: 10px;" class="hide center-content"></th>
+                    <th id="rem" style="width: 10px;" class="center-content"></th>
+                    <th id="rem" style="width: 10px;" ><input class ="selectall center-content" type ="checkbox"></th>
+                    <th class='th-setter' style="width: 350px;">Name</th>
+                    <th class="th-setter" style="width: 70px;">Status</th>
+                    <th id="rem" style="width: 40px; text-align:center;">Action</th>
                 </tr>  
             </thead>
             <tbody class="table_body" id="table_body"></tbody>
@@ -49,9 +50,11 @@
 <script type="text/javascript">
   
   AJAX.config.base_url("<?=base_url();?>"); 
+  var update_success = '<?=$this->standard->dialog("update_success");?>';
 
   $(document).ready(function(){
-    
+    $(".table").addSortWidget();
+    $("#rem img").remove(); 
     $(document).on('keypress', '#search_query', function(e) {
       query = "";                          
       if (e.keyCode == 13) {
@@ -107,9 +110,9 @@ function get_data(keyword){
           $.each(obj, function(x,y){
            
             htm += "<tr>";
-            htm += "<td class='hide'><p class='order' data-order='' data-id="+y.id+"></p></td>";
-            htm += "<td style='background:#c3c3c3;'><span style='color: #fff;' class='move-menu glyphicon glyphicon-th'></span></td>"; 
-            htm +=   "<td><input class='select' data-status='"+y.status+"' data-id='"+y.id+"' type='checkbox'></td>";
+            htm += "<td class='hide center-content'><p class='order' data-order='' data-id="+y.id+"></p></td>";
+            htm += "<td style='background:#c3c3c3;'><span style='color: #fff;' class='move-menu glyphicon glyphicon-th' class='center-content'></span></td>"; 
+            htm +=   "<td><input class='select center-content' data-status='"+y.status+"' data-id='"+y.id+"' type='checkbox'></td>";
 
             $("table th.th-setter").each(function(){
               var data = [$(this).text().toLowerCase()];
@@ -178,6 +181,9 @@ $(document).on('click','.btn_status',function(e){
                   get_data();
                   $('.status_action').hide();
                 } else {
+                  modal.alert(update_success, function(){ 
+                    location.href = content_management + '/site_header_menu';  
+                });
                   console.log(obj);
                 }
               });
