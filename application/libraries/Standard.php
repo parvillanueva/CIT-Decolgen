@@ -421,7 +421,7 @@ class Standard {
                     if($value != null){
                         $config["value"] = $value;
                     }
-                    $config['class'] = $config['class'] . " " . $config['id'] .  "_input no_html";
+                   // $config['class'] = $config['class'] . " " . $config['id'] .  "_input no_html";
 
                     $label_col = "";
                     $input_col = "";

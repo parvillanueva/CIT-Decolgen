@@ -41,6 +41,8 @@
   var update_success = '<?=$this->standard->dialog("update_success");?>';
 
   $(document).ready(function(){
+    $('#search_query').attr("accept","/[^a-zA-Z0-9\u00f1\u00d1 ._,-\/]/g");
+    $('#search_query').attr("onkeyup","this.value=this.value.replace(/[^a-zA-Z0-9\u00f1\u00d1 ._,-\/]/g,'');");
     $(".table").addSortWidget();
     $("#rem img").remove();
     record_number();
@@ -126,14 +128,14 @@ function get_data(keyword){
             htm += "</tr>";
           });
         } else {
-          htm = "<td colspan='10'>No data found.</td>";
+            htm += '<td colspan="8"><center><b>No records to show!</b></center></td>';
         }
 
         $('.listdata tbody').html(htm);
         modal.loading(false);
     }, function(obj){
         $('.total-record').html('of '+obj.total_record);
-        pagination.generate(obj.total_page, ".list_pagination", limit, 'tbody', 7);
+        pagination.generate(obj.total_page, ".list_pagination", limit, 'tbody', 8);
     });
   }
 

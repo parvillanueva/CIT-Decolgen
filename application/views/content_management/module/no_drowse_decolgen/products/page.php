@@ -43,6 +43,8 @@
   var update_success = '<?=$this->standard->dialog("update_success");?>';
 
   $(document).ready(function(){
+    $('#search_query').attr("accept","/[^a-zA-Z0-9\u00f1\u00d1 ._,-\/]/g");
+    $('#search_query').attr("onkeyup","this.value=this.value.replace(/[^a-zA-Z0-9\u00f1\u00d1 ._,-\/]/g,'');");
     $(".table").addSortWidget();
     $("#rem img").remove(); 
     record_number();

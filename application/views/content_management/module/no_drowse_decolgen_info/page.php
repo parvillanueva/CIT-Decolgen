@@ -37,17 +37,11 @@
   var update_success = '<?=$this->standard->dialog("update_success");?>';
 
   $(document).ready(function(){
+    $('#search_query').attr("accept","/[^a-zA-Z0-9\u00f1\u00d1 ._,-\/]/g");
+    $('#search_query').attr("onkeyup","this.value=this.value.replace(/[^a-zA-Z0-9\u00f1\u00d1 ._,-\/]/g,'');");
     $(".table").addSortWidget();
     $("#rem img").remove();  
     record_number();  
-    $(document).on('keypress', '#search_query', function(e) {
-      query = "";                          
-      if (e.keyCode == 13) {
-          var keyword = $(this).val();
-          get_data(keyword);
-      }
-    });
-
     get_data();
    // get_pagination();
     $('.selectall').prop('checked', false);
@@ -90,6 +84,7 @@ function get_data(keyword){
         if (i != search_arr.length - 1) {
           AJAX.select.where.like(search_arr[0], keyword);
           AJAX.select.where.or.like(search_arr[i+1], keyword);
+          AJAX.select.where.greater_equal("status", 0);
         } 
       }
     }

@@ -11,12 +11,12 @@
             $details = $this->load->details("pckg_what_is_decolgen", 1);
             if ($this->uri->segment(4) !== NULL || !empty($this->uri->segment(4))) {
                 $inputs = ["wid_title","wid_background_image"];
-                $values = [$details[0]->title,$details[0]->background_image];
-                $id =  $this->standard->inputs($inputs, $values);
+                $values = [$details[0]->wid_title,$details[0]->background_image];
+                $details1 =  $this->standard->inputs($inputs, $values);
             } else {
                 $inputs = ["wid_title","wid_background_image"];
-                $values = [$details[0]->title,$details[0]->background_image];
-                $id = $this->standard->inputs($inputs, $values);
+                $values = [$details[0]->wid_title,$details[0]->background_image];
+                $details1 = $this->standard->inputs($inputs, $values);
             }
             ?>
             </div>
@@ -31,11 +31,11 @@
         if ($this->uri->segment(4) !== NULL || !empty($this->uri->segment(4))) {
             $inputs = ["decolgen_img_1"];
             $values = [$details[0]->decolgen_img_1];
-            $id =  $this->standard->inputs($inputs, $values);
+            $details2 =  $this->standard->inputs($inputs, $values);
         } else {
             $inputs = ["decolgen_img_1"];
             $values = [$details[0]->decolgen_img_1];
-            $id = $this->standard->inputs($inputs, $values);
+            $details2 = $this->standard->inputs($inputs, $values);
         }
     ?> 
   </div>
@@ -45,11 +45,11 @@
         if ($this->uri->segment(4) !== NULL || !empty($this->uri->segment(4))) {
             $inputs = ["vs_img"];
             $values = [$details[0]->vs_img];
-            $id =  $this->standard->inputs($inputs, $values);
+            $details3 =  $this->standard->inputs($inputs, $values);
         } else {
             $inputs = ["vs_img"];
             $values = [$details[0]->vs_img];
-            $id = $this->standard->inputs($inputs, $values);
+            $details3 = $this->standard->inputs($inputs, $values);
         }
     ?> 
   </div>
@@ -59,11 +59,11 @@
         if ($this->uri->segment(4) !== NULL || !empty($this->uri->segment(4))) {
             $inputs = ["others_img_1"];
             $values = [$details[0]->others_img_1];
-            $id =  $this->standard->inputs($inputs, $values);
+            $details4 =  $this->standard->inputs($inputs, $values);
         } else {
             $inputs = ["others_img_1"];
             $values = [$details[0]->others_img_1];
-            $id = $this->standard->inputs($inputs, $values);
+            $details4 = $this->standard->inputs($inputs, $values);
         }
     ?> 
   </div>
@@ -78,11 +78,11 @@
             if ($this->uri->segment(4) !== NULL || !empty($this->uri->segment(4))) {
                 $inputs = ["decolgen_img_title","decolgen_img_sub_title"];
                 $values = [$details[0]->decolgen_img_title,$details[0]->decolgen_img_sub_title];
-                $id =  $this->standard->inputs($inputs, $values);
+                $details5 =  $this->standard->inputs($inputs, $values);
             } else {
                 $inputs = ["decolgen_img_title","decolgen_img_sub_title"];
                 $values = [$details[0]->decolgen_img_title,$details[0]->decolgen_img_sub_title];
-                $id = $this->standard->inputs($inputs, $values);
+                $details5 = $this->standard->inputs($inputs, $values);
             }
         ?> 
     </div>
@@ -92,11 +92,11 @@
             if ($this->uri->segment(4) !== NULL || !empty($this->uri->segment(4))) {
                 $inputs = ["vs_img_title_1"];
                 $values = [$details[0]->vs_img_title_1];
-                $id =  $this->standard->inputs($inputs, $values);
+                $details6 =  $this->standard->inputs($inputs, $values);
             } else {
                 $inputs = ["vs_img_title_1"];
                 $values = [$details[0]->vs_img_title_1];
-                $id = $this->standard->inputs($inputs, $values);
+                $details6 = $this->standard->inputs($inputs, $values);
             }
         ?> 
     </div>
@@ -106,11 +106,11 @@
         if ($this->uri->segment(4) !== NULL || !empty($this->uri->segment(4))) {
             $inputs = ["others_img_title","others_img_sub_title"];
             $values = [$details[0]->others_img_title,$details[0]->others_img_sub_title];
-            $id =  $this->standard->inputs($inputs, $values);
+            $details7 =  $this->standard->inputs($inputs, $values);
         } else {
             $inputs = ["others_img_title","others_img_sub_title"];
             $values = [$details[0]->others_img_title,$details[0]->others_img_sub_title];
-            $id = $this->standard->inputs($inputs, $values);
+            $details7 = $this->standard->inputs($inputs, $values);
         }
     ?> 
     </div>
@@ -125,11 +125,11 @@
             if ($this->uri->segment(4) !== NULL || !empty($this->uri->segment(4))) {
                 $inputs = ["decolgen_img_2"];
                 $values = [$details[0]->decolgen_img_2];
-                $id =  $this->standard->inputs($inputs, $values);
+                $details8 =  $this->standard->inputs($inputs, $values);
             } else {
                 $inputs = ["decolgen_img_2"];
                 $values = [$details[0]->decolgen_img_2];
-                $id = $this->standard->inputs($inputs, $values);
+                $details8 = $this->standard->inputs($inputs, $values);
             }
         ?>
     </div>
@@ -139,11 +139,11 @@
             if ($this->uri->segment(4) !== NULL || !empty($this->uri->segment(4))) {
                 $inputs = ["vs_img_title_2","vs_img_sub_title_2"];
                 $values = [$details[0]->vs_img_title_2,$details[0]->vs_img_sub_title_2];
-                $id =  $this->standard->inputs($inputs, $values);
+                $details9 =  $this->standard->inputs($inputs, $values);
             } else {
                 $inputs = ["vs_img_title_2","vs_img_sub_title_2"];
                 $values = [$details[0]->vs_img_title_2,$details[0]->vs_img_sub_title_2];
-                $id = $this->standard->inputs($inputs, $values);
+                $details9 = $this->standard->inputs($inputs, $values);
             }
         ?> 
     </div>
@@ -153,11 +153,11 @@
             if ($this->uri->segment(4) !== NULL || !empty($this->uri->segment(4))) {
                 $inputs = ["others_img_2"];
                 $values = [$details[0]->others_img_2];
-                $id =  $this->standard->inputs($inputs, $values);
+                $details10 =  $this->standard->inputs($inputs, $values);
             } else {
                 $inputs = ["others_img_2"];
                 $values = [$details[0]->others_img_2];
-                $id = $this->standard->inputs($inputs, $values);
+                $details10 = $this->standard->inputs($inputs, $values);
             }
         ?>
     </div>
@@ -171,11 +171,11 @@
                 if ($this->uri->segment(4) !== NULL || !empty($this->uri->segment(4))) {
                     $inputs = ["decolgen_img_3"];
                     $values = [$details[0]->decolgen_img_3];
-                    $id =  $this->standard->inputs($inputs, $values);
+                    $details11 =  $this->standard->inputs($inputs, $values);
                 } else {
                     $inputs = ["decolgen_img_3"];
                     $values = [$details[0]->decolgen_img_3];
-                    $id = $this->standard->inputs($inputs, $values);
+                    $details11 = $this->standard->inputs($inputs, $values);
                 }
             ?>
         </div>
@@ -185,11 +185,11 @@
                 if ($this->uri->segment(4) !== NULL || !empty($this->uri->segment(4))) {
                     $inputs = ["vs_img_title_3"];
                     $values = [$details[0]->vs_img_title_3];
-                    $id =  $this->standard->inputs($inputs, $values);
+                    $details12 =  $this->standard->inputs($inputs, $values);
                 } else {
                     $inputs = ["vs_img_title_3"];
                     $values = [$details[0]->vs_img_title_3];
-                    $id = $this->standard->inputs($inputs, $values);
+                    $details12 = $this->standard->inputs($inputs, $values);
                 }
             ?> 
         </div>
@@ -199,11 +199,11 @@
                 if ($this->uri->segment(4) !== NULL || !empty($this->uri->segment(4))) {
                     $inputs = ["others_img_3"];
                     $values = [$details[0]->others_img_3];
-                    $id =  $this->standard->inputs($inputs, $values);
+                    $details13 =  $this->standard->inputs($inputs, $values);
                 } else {
                     $inputs = ["others_img_3"];
                     $values = [$details[0]->others_img_3];
-                    $id = $this->standard->inputs($inputs, $values);
+                    $details13 = $this->standard->inputs($inputs, $values);
                 }
             ?>
         </div>
@@ -296,26 +296,50 @@
         
         form_data["update_date"] = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
 
-        if(validate.standard("<?= $id; ?>")){
-            var modal_obj = '<?= $this->standard->confirm("confirm_update"); ?>'; 
-            modal.standard(modal_obj, function(result){
-                if(result){
-                    modal.loading(true);
+        if(validate.standard("<?= $details1; ?>")){
+            if(validate.standard("<?= $details2; ?>")){
+                if(validate.standard("<?= $details3; ?>")){
+                    if(validate.standard("<?= $details4; ?>")){
+                        if(validate.standard("<?= $details5; ?>")){
+                            if(validate.standard("<?= $details6; ?>")){
+                                if(validate.standard("<?= $details7; ?>")){
+                                    if(validate.standard("<?= $details8; ?>")){
+                                        if(validate.standard("<?= $details9; ?>")){
+                                            if(validate.standard("<?= $details10; ?>")){
+                                                if(validate.standard("<?= $details11; ?>")){
+                                                    if(validate.standard("<?= $details12; ?>")){
+                                                        if(validate.standard("<?= $details13; ?>")){
+                                                            var modal_obj = '<?= $this->standard->confirm("confirm_update"); ?>'; 
+                                                            modal.standard(modal_obj, function(result){
+                                                                if(result){
+                                                                    modal.loading(true);
 
-                    AJAX.update.table("pckg_what_is_decolgen");
-                    AJAX.update.where("id", 1);
-                    $.each(form_data, function(a,b) {
-                        AJAX.update.params(a, b);
-                    });
-                    
-                    AJAX.update.exec(function(result){
-                        modal.loading(false);
-                        modal.alert("<?= $this->standard->dialog("update_success"); ?>", function(){
-                            location.reload();
-                        });
-                    })
+                                                                    AJAX.update.table("pckg_what_is_decolgen");
+                                                                    AJAX.update.where("id", 1);
+                                                                    $.each(form_data, function(a,b) {
+                                                                        AJAX.update.params(a, b);
+                                                                    });
+                                                                    
+                                                                    AJAX.update.exec(function(result){
+                                                                        modal.loading(false);
+                                                                        modal.alert("<?= $this->standard->dialog("update_success"); ?>", function(){
+                                                                            location.reload();
+                                                                        });
+                                                                    })
+                                                                }
+                                                            });
+                                                        }
+                                                    }                                                
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-            });
+            }
         }
     });
 </script>

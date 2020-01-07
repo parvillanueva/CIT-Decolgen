@@ -41,6 +41,8 @@
   var update_success = '<?=$this->standard->dialog("update_success");?>';
 
   $(document).ready(function(){
+    $('#search_query').attr("accept","/[^a-zA-Z0-9\u00f1\u00d1 ._,-\/]/g");
+    $('#search_query').attr("onkeyup","this.value=this.value.replace(/[^a-zA-Z0-9\u00f1\u00d1 ._,-\/]/g,'');");
     $(".table").addSortWidget();
     $("#rem img").remove();
      record_number(); 
@@ -130,7 +132,7 @@ function get_data(keyword){
             htm += "</tr>";
           });
         } else {
-          htm = "<td colspan='10'>No data found.</td>";
+          html += '<td colspan="6"><center><b>No records to show!</b></center></td>';
         }
 
         $('.listdata tbody').html(htm);
