@@ -34,6 +34,7 @@
 		</script>
 		
 		<script type="text/javascript" src="<?= base_url();?>/cms/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="<?= base_url();?>/cms/js/script.js" ></script>
 		<script type="text/javascript" src="<?= base_url();?>/cms/filetree/php_file_tree_jquery.js" ></script>
 		<script type="text/javascript" src="<?= base_url();?>/cms/js/bootbox.min.js" ></script>
 		<script type="text/javascript" src="<?= base_url();?>/cms/js/moment.js" ></script>
