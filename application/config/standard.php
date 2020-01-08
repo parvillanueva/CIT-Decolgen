@@ -2415,7 +2415,7 @@ $config['decolgen_img_title']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'decolgen_img_title',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Decolgen Label',
                                 'label'         => 'Decolgen Label',
                             );
@@ -2427,7 +2427,7 @@ $config['others_img_title']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'others_img_title',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Others Label',
                                 'label'         => 'Others Label',
                             );
@@ -2439,7 +2439,7 @@ $config['decolgen_img_sub_title']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'decolgen_img_sub_title',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Decolgen Label 2',
                                 'label'         => 'Decolgen Label 2',
                             );
@@ -2451,7 +2451,7 @@ $config['others_img_sub_title']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'others_img_sub_title',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Others Label 2',
                                 'label'         => 'Others Label 2',
                             );
@@ -2554,7 +2554,7 @@ $config['vs_img_title_1']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'vs_img_title_1',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Vs Title',
                                 'label'         => 'Vs Title',
                             );
@@ -2566,7 +2566,7 @@ $config['vs_img_sub_title_2']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'vs_img_sub_title_2',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Vs Sub Title 2',
                                 'label'         => 'Vs Sub Title 2',
                             );
@@ -2578,7 +2578,7 @@ $config['vs_img_title_2']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'vs_img_title_2',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Vs Title 2',
                                 'label'         => 'Vs Title 2',
                             );
@@ -2590,7 +2590,7 @@ $config['vs_img_title_3']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'vs_img_title_3',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Vs Title 3',
                                 'label'         => 'Vs Title 3',
                             );
@@ -2905,7 +2905,7 @@ $config['nd_product_description']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'nd_product_description',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Brief Description',
                                 'label'         => 'Brief Description',
                             );
