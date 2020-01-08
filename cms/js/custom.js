@@ -859,7 +859,7 @@ $(document).on('keypress', '#search_query', function(e) {
 	if(e.keyCode == 13){
 		var keyword = $(this).val();
 		if(keyword.trim() == ''){
-			location.reload();
+			//location.reload();
 		} else{
 			get_data(keyword);
 		}

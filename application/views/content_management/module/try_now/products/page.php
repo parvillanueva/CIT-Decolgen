@@ -11,48 +11,41 @@
       ?>
 
     <div class="box-body">
-      <div class="form-group record-entries pull-right">
-        <label>Show</label> 
-           <select id="record-entries">
-             <?php echo $optionSet;?>
-               <option value="999">ALL</option>
-           </select>
-        <label>Entries</label>
-      </div>
+      <?php echo $this->page_sort->count_records();?>
+      <?php echo $this->page_sort->page_number();?>
     <div class="col-md-12 list-data">
         <table class= "table listdata table-bordered sorted_table">
             <thead>
                 <tr id="sortable">
-                    <th style="width: 10px;"></th>
-                    <th><input class ="selectall" type ="checkbox"></th>
+                  <th class="hide"></th>
+                    <th id="rem" style="width: 10px;"></th>
+                    <th id="rem" style="width: 10px;"><input class ="selectall" type ="checkbox"></th>
                     <th class='th-setter'>Name</th>
                     <th class='th-setter'>Content</th>
-                    <th class="th-setter">Status</th>
-                    <th style="width: 40px; text-align:center;">Action</th>
+                    <th class="th-setter" style="width: 90px;">Status</th>
+                    <th id="rem" style="width: 40px; text-align:center;">Action</th>
                 </tr>  
             </thead>
             <tbody class="tbody"></tbody>
         </table>
       <div class="list_pagination"></div>
     </div>
-      <div class="form-group record-entries pull-right">
-        <label>Show</label> 
-           <select id="record-entries">
-             <?php echo $optionSet;?>
-               <option value="999">ALL</option>
-           </select>
-        <label>Entries</label>
-      </div>
+      <?php echo $this->page_sort->page_number();?>
    </div>
   </div>
 </body>
 
 <script type="text/javascript">
-  
+
+  var update_success = '<?=$this->standard->dialog("update_success");?>';
   AJAX.config.base_url("<?=base_url();?>"); 
 
   $(document).ready(function(){
-    
+      $('#search_query').attr("accept","/[^a-zA-Z0-9\u00f1\u00d1 ._,-\/]/g");
+      $('#search_query').attr("onkeyup","this.value=this.value.replace(/[^a-zA-Z0-9\u00f1\u00d1 ._,-\/]/g,'');");
+      $(".table").addSortWidget();
+      $("#rem img").remove(); 
+      record_number();
     $(document).on('keypress', '#search_query', function(e) {
       query = "";                          
       if (e.keyCode == 13) {
@@ -115,21 +108,14 @@ function get_data(keyword){
             htm += "<td class='hide'><p class='order' data-order='' data-id="+y.id+"></p></td>";
             htm += "<td style='background:#c3c3c3;'><span style='color: #fff;' class='move-menu glyphicon glyphicon-th'></span></td>"; 
             htm +=   "<td><input class='select' data-status='"+y.status+"' data-id='"+y.id+"' type='checkbox'></td>";
-
-            $("table th.th-setter").each(function(){
-              var data = [$(this).text().toLowerCase()];
-              var new_data =  data.map(replace_in_array);
-              
-              if (y['status'] == 1) {
-                  y['status'] = 'Active';
-                  status_action = 1;
-              } else if (y['status'] == 0) {
-                  y['status'] = 'Inactive';
-                  status_action = 0;
-              }
-
-              htm += "<td data-status='"+status_action+"'>"+y[new_data]+"</td>";
-            });
+            htm += ' <td>' +set_char_limit(y.name)+ '</td>';
+            htm += ' <td>' +set_char_limit(y.content)+ '</td>';
+            if(y.status == 1){
+                status = 'Active';
+            }else{
+                status = 'Inactive';
+            }
+            htm += '<td>'+status+'</td>';
 
             htm +=   "<td class='center-content'><a href='<?= base_url()."content_management/"?>site_try_now_products/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
             htm += "</tr>";
@@ -141,13 +127,30 @@ function get_data(keyword){
         $('.listdata tbody').html(htm);
         modal.loading(false);
     }, function(obj){
+        $('.total-record').html('of '+obj.total_record);
         pagination.generate(obj.total_page, '.list_pagination', limit, 'tbody', 6);
     });
   }
 
-pagination.onchange(function(){
-      offset = $(this).val();
-      get_data();
+function record_number() {
+  setInterval(function(){
+    var tbody = $('.tbody tr');
+    var texts = tbody.text();
+    if(texts == "No records to show!"){
+      $('.num-record').html('0');
+    }else{  
+    $('.num-record').html(tbody.length);
+    }
+  }, 10);
+}
+
+$(document).on('change','.record-entries',function(e){
+  var filter_text = $( ".record-entries option:selected" ).text();
+  if(filter_text == "ALLALL"){
+    $('.total-record').hide();
+  }else{
+    $('.total-record').show();
+  }
 });
 
 function save_sort() {
@@ -183,7 +186,10 @@ $(document).on('click','.btn_status',function(e){
                 if (obj.length > 0) {
                   get_data();
                   $('.status_action').hide();
-                } else {
+                }else {
+                  modal.alert(update_success, function(){ 
+                    location.href = content_management + '/site_try_now_products';  
+                });
                   console.log(obj);
                 }
               });

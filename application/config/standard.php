@@ -2194,8 +2194,8 @@ $config['tn_product_dosage']       = array(
                                 'id'            => 'dosage',
                                 'maxlength'     => 255,
                                 'required'      => true,
-                                'placeholder'   => 'dosage',
-                                'label'         => 'dosage',
+                                'placeholder'   => 'Dosage',
+                                'label'         => 'Dosage',
                             );
 
 $config['tn_product_content']       = array(
@@ -2206,8 +2206,8 @@ $config['tn_product_content']       = array(
                                 'id'            => 'content',
                                 'maxlength'     => 255,
                                 'required'      => true,
-                                'placeholder'   => 'content',
-                                'label'         => 'content',
+                                'placeholder'   => 'Content',
+                                'label'         => 'Content',
                             );
 
 $config['tn_image_banner']           = array(
@@ -2385,10 +2385,10 @@ $config['try_now_brief_description']      = array(
 
 $config['wid_title']       = array(
                                 'type'          => 'text',
-                                'name'          => 'title',
+                                'name'          => 'wid_title',
                                 'form-align'    => 'horizontal',
                                 'class'         => 'form-control',
-                                'id'            => 'title',
+                                'id'            => 'wid_title',
                                 'maxlength'     => 255,
                                 'required'      => true,
                                 'placeholder'   => 'Title',
@@ -2415,7 +2415,7 @@ $config['decolgen_img_title']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'decolgen_img_title',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Decolgen Label',
                                 'label'         => 'Decolgen Label',
                             );
@@ -2427,7 +2427,7 @@ $config['others_img_title']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'others_img_title',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Others Label',
                                 'label'         => 'Others Label',
                             );
@@ -2439,9 +2439,9 @@ $config['decolgen_img_sub_title']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'decolgen_img_sub_title',
                                 'maxlength'     => 255,
-                                'required'      => true,
-                                'placeholder'   => 'Decolgen Sub Label',
-                                'label'         => 'Decolgen Sub Label',
+                                'required'      => false,
+                                'placeholder'   => 'Decolgen Label 2',
+                                'label'         => 'Decolgen Label 2',
                             );
 
 $config['others_img_sub_title']       = array(
@@ -2451,9 +2451,9 @@ $config['others_img_sub_title']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'others_img_sub_title',
                                 'maxlength'     => 255,
-                                'required'      => true,
-                                'placeholder'   => 'Others Sub Label',
-                                'label'         => 'Others Sub Label',
+                                'required'      => false,
+                                'placeholder'   => 'Others Label 2',
+                                'label'         => 'Others Label 2',
                             );
 
 $config['decolgen_img_1']       = array(
@@ -2554,7 +2554,7 @@ $config['vs_img_title_1']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'vs_img_title_1',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Vs Title',
                                 'label'         => 'Vs Title',
                             );
@@ -2566,7 +2566,7 @@ $config['vs_img_sub_title_2']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'vs_img_sub_title_2',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Vs Sub Title 2',
                                 'label'         => 'Vs Sub Title 2',
                             );
@@ -2578,7 +2578,7 @@ $config['vs_img_title_2']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'vs_img_title_2',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Vs Title 2',
                                 'label'         => 'Vs Title 2',
                             );
@@ -2590,7 +2590,7 @@ $config['vs_img_title_3']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'vs_img_title_3',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Vs Title 3',
                                 'label'         => 'Vs Title 3',
                             );
@@ -2720,7 +2720,7 @@ $config['no_drowse_small_text']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'no_drowse_small_text',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Small Text',
                                 'label'         => 'Small Text',
                             );
@@ -2732,7 +2732,7 @@ $config['no_drowse_details_title1']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'no_drowse_details_title1',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Details Title 1',
                                 'label'         => 'Details Title 1',
                             );
@@ -2744,7 +2744,7 @@ $config['no_drowse_details1']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'no_drowse_details1',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Details 1',
                                 'label'         => 'Details 1',
                             );
@@ -2757,7 +2757,7 @@ $config['no_drowse_details_title2']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'no_drowse_details_title2',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Details Title 2',
                                 'label'         => 'Details Title 2',
                             );
@@ -2769,7 +2769,7 @@ $config['no_drowse_details2']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'no_drowse_details2',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Details 2',
                                 'label'         => 'Details 2',
                             );
@@ -2863,12 +2863,11 @@ $config['nd_image_banner']       = array(
                             );
 
 $config['nd_product_price']       = array(
-                                'type'          => 'text',
+                                'type'          => 'mobile_number',
                                 'name'          => 'nd_product_price',
                                 'form-align'    => 'horizontal',
                                 'class'         => 'form-control',
                                 'id'            => 'nd_product_price',
-                                'maxlength'     => 255,
                                 'required'      => true,
                                 'placeholder'   => 'Product Price',
                                 'label'         => 'Product Price',
@@ -2906,7 +2905,7 @@ $config['nd_product_description']       = array(
                                 'class'         => 'form-control',
                                 'id'            => 'nd_product_description',
                                 'maxlength'     => 255,
-                                'required'      => true,
+                                'required'      => false,
                                 'placeholder'   => 'Brief Description',
                                 'label'         => 'Brief Description',
                             );

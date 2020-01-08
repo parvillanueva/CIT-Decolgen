@@ -6,7 +6,7 @@
 	    <div class="dc-vs-garphic dc-noise" style='background-image: url("<?= base_url() . $details[0]->background_image;?>")'>
 	        <div class="dc-container">
 	            <div class="text-center">
-	                <span class="dc-h3 sup-reggg"><?= $details[0]->title;?></span>
+	                <span class="dc-h3 sup-reggg"><?= $details[0]->wid_title;?></span>
 	            </div>
 
 

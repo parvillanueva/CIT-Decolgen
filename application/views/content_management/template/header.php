@@ -28,7 +28,11 @@
 		<link href="<?= base_url();?>cms/powertip/jquery.powertip.min.css" rel="stylesheet" type="text/css" />
 		<link href="<?= base_url();?>cms/css/bootstrap-material-datetimepicker.css" rel="stylesheet" type="text/css" />
 		<link href="<?= base_url();?>cms/css/breadcrumb/<?= $cms_title[0]->cms_skin?>.css" rel="stylesheet" type="text/css" />
-
+		
+		<script>
+			var sortable_base_url = "<?= base_url();?>";
+		</script>
+		
 		<script type="text/javascript" src="<?= base_url();?>/cms/js/jquery.min.js" ></script>
 		<script type="text/javascript" src="<?= base_url();?>/cms/filetree/php_file_tree_jquery.js" ></script>
 		<script type="text/javascript" src="<?= base_url();?>/cms/js/bootbox.min.js" ></script>
@@ -51,6 +55,7 @@
 		<script type="text/javascript" src="<?= base_url();?>/cms/js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="<?= base_url();?>/cms/js/placeholder.js" ></script>
 		<script type="text/javascript" src="<?= base_url();?>/cms/js/bootstrap-material-datetimepicker.js" ></script>
+		<script type="text/javascript" src="<?= base_url();?>/cms/js/sorttable.js"></script>
 		<!-- For Export -->
 		<script type="text/javascript" src="<?= base_url();?>/cms/js/FileSaver.js" ></script>
 		<script type="text/javascript" src="<?= base_url();?>/cms/js/xlsx.core.min.js" ></script>
