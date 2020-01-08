@@ -8,7 +8,7 @@
                     <span class="dc-h3">ASC Reference Code</span>
                     <p class="dc-main-desc">
                         <?php foreach($asc as $key=>$value){ ?>
-                            <?= $value->name;?><br>
+                            <?= $value->asc_name;?><br>
                         <?php } ?>
                     </p>
                 </div>
