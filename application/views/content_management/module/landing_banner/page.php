@@ -53,7 +53,7 @@
                     modal.loading(true);
 
                     AJAX.update.table("pckg_landing_banner");
-                    AJAX.update.where("id", "<?=$this->uri->segment(4);?>");
+                    AJAX.update.where("id", 1);
                     $.each(form_data, function(a,b) {
                         AJAX.update.params(a, b);
                     });
@@ -69,7 +69,7 @@
     });
 
     $(document).on('click', '#btn_close', function(e){
-        location.href = '<?=base_url("content_management/site_landing_banner") ?>';
+        location.href = '<?=base_url("content_management") ?>';
     });
 </script>
 <script type="text/javascript" > 
