@@ -667,12 +667,12 @@ $config['title']       = array(
                                 'label'         => 'Title',
                             );
 
-$config['title']       = array(
+$config['asc_name']       = array(
                                 'type'          => 'text',
-                                'name'          => 'name',
+                                'name'          => 'asc_name',
                                 'form-align'    => 'horizontal',
                                 'class'         => 'form-control',
-                                'id'            => 'name',
+                                'id'            => 'asc_name',
                                 'maxlength'     => 255,
                                 'required'      => true,
                                 'placeholder'   => 'Name',

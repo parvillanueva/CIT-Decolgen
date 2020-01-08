@@ -81,10 +81,10 @@ $(document).on('click', '#btn_add', function(e){
 
 function get_data(keyword){
     modal.loading(true);
-    var search_arr = ["name"];
+    var search_arr = ["asc_name"];
 
     AJAX.select.table("pckg_asc_reference_code");
-    AJAX.select.select("id, update_date, status, name");
+    AJAX.select.select("id, update_date, status, asc_name");
     AJAX.select.where.greater_equal("status", 0);
     AJAX.select.offset(offset);
     AJAX.select.limit(limit);
@@ -92,12 +92,7 @@ function get_data(keyword){
 
     if(keyword)
     {
-      for (var i = 0; i < search_arr.length; i++) {
-        if (i != search_arr.length - 1) {
-          AJAX.select.where.like(search_arr[0], keyword);
-          AJAX.select.where.or.like(search_arr[i+1], keyword);
-        } 
-      }
+          AJAX.select.where.like("asc_name", keyword);
     }
     // ajax get post
     AJAX.select.exec(function(result){
@@ -107,32 +102,19 @@ function get_data(keyword){
         
         if (obj.length > 0) {
           $.each(obj, function(x,y){
-           
+            var status = (y.status == 1) ? status = "Active" : status = "Inactive";
+
             htm += "<tr>";
             htm += "<td class='hide'><p class='order' data-order='' data-id="+y.id+"></p></td>";
             htm += "<td style='background:#c3c3c3;'><span style='color: #fff;' class='move-menu glyphicon glyphicon-th'></span></td>"; 
             htm +=   "<td><input class='select' data-status='"+y.status+"' data-id='"+y.id+"' type='checkbox'></td>";
-
-            $("table th.th-setter").each(function(){
-              var data = [$(this).text().toLowerCase()];
-              var new_data =  data.map(replace_in_array);
-              
-              if (y['status'] == 1) {
-                  y['status'] = 'Active';
-                  status_action = 1;
-              } else if (y['status'] == 0) {
-                  y['status'] = 'Inactive';
-                  status_action = 0;
-              }
-
-              htm += "<td data-status='"+status_action+"'>"+y[new_data]+"</td>";
-            });
-
+            htm+="    <td class='center-content'>"+set_char_limit2(y.asc_name)+"</td>";
+            htm+="    <td class='center-content'>"+status+"</td>";    
             htm +=   "<td class='center-content'><a href='<?= base_url()."content_management/"?>site_asc_reference_code/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
             htm += "</tr>";
           });
         } else {
-          html += '<td colspan="6"><center><b>No records to show!</b></center></td>';
+          htm += '<td colspan="6"><center><b>No records to show!</b></center></td>';
         }
 
         $('.listdata tbody').html(htm);

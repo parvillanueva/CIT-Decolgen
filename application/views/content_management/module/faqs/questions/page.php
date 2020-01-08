@@ -121,7 +121,7 @@ function get_data(keyword){
                   status_action = 0;
               }
 
-              htm += "<td data-status='"+status_action+"'>"+y[new_data]+"</td>";
+              htm += "<td data-status='"+status_action+"'>"+set_char_limit(y[new_data])+"</td>";
             });
 
             htm +=   "<td class='center-content'><a href='<?= base_url()."content_management/"?>site_faqs_questions/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";

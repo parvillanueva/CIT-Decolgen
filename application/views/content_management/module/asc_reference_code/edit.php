@@ -7,11 +7,11 @@
         <?php 
         if (!$this->uri->segment(4) === NULL || !empty($this->uri->segment(4))) {
             $details = $this->load->details("pckg_asc_reference_code", $this->uri->segment(4));
-            $inputs = ["title","status"];
-            $values = [$details[0]->name,$details[0]->status];
+            $inputs = ["asc_name","status"];
+            $values = [$details[0]->asc_name,$details[0]->status];
             $id = $this->standard->inputs($inputs, $values);
         } else {
-            $inputs = ["title","status"];
+            $inputs = ["asc_name","status"];
             $id = $this->standard->inputs($inputs);
         }
         ?>
@@ -31,7 +31,7 @@
         var form_data = {};
         $(':input[class*="_input"]').each(function() {
             var input_id = $(this).attr('id');
-            var db_field = $(this).attr('name');
+            var db_field = $(this).attr('asc_name');
 
             if ($(this).attr('type') === 'ckeditor') {
                 form_data[db_field] = eval("CKEDITOR.instances."+input_id+".getData()");
