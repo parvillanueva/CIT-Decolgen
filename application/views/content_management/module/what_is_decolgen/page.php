@@ -297,50 +297,26 @@
         form_data["update_date"] = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
 
         if(validate.standard("<?= $details1; ?>")){
-            if(validate.standard("<?= $details2; ?>")){
-                if(validate.standard("<?= $details3; ?>")){
-                    if(validate.standard("<?= $details4; ?>")){
-                        if(validate.standard("<?= $details5; ?>")){
-                            if(validate.standard("<?= $details6; ?>")){
-                                if(validate.standard("<?= $details7; ?>")){
-                                    if(validate.standard("<?= $details8; ?>")){
-                                        if(validate.standard("<?= $details9; ?>")){
-                                            if(validate.standard("<?= $details10; ?>")){
-                                                if(validate.standard("<?= $details11; ?>")){
-                                                    if(validate.standard("<?= $details12; ?>")){
-                                                        if(validate.standard("<?= $details13; ?>")){
-                                                            var modal_obj = '<?= $this->standard->confirm("confirm_update"); ?>'; 
-                                                            modal.standard(modal_obj, function(result){
-                                                                if(result){
-                                                                    modal.loading(true);
+                var modal_obj = '<?= $this->standard->confirm("confirm_update"); ?>'; 
+                modal.standard(modal_obj, function(result){
+                    if(result){
+                        modal.loading(true);
 
-                                                                    AJAX.update.table("pckg_what_is_decolgen");
-                                                                    AJAX.update.where("id", 1);
-                                                                    $.each(form_data, function(a,b) {
-                                                                        AJAX.update.params(a, b);
-                                                                    });
-                                                                    
-                                                                    AJAX.update.exec(function(result){
-                                                                        modal.loading(false);
-                                                                        modal.alert("<?= $this->standard->dialog("update_success"); ?>", function(){
-                                                                            location.reload();
-                                                                        });
-                                                                    })
-                                                                }
-                                                            });
-                                                        }
-                                                    }                                                
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        AJAX.update.table("pckg_what_is_decolgen");
+                        AJAX.update.where("id", 1);
+                        $.each(form_data, function(a,b) {
+                            AJAX.update.params(a, b);
+                        });
+                        
+                        AJAX.update.exec(function(result){
+                            modal.loading(false);
+                            modal.alert("<?= $this->standard->dialog("update_success"); ?>", function(){
+                                location.reload();
+                            });
+                        })
                     }
-                }
-            }
-        }
+                });
+            }                            
     });
 </script>
 <script type="text/javascript" > 

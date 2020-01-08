@@ -87,7 +87,7 @@
                             <div class="dc-product-item text-center">
                                 <span class="dc-h4 span_text"><?= $value->nd_product_name;?></span>
                                 <img src="<?= base_url() . $value->nd_image_banner;?>" alt="Decolgen&reg; Forte" class="dc-product-shot">
-                                <span class="dc-srp"><sup>srp</sup> <?= $value->nd_product_price;?></span>
+                                <span class="dc-srp"><sup>srp</sup> ₱<?= $value->nd_product_price;?></span>
                                 <a href="" class="clsname <?= base_url() . $value->nd_product_pil;?>">
                                     <button type="button" class="dc-pcg-btn"><?= $value->nd_download_label;?></button>
                                 </a>
