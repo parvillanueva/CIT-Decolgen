@@ -9,14 +9,14 @@ class GS_Controller extends CI_Controller {
             // Your own constructor code
 
 
-		$this->load->library('ftp');
+		// $this->load->library('ftp');
 
-		$config['hostname'] = '172.29.70.126';
-		$config['username'] = 'phpdevsite';
-		$config['password'] = 'unilab123';
-		$config['debug']        = TRUE;
+		// $config['hostname'] = '172.29.70.126';
+		// $config['username'] = 'phpdevsite';
+		// $config['password'] = 'unilab123';
+		// $config['debug']        = TRUE;
 
-		$this->ftp->connect($config);
+		// $this->ftp->connect($config);
 		
     }
 

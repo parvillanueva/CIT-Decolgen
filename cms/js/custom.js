@@ -858,7 +858,7 @@ $(document).on("change", ".record-entries", function(e) {
 $(document).on('keypress', '#search_query', function(e) {  
 	if(e.keyCode == 13){
 		var keyword = $(this).val();
-		if(keyword.trim() == ''){
+		if(keyword.trim() == ' '){
 			//location.reload();
 		} else{
 			get_data(keyword);

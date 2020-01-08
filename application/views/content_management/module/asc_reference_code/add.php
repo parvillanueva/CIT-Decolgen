@@ -5,7 +5,7 @@
 	?>
     <div class="box-body">
     	<?php 
-            $inputs = ["title","status"];
+            $inputs = ["asc_name","status"];
             $id = $this->standard->inputs($inputs);
         ?>
     </div>

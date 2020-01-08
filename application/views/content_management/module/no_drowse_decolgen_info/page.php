@@ -22,7 +22,7 @@
                     <th id="rem" style="width: 40px; text-align:center;">Action</th>
                 </tr>  
             </thead>
-            <tbody class="tbody"></tbody>
+            <tbody class="tbody" id="tbody"></tbody>
         </table>
       <div class="list_pagination"></div>
         <?php echo $this->page_sort->page_number();?>
@@ -39,6 +39,7 @@
   $(document).ready(function(){
     $('#search_query').attr("accept","/[^a-zA-Z0-9\u00f1\u00d1 ._,-\/]/g");
     $('#search_query').attr("onkeyup","this.value=this.value.replace(/[^a-zA-Z0-9\u00f1\u00d1 ._,-\/]/g,'');");
+
     $(".table").addSortWidget();
     $("#rem img").remove();  
     record_number();  
@@ -67,6 +68,8 @@ $(document).on('click', '#btn_add', function(e){
  var limit = 10;
  var offset = 1;
 
+
+
 function get_data(keyword){
     modal.loading(true);
     var search_arr = ["power_title","power_details","power_img"];
@@ -84,7 +87,6 @@ function get_data(keyword){
         if (i != search_arr.length - 1) {
           AJAX.select.where.like(search_arr[0], keyword);
           AJAX.select.where.or.like(search_arr[i+1], keyword);
-          AJAX.select.where.greater_equal("status", 0);
         } 
       }
     }
@@ -132,14 +134,6 @@ function record_number() {
   }, 10);
 }
 
-$(document).on('change','.record-entries',function(e){
-  var filter_text = $( ".record-entries option:selected" ).text();
-  if(filter_text == "ALLALL"){
-    $('.total-record').hide();
-  }else{
-    $('.total-record').show();
-  }
-});
 
 function save_sort() {
   $('.order').each(function() {       

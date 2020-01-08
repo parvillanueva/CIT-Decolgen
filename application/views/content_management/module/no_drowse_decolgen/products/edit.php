@@ -144,6 +144,7 @@
                     $.each(form_data, function(a,b) {
                         AJAX.update.params(a, b);
                     });
+                    AJAX.update.params('nd_product_price', $('#nd_product_price').val());
                     AJAX.update.exec(function(result){
                         modal.loading(false);
                         modal.alert("<?= $this->standard->dialog("update_success"); ?>", function(){

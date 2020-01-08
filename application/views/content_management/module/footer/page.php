@@ -111,6 +111,14 @@
     validate_fields();
 });
 
+    function is_valid_url(string) {
+        var res = string.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+        if (res == null)
+            return false;
+        else
+            return true;
+    };
+    
     function validate_fields(){
         var error_message = 'This field is required.';
         var error_message_link = 'Invalid URL.';
@@ -135,9 +143,9 @@
         
         var counter =0;
         
-        if(validate.standard(site_details)){
+        if(validate.standard("<?= $id; ?>")){
 
-            if(validate.standard(notification_details)){
+            if(validate.standard("<?= $id; ?>")){
                 if(is_valid_url(shop_url) == false && shop_url.length != 0){
                     $('.url_error').remove();  
                     $('<i class="url_error" style="color: red;" >Invalid URL.</i>').insertAfter('#shop_url');
