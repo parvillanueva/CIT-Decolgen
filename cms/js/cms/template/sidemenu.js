@@ -14,7 +14,7 @@ $(document).ready(function(){
                     location.href = content_management + '/login/unset_session';    
                 });
             idleState = true; 
-        }, 300000);
+        }, 1800000);
         ///300000
     });
     $("body").trigger("mousemove"); 
