@@ -18,7 +18,7 @@
         <script src="<?= base_url();?>/assets/decolgen/js/jquery.min.js"></script>
         <script src="<?= base_url();?>/assets/decolgen/js/bootstrap.min.js"></script>
             <!-- Scripts -->
-
+        <script type="text/javascript" src="<?= base_url();?>/cms/js/script.js" ></script>    
         <script type="text/javascript" src="<?= base_url();?>/assets/js/masking.js" ></script>
         <script type="text/javascript" src="<?= base_url();?>/assets/js/numeral.min.js" ></script>
         <script type="text/javascript" src="<?= base_url();?>/cms/js/jquery-ui.js" ></script>
