@@ -19,7 +19,7 @@
                 <tr id="sortable">
                     <th id="rem" class="hide"></th>
                     <th id="rem" style="width: 10px;"></th>
-                    <th id="rem"><input class ="selectall" type ="checkbox"></th>
+                    <th id="rem" style="width: 10px;"><input class ="selectall" type ="checkbox"></th>
                     <th class='th-setter' style="width: 100px;">Product Name</th>
                     <th class='th-setter' style="width: 100px;">Image</th>
                     <th class='th-setter' style="width: 130px;">Description</th>
