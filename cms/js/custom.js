@@ -380,6 +380,7 @@ var validate = {
 				$(this).css('border-color','red');
 				$("<span class='validate_error_message' style='color: red;'>"+form_script+"<br></span>").insertAfter(this);
 			}
+
 		});
 
 		//strip tags
@@ -515,6 +516,11 @@ var validate = {
 				$("<span class='validate_error_message' style='color: red;'>"+form_script+"<br></span>").insertAfter(".cke_editor_" + id);
 			}
 
+			if(editor.trim().indexOf("<?hh") != -1){
+				counter++;
+				$(".cke_editor_" + id).css('border-color','red');
+				$("<span class='validate_error_message' style='color: red;'>"+form_script+"<br></span>").insertAfter(".cke_editor_" + id);
+			}
 
 			if(editor.trim().indexOf("<?php") != -1){
 				counter++;
