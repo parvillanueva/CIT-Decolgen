@@ -13,23 +13,27 @@ window.onload = function(){
 
 
 /*** checking internet and database connection ***/
-
-/*var click_return = true;
+var click_return = true;
 $(document).on('click','a',function(event){
 	checkConnections();
-	return click_return;
+	if(click_return == false){
+		event.stopImmediatePropagation();
+	}
+	// return click_return;
 });
 
 $(document).on('click','button',function(event){
     checkConnections();
-	return click_return;
+	if(click_return == false){
+		event.stopImmediatePropagation();
+	}
 });
 
 function checkConnections(callback){
 	$("#loading_div_standard").show();
 	$.ajax(
 		{
-			url: "<?= base_url();?>", 
+			url: '', 
 			async: false,
 			success: function(data, textStatus, jqXHR){
 				$("#loading_div_standard").hide();
@@ -37,19 +41,20 @@ function checkConnections(callback){
     		},
     		error: function(XMLHttpRequest, textStatus, errorThrown) {
 				$("#loading_div_standard").hide();
+				console.log(XMLHttpRequest.readyState);
 		        if (XMLHttpRequest.readyState == 4) {
 		            // HTTP error (can be checked by XMLHttpRequest.status and XMLHttpRequest.statusText)
 		            modal.alert('<h4><center><i class="fa fa-database fa-2x"></i><br><br>Something went wrong and we couldnt complete your request.</center></h4>');
-		            click_return = false;
+		            return click_return = false;
 		        }
 		        else if (XMLHttpRequest.readyState == 0) {
 		            // Network error (i.e. connection refused, access denied due to CORS, etc.)
 		            modal.alert('<h4><center><i class="fa fa-wifi fa-2x"></i><br><br>Cannot connect, Please check your internet connection.</center></h4>');
-		            click_return = false;
+		            return click_return = false;
 		        } else {
 		        	return false;
 		        }
 		    }
 		}
 	);
-};*/
+};

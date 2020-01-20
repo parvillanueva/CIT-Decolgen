@@ -511,7 +511,7 @@
                     }else{
                         modal.alert('File size for Videos is limited to 50MB only.');
                     }
-                }else if(filename.match(/(\.pdf)|(\.svg)|(\.docx)|(\.doc)|(\.txt)|(\.xls)|(\.csv)|(\.xlsx)/gi)){
+                }else if(filename.match(/(\.pdf)|(\.svg)/gi)){
                     data.append("path", current_path);
                     data.append("quality", $('#quality').val());
                 }else{
