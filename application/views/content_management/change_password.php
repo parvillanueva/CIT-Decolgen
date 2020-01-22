@@ -43,11 +43,11 @@
                     </div>
                     <div class="password_chcklist_contanier">
                         <input type="checkbox" id="upper_chckbx_p" class="upper_chckbx password_checkbox required_input hidden"> 
-                      	<i class="fas fa-check-square upper_chck"></i> <p class="upper_chckbx_p">Atleast 1 Uppercase</p>
+                      <i class="fas fa-check-square upper_chck"></i> <p class="upper_chckbx_p">Atleast 1 Uppercase</p>
                     </div>
                     <div class="password_chcklist_contanier">
                         <input type="checkbox" id="number_chckbx_p" class="number_chckbx password_checkbox required_input hidden"> 
-                      	<i class="fas fa-check-square number_chck"></i> <p class="number_chckbx_p">Atleast 1 Number</p>
+                      <i class="fas fa-check-square number_chck"></i> <p class="number_chckbx_p">Atleast 1 Number</p>
                     </div>
                  </div>
             </div>
@@ -58,7 +58,9 @@
 
 <script type="text/javascript">
 
-	var user_id = "<?= $this->session->userdata('sess_uid')?>";
-	var content_management = '<?=base_url("content_management");?>';
-	var base_url = '<?= base_url();?>';
-</script>	
+var user_id = "<?= $this->session->userdata('sess_uid')?>";
+var global_controller = "<?= base_url('content_management/global_controller');?>";
+var update_password = "<?= base_url('content_management/change_password/update_password');?>";
+var update_success = "<?= base_url('content_management/change_password');?>";
+
+</script>
