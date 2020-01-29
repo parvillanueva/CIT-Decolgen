@@ -23,20 +23,7 @@
                                     <li><a href="javascript:void(0);" title="Facebook" class="quicklink" data-url='<?= $footer[0]->facebook;?>'><i class="fab fa-facebook-f"></i></a></li>
 
                                     <li><a href="javascript:void(0);" title="Twitter" class="quicklink" data-url='<?= $footer[0]->twitter;?>'><i class="fab fa-twitter"></i></a></li>
-                                    <!--
-                                            -->
-                                    <li>
-                                        <a href="javascript:void(0);" title="Instagram" class="quicklink" data-url='<?= $footer[0]->instagram;?>'>
-                                            <i class="fab fa-instagram"></i></a>
-                                    </li>
-                                    <!--
-                                            -->
-                                    <li><a href="javascript:void(0);" title="Youtube" class="quicklink" data-url='<?= $footer[0]->youtube_link;?>'><i class="fab fa-youtube"></i></a></li>
-                                    <!--
-                                            -->
-                                    <li><a href="javascript:void(0);" title="Pinterest" class="quicklink" data-url='<?= $footer[0]->pinterest;?>'><i class="fab fa-pinterest"></i></a></li>
-                                    <!--
-                                            -->
+
                                 </ul>
                             </div>
                         </div>

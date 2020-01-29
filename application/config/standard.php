@@ -2174,6 +2174,18 @@ $config['try_now_sub_title']       = array(
                                 'placeholder'   => 'Sub Title',
                                 'label'         => 'Sub Title',
                             );
+
+$config['try_now_mini_description']       = array(
+                                'type'          => 'text',
+                                'name'          => 'mini_description',
+                                'form-align'    => 'horizontal',
+                                'class'         => 'form-control',
+                                'id'            => 'mini_description',
+                                'maxlength'     => 255,
+                                'required'      => true,
+                                'placeholder'   => 'Mini Description',
+                                'label'         => 'Mini Description',
+                            );
 $config['tn_product_name']       = array(
                                 'type'          => 'text',
                                 'name'          => 'name',
@@ -2315,7 +2327,7 @@ $config['try_now_first_description']      = array(
                                 'name'          => 'first_description',
                                 'form-align'    => 'horizontal',
                                 'class'         => 'form-control',
-                                'maxlength'     => 255,
+                                'maxlength'     => 300,
                                 'id'            => 'first_description',
                                 'placeholder'   => 'Article Description 1',
                                 'label'         => 'Article Description 1',
@@ -2337,7 +2349,7 @@ $config['try_now_second_description']      = array(
                                 'name'          => 'second_description',
                                 'form-align'    => 'horizontal',
                                 'class'         => 'form-control',
-                                'maxlength'     => 255,
+                                'maxlength'     => 300,
                                 'id'            => 'second_description',
                                 'placeholder'   => 'Article Description 2',
                                 'label'         => 'Article Description 2',
