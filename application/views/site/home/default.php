@@ -56,7 +56,7 @@
 		        }
 		        if(scroll >= $('#what_is_decolgen_forte').offset().top){
 		            $(".dc-nav-item").removeClass("active");
-		            $('#what_is_decolgen_forte').toggleClass('active');
+		            $('#awhat_is_decolgen_forte').toggleClass('active');
 		        }
 		        if(scroll >= $('#why_decolgen').offset().top-100){
 		            $(".dc-nav-item").removeClass("active");
