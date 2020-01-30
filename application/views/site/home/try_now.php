@@ -19,7 +19,7 @@
     }
 </style>
     <!-- SECTION 1 -->
-        <div class="dc-section" id="try_now">
+        <div class="dc-section" id="what_is_decolgen_forte">
             <div class="dc-strip-title">
                 <div class="dc-container">
                     <span class="dc-h1"><?= $try_now_details[0]->try_now_title;?></span>
