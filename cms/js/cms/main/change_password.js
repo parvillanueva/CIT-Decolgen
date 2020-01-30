@@ -1,5 +1,3 @@
-AJAX.config.base_url(base_url);
-
 $(document).on('click', '#btn_update', function(){
 	validate_fields();
 });
@@ -62,62 +60,69 @@ function validate_fields(){
 		}
 	});
 
+
 	if(counter == 0){
 		save_data();
 	}
 }
 
-$("#password").on("change keydown paste input", function(event) { 
-	var password_input = $(this).val();
-	var min_ten_Regex = new RegExp("^(?=.{10,})");
-	var special_char_Regex =  new RegExp('\\W|_');
-	var upper_char_Regex = new RegExp("^(?=.*?[A-Z])");
-	var number_Regex = new RegExp("^(?=.*[0-9])");
+	$("#password").on("change keydown paste input", function(event) { 
+			var password_input = $(this).val();
+			var min_ten_Regex = new RegExp("^(?=.{10,})");
+			var special_char_Regex =  new RegExp('\\W|_');
+			var upper_char_Regex = new RegExp("^(?=.*?[A-Z])");
+			var number_Regex = new RegExp("^(?=.*[0-9])");
 
-	if(min_ten_Regex.test(password_input)){
-		$('.min_ten_chck').addClass('password_checker');
-		$('.min_ten_chckbx').prop('checked', true);
-	}else{
-		$('.min_ten_chckbx').prop('checked', false);
-		$('.min_ten_chck').removeClass('password_checker');
-	}
+			if(min_ten_Regex.test(password_input)){
+				$('.min_ten_chck').addClass('password_checker');
+				$('.min_ten_chckbx').prop('checked', true);
+			}else{
+				$('.min_ten_chckbx').prop('checked', false);
+				$('.min_ten_chck').removeClass('password_checker');
+			}
 
-	if (special_char_Regex.test(password_input)){
-		$('.special_chck').addClass('password_checker');
-		$('.special_chckbx').prop('checked', true);
-	}else{
-		$('.special_chckbx').prop('checked', false);
-		$('.special_chck').removeClass('password_checker');
-	}
+			if (special_char_Regex.test(password_input)){
+				$('.special_chck').addClass('password_checker');
+				$('.special_chckbx').prop('checked', true);
+			}else{
+				$('.special_chckbx').prop('checked', false);
+				$('.special_chck').removeClass('password_checker');
+			}
 
-	if(upper_char_Regex.test(password_input)){
-		$('.upper_chck').addClass('password_checker');
-		$('.upper_chckbx').prop('checked', true);
-	}else{
-		$('.upper_chckbx').prop('checked', false);
-		$('.upper_chck').removeClass('password_checker');
-	}
+			if(upper_char_Regex.test(password_input)){
+				$('.upper_chck').addClass('password_checker');
+				$('.upper_chckbx').prop('checked', true);
+			}else{
+				$('.upper_chckbx').prop('checked', false);
+				$('.upper_chck').removeClass('password_checker');
+			}
 
-	if (number_Regex.test(password_input)){
-		$('.number_chck').addClass('password_checker');
-		$('.number_chckbx').prop('checked', true);
-	}else{
-		$('.number_chckbx').prop('checked', false);
-		$('.number_chck').removeClass('password_checker');
-	}
-});
+			if (number_Regex.test(password_input)){
+				$('.number_chck').addClass('password_checker');
+				$('.number_chckbx').prop('checked', true);
+			}else{
+				$('.number_chckbx').prop('checked', false);
+				$('.number_chck').removeClass('password_checker');
+			}
+	   
+	});
 
 
 
 function is_exists(user_id, password){
+    var query = "id = " + user_id + " and password = '"+ sha1(password) +"'";
     var exists = 0;
 
-    AJAX.select.table("cms_users");
-    AJAX.select.select("id, password");
-    AJAX.select.where.equal("id", user_id);
-    AJAX.select.where.equal("password", sha1(password));
-    AJAX.select.exec(function(result){
-        var obj = result;
+    var url = global_controller;
+    var data = {
+        event : "list", 
+        select : "id, password",
+        query : query, 
+        table : "cms_users"
+    }
+
+    aJax.post(url,data,function(result){
+        var obj = is_json(result);
         if(obj.length != 0){
             exists = 1;
         }
@@ -129,15 +134,19 @@ function is_exists(user_id, password){
 }
 
 function is_exists_historical(user_id, password){
+    var query = "user_id = " + user_id + " and password = '"+ sha1(password) +"'";
     var exists = 0;
-    
-    AJAX.select.table("cms_historical_passwords");
-    AJAX.select.select("id, user_id, password");
-    AJAX.select.where.equal("user_id", user_id);
-    AJAX.select.where.equal("password", sha1(password));
 
-    AJAX.select.exec(function(result){
-        var obj = result;
+    var url = global_controller;
+    var data = {
+        event : "list", 
+        select : "id, user_id, password",
+        query : query, 
+        table : "cms_historical_passwords"
+    }
+
+    aJax.post(url,data,function(result){
+        var obj = is_json(result);
         if(obj.length != 0){
             exists = 1;
         }
@@ -153,15 +162,15 @@ function save_data(){
 		if(result){
 			modal.loading(true);
 			setTimeout(function(){
-				var url = content_management + '/change_password/update_password';
+				var url = update_password;
 				var data = {
 				    password : $('.re-password').val().trim()
 		    	}
 
 				aJax.post(url,data,function(result){
 			    	modal.loading(false);
-		    		modal.alert("Your password has been updated successfully.",function(){		
-						location.href = content_management + '/change_password';	
+		    		modal.alert("Your password has been updated successfully.",function(){
+						location.href = update_success;		
 					});
 			    });
 			}, 2000);

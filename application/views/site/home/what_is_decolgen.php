@@ -2,7 +2,7 @@
     $details = str_replace(base_url(), "", $this->load->details("pckg_what_is_decolgen",1));
 ?> 
 	<!-- SECTION 2 -->
-	<div class="dc-section" id="what_is_decolgen_forte">
+	<div class="dc-section" id="why_decolgen">
 	    <div class="dc-vs-garphic dc-noise" style='background-image: url("<?= base_url() . $details[0]->background_image;?>")'>
 	        <div class="dc-container">
 	            <div class="text-center">

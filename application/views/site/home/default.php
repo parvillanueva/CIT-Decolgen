@@ -14,9 +14,7 @@
        <script type="text/javascript">
             $(document).ready(function(){
                 var url = window.location.href;  
-               // alert(url);
                 var section = "<?= $section;?>";
-               //alert(lol);
 
                 if(section != ''){
                     section = section.replace(/[-]/gi, '_');
@@ -43,6 +41,7 @@
                 history.pushState("", "", url);
 
                 url = url.replace(/[-]/gi, '_');
+                url = url.replace(/\?/gi, '');
                     $([document.documentElement, document.body]).animate({
                         scrollTop: $("#"+url).offset().top
                     }, 10);
@@ -55,13 +54,13 @@
 		            $(".dc-nav-item").removeClass("active");
 		            $('#ahome').toggleClass('active');
 		        }
-		        if(scroll >= $('#try_now').offset().top){
-		            $(".dc-nav-item").removeClass("active");
-		            $('#atry_now').toggleClass('active');
-		        }
-		        if(scroll >= $('#what_is_decolgen_forte').offset().top-100){
+		        if(scroll >= $('#what_is_decolgen_forte').offset().top){
 		            $(".dc-nav-item").removeClass("active");
 		            $('#awhat_is_decolgen_forte').toggleClass('active');
+		        }
+		        if(scroll >= $('#why_decolgen').offset().top-100){
+		            $(".dc-nav-item").removeClass("active");
+		            $('#awhy_decolgen').toggleClass('active');
 		        }
 		        if(scroll >= $('#no_drowse_decolgen').offset().top){
 		            $(".dc-nav-item").removeClass("active");

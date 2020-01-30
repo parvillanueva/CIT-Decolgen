@@ -19,11 +19,12 @@
     }
 </style>
     <!-- SECTION 1 -->
-        <div class="dc-section" id="try_now">
+        <div class="dc-section" id="what_is_decolgen_forte">
             <div class="dc-strip-title">
                 <div class="dc-container">
                     <span class="dc-h1"><?= $try_now_details[0]->try_now_title;?></span>
                     <span class="dc-h2"><?= $try_now_details[0]->sub_title;?></span>
+                    <span class="dc-mini-description"><?= $try_now_details[0]->mini_description;?></span>
                 </div>
             </div>
             <div class="dc-blue-graphic dc-noise" >

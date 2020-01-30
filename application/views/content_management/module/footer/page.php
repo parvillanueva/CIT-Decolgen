@@ -13,10 +13,8 @@
                     "footer_asc_name",
                     "footer_policy_name",
                     "footer_copyright",
-                    "facebook","twitter",
-                    "instagram",
-                    "youtube_link",
-                    "pinterest"];
+                    "facebook",
+                    "twitter"];
 
             $values = 
                     [$details[0]->footer_image_banner,
@@ -25,10 +23,7 @@
                     $details[0]->footer_policy_name
                     ,$details[0]->footer_copyright,
                     $details[0]->facebook,
-                    $details[0]->twitter,
-                    $details[0]->instagram,
-                    $details[0]->youtube_link,
-                    $details[0]->pinterest];
+                    $details[0]->twitter];
 
             $id =  $this->standard->inputs($inputs, $values);
         } else {
@@ -38,10 +33,8 @@
                     "footer_asc_name",
                     "footer_policy_name",
                     "footer_copyright",
-                    "facebook","twitter",
-                    "instagram",
-                    "youtube_link",
-                    "pinterest"];
+                    "facebook",
+                    "twitter"];
 
             $values = 
                     [$details[0]->footer_image_banner,
@@ -50,10 +43,7 @@
                     $details[0]->footer_policy_name
                     ,$details[0]->footer_copyright,
                     $details[0]->facebook,
-                    $details[0]->twitter,
-                    $details[0]->instagram,
-                    $details[0]->youtube_link,
-                    $details[0]->pinterest];
+                    $details[0]->twitter];
 
             $id = $this->standard->inputs($inputs, $values);
         }
