@@ -4,8 +4,8 @@
 ?> 
     <div class="dc-main-content">
         <!-- KV SECTION -->
-        <div class="dc-section">       
-            <div class="dc-kv" id="home" style='background-image: url("<?= base_url() . $banner[0]->landing_bg;?>")'>
+        <div class="dc-section" id="home">       
+            <div class="dc-kv"  style='background-image: url("<?= base_url() . $banner[0]->landing_bg;?>")'>
                 <div class="dc-container">
                     <div class="row">
                         <div class="col-md-5 text-center">
@@ -18,7 +18,7 @@
                             <p><?= $banner[0]->landing_asc;?> </p>
                         </div>
 
-                        <a href="#try_now" class="dc-scroll"><i class="fas fa-chevron-down"></i></a>
+                        <a href="#what_is_decolgen_forte" class="dc-scroll"><i class="fas fa-chevron-down"></i></a>
 
                     </div>
                 </div>
