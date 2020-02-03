@@ -81,19 +81,15 @@ function get_data(keyword){
 
     AJAX.select.table("pckg_faqs_questions");
     AJAX.select.select("id, update_date, status, question, answer");
-    AJAX.select.where.greater_equal("status", 0);
     AJAX.select.offset(offset);
     AJAX.select.limit(limit);
     AJAX.select.order.asc("orders");
 
     if(keyword)
     {
-      for (var i = 0; i < search_arr.length; i++) {
-        if (i != search_arr.length - 1) {
-          AJAX.select.where.like(search_arr[0], keyword);
-          AJAX.select.where.or.like(search_arr[i+1], keyword);
-        } 
-      }
+      AJAX.select.query("(pckg_faqs_questions.question LIKE '%"+keyword+"%' OR pckg_faqs_questions.answer LIKE '%"+keyword+"%') AND pckg_faqs_questions.status >= 0");
+    }else{
+      AJAX.select.where.greater_equal("pckg_faqs_questions.status", 0);
     }
     // ajax get post
     AJAX.select.exec(function(result){
@@ -121,7 +117,7 @@ function get_data(keyword){
                   status_action = 0;
               }
 
-              htm += "<td data-status='"+status_action+"'>"+set_char_limit(y[new_data])+"</td>";
+              htm += "<td data-status='"+status_action+"' title='"+y[new_data]+"'>"+set_char_limit(y[new_data])+"</td>";
             });
 
             htm +=   "<td class='center-content'><a href='<?= base_url()."content_management/"?>site_faqs_questions/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";

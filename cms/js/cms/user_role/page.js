@@ -24,16 +24,14 @@ function get_data(keyword){
 
     AJAX.select.table("cms_user_roles");
     AJAX.select.select("id, name,status,update_date");
-    AJAX.select.where.greater_equal("status", 0);
     AJAX.select.offset(offset);
     AJAX.select.limit(limit);
     AJAX.select.order.desc("update_date");
 
     if(keyword){
-        
-        AJAX.select.where.like("name", encode_Html(keyword));
-        AJAX.select.where.greater_equal("status", 0);
-        
+        AJAX.select.query("(cms_user_roles.name LIKE '%"+keyword+"%') AND cms_user_roles.status >= 0");     
+    }else{
+        AJAX.select.where.greater_equal("cms_user_roles.status", 0);
     }
     //get list
     AJAX.select.exec(function(result){
