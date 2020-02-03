@@ -1312,3 +1312,30 @@ function decode_Html (string) {
     return entityMap_d[s];
   });
 }
+
+var delete_success = '<?= $this->standard->dialog("delete_success"); ?>';
+var update_success = '<?= $this->standard->dialog("update_success"); ?>';
+var confirm_delete = '<?= $this->standard->confirm("confirm_delete"); ?>'; 
+var confirm_update = '<?= $this->standard->confirm("confirm_update"); ?>';
+
+function cms_status_message(status){
+	var message = '';
+	if(status === '-2'){
+		message = confirm_delete;
+	}
+	else{
+		message = confirm_update;
+	}
+	return message;
+}
+
+function cms_status_message_dialog(status){
+	var message = '';
+	if(status === '-2'){
+		message = delete_success;
+	}else{
+		message = update_success;
+	}
+	
+	return message;
+}

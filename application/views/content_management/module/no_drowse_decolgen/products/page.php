@@ -170,7 +170,7 @@ $(document).on('click','.btn_status',function(e){
   var status = $(this).attr("data-status");
   var id = "";
 
-  modal.confirm("Are you sure you want to Update this record?",function(result){
+  modal.standard(cms_status_message(status), function(result){
       if(result){
           $('.selectall').prop('checked', false);
           $('.select:checked').each(function(index) { 
@@ -188,7 +188,7 @@ $(document).on('click','.btn_status',function(e){
                 
                   $('.status_action').hide();
                 } else {
-                  modal.alert(update_success, function(){ 
+                  modal.alert(cms_status_message_dialog(status), function(){ 
                     location.href = content_management + '/site_no_drowse_products';  
                 });
                   console.log(obj);
