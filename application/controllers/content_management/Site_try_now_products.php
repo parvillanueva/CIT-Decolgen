@@ -14,10 +14,10 @@ class Site_try_now_products extends GS_Controller {
 	public function index()
 	{
 		$data["title"] = "Content Management";
-		$data["PageName"] = ("Info");
+		$data["PageName"] = ("Decolgen");
 		$data['edit_title'] = true;
 		$data["content"] = "content_management/module/try_now/products/page";
-		$data['breadcrumb'] = array('Info' => '');
+		$data['breadcrumb'] = array('Decolgen' => '');
 		$this->load->view("content_management/template/layout", $data);	
 	}
 

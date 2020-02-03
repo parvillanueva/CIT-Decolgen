@@ -1312,3 +1312,14 @@ function decode_Html (string) {
     return entityMap_d[s];
   });
 }
+
+function cms_status_message_dialog(status){
+	var message = '';
+	if(status === '-2'){
+		message = delete_success;
+	}else{
+		message = update_success;
+	}
+	
+	return message;
+}

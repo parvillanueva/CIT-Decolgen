@@ -103,6 +103,8 @@
             var form_invalid_extension = "<?= $this->standard->dialog("form_invalid_extension");?>";
             var form_max_size = "<?= $this->standard->dialog("form_max_size");?>";
             var form_invalid_captcha = "<?= $this->standard->dialog("form_invalid_captcha");?>";
+            var delete_success = '<?= $this->standard->dialog("delete_success"); ?>';
+            var update_success = '<?= $this->standard->dialog("update_success"); ?>'; 
 
         </script>
 

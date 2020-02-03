@@ -184,7 +184,7 @@ $(document).on('click','.btn_status',function(e){
                   get_data();
                   $('.status_action').hide();
                 }else {
-                  modal.alert(update_success, function(){ 
+                  modal.alert(cms_status_message_dialog(status), function(){ 
                     location.href = content_management + '/site_try_now_products';  
                 });
                   console.log(obj);
