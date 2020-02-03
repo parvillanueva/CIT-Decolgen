@@ -250,8 +250,7 @@ p {
 .dc-product-shot {
   max-width: 450px;
   width: 100%;
-  margin-top: 20px;
-  margin-bottom: -50px; }
+  margin-top: 20px; }
 
 .dc-product-shot-small {
   max-width: 350px;
@@ -368,12 +367,19 @@ p {
   position: relative;
   padding: 30px 15px;
   background-color: #203369;
+  background-image: url(../img/dc_background_vs.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative; }
 
-
+.dc-blue-graphic {
+  background-color: #203369;
+  background-image: url(../img/dc_background_blue.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative; }
 
 .dc-noise::before {
   content: '';
@@ -693,7 +699,8 @@ header {
     float: left;
     width: 100%; }
 
-  .dc-blue-graphic {}
+  .dc-blue-graphic {
+    background-image: url(../img/dc_background_blue_mob.jpg); }
 
   .dc-bg-left {
     padding-bottom: 0px;

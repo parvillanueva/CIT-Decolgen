@@ -81,19 +81,15 @@ function get_data(keyword){
 
     AJAX.select.table("pckg_try_now_products");
     AJAX.select.select("id, status, name, image_banner, dosage, content");
-    AJAX.select.where.greater_equal("status", 0);
     AJAX.select.offset(offset);
     AJAX.select.limit(limit);
     AJAX.select.order.asc("orders");
 
     if(keyword)
     {
-      for (var i = 0; i < search_arr.length; i++) {
-        if (i != search_arr.length - 1) {
-          AJAX.select.where.like(search_arr[0], keyword);
-          AJAX.select.where.or.like(search_arr[i+1], keyword);
-        } 
-      }
+        AJAX.select.query("(pckg_try_now_products.name LIKE '%"+keyword+"%' OR pckg_try_now_products.content LIKE '%"+keyword+"%') AND pckg_try_now_products.status >= 0");
+    }else{
+        AJAX.select.where.greater_equal("pckg_try_now_products.status", 0);
     }
     // ajax get post
     AJAX.select.exec(function(result){
@@ -108,8 +104,8 @@ function get_data(keyword){
             htm += "<td class='hide'><p class='order' data-order='' data-id="+y.id+"></p></td>";
             htm += "<td style='background:#c3c3c3;'><span style='color: #fff;' class='move-menu glyphicon glyphicon-th'></span></td>"; 
             htm +=   "<td><input class='select' data-status='"+y.status+"' data-id='"+y.id+"' type='checkbox'></td>";
-            htm += ' <td>' +set_char_limit(y.name)+ '</td>';
-            htm += ' <td>' +set_char_limit(y.content)+ '</td>';
+            htm += ' <td title="'+y.name+'">' +set_char_limit(y.name)+ '</td>';
+            htm += ' <td title="'+y.content+'">' +set_char_limit(y.content)+ '</td>';
             if(y.status == 1){
                 status = 'Active';
             }else{
@@ -119,6 +115,7 @@ function get_data(keyword){
 
             htm +=   "<td class='center-content'><a href='<?= base_url()."content_management/"?>site_try_now_products/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
             htm += "</tr>";
+          
           });
         } else {
           htm += '<tr><td colspan="6" style="text-align: center;"><b>No records to show!</b></td></tr>';

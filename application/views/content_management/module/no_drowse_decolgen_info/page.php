@@ -76,19 +76,15 @@ function get_data(keyword){
 
     AJAX.select.table("pckg_no_drowse_decolgen_info");
     AJAX.select.select("id, update_date, status, power_title, power_details, power_img");
-    AJAX.select.where.greater_equal("status", 0);
     AJAX.select.offset(offset);
     AJAX.select.limit(limit);
     AJAX.select.order.asc("orders");
 
     if(keyword)
     {
-      for (var i = 0; i < search_arr.length; i++) {
-        if (i != search_arr.length - 1) {
-          AJAX.select.where.like(search_arr[0], keyword);
-          AJAX.select.where.or.like(search_arr[i+1], keyword);
-        } 
-      }
+      AJAX.select.query("(pckg_no_drowse_decolgen_info.power_title LIKE '%"+keyword+"%' OR pckg_no_drowse_decolgen_info.power_details LIKE '%"+keyword+"%' OR pckg_no_drowse_decolgen_info.power_img LIKE '%"+keyword+"%') AND pckg_no_drowse_decolgen_info.status >= 0");
+    }else{
+      AJAX.select.where.greater_equal("pckg_no_drowse_decolgen_info.status", 0);
     }
     // ajax get post
     AJAX.select.exec(function(result){
@@ -103,9 +99,9 @@ function get_data(keyword){
             htm += "<td class='hide'><p class='order' data-order='' data-id="+y.id+"></p></td>";
             htm += "<td style='background:#c3c3c3;'><span style='color: #fff;' class='move-menu glyphicon glyphicon-th'></span></td>"; 
             htm +=   "<td class='center-content'><input class='select' data-status='"+y.status+"' data-id='"+y.id+"' type='checkbox'></td>";
-            htm+="    <td class='center-content'>"+set_char_limit(y.power_title)+"</td>";
-            htm+="    <td class='center-content'>"+set_char_limit(y.power_details)+"</td>";
-            htm+="    <td class='center-content'>"+set_char_limit2(y.power_img)+"</td>";
+            htm+="    <td class='center-content' title='"+y.power_title+"'>"+set_char_limit(y.power_title)+"</td>";
+            htm+="    <td class='center-content' title='"+y.power_details+"'>"+set_char_limit(y.power_details)+"</td>";
+            htm+="    <td class='center-content' title='"+y.power_img+"'>"+set_char_limit2(y.power_img)+"</td>";
             htm+="    <td class='center-content'>"+status+"</td>";            
             htm +=   "<td class='center-content'><a href='<?= base_url()."content_management/"?>site_no_drowse_decolgen_info/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
             htm += "</tr>";

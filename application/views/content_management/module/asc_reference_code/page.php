@@ -85,14 +85,15 @@ function get_data(keyword){
 
     AJAX.select.table("pckg_asc_reference_code");
     AJAX.select.select("id, update_date, status, asc_name");
-    AJAX.select.where.greater_equal("status", 0);
     AJAX.select.offset(offset);
     AJAX.select.limit(limit);
     AJAX.select.order.asc("orders");
 
     if(keyword)
     {
-          AJAX.select.where.like("asc_name", keyword);
+      AJAX.select.query("(pckg_asc_reference_code.asc_name LIKE '%"+keyword+"%') AND pckg_asc_reference_code.status >= 0");
+    }else{
+      AJAX.select.where.greater_equal("pckg_asc_reference_code.status", 0);
     }
     // ajax get post
     AJAX.select.exec(function(result){
@@ -108,7 +109,7 @@ function get_data(keyword){
             htm += "<td class='hide'><p class='order' data-order='' data-id="+y.id+"></p></td>";
             htm += "<td style='background:#c3c3c3;'><span style='color: #fff;' class='move-menu glyphicon glyphicon-th'></span></td>"; 
             htm +=   "<td><input class='select' data-status='"+y.status+"' data-id='"+y.id+"' type='checkbox'></td>";
-            htm+="    <td class='center-content'>"+set_char_limit2(y.asc_name)+"</td>";
+            htm+="    <td class='center-content' title='"+y.asc_name+"'>"+set_char_limit2(y.asc_name)+"</td>";
             htm+="    <td class='center-content'>"+status+"</td>";    
             htm +=   "<td class='center-content'><a href='<?= base_url()."content_management/"?>site_asc_reference_code/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
             htm += "</tr>";

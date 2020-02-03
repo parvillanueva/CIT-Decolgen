@@ -7,11 +7,11 @@ $(document).ready(function(){
     $("#search_query").on("keypress", function(e) {
         if (e.keyCode == 13) {
             var keyword = $(this).val() 
-            get_list(keyword);
+            get_data(keyword);
         }
     });
 
-    get_list();
+    get_data();
 
     $('.selectall').prop('checked', false);
 
@@ -20,7 +20,7 @@ $(document).ready(function(){
     }
 });
 
-function get_list(keyword){
+function get_data(keyword){
 
     if(role <= 3 || role == 6){
         AJAX.select.where.equal("cms_user_roles.id", "cms_users.role");
@@ -35,16 +35,14 @@ function get_list(keyword){
    
     AJAX.select.table("cms_users");
     AJAX.select.select("cms_users.id AS id, username, cms_users.name AS name, cms_user_roles.id AS role,cms_user_roles.name as role_name, email, cms_users.status AS status, notif_signup, notif_contactus,notif_login,user_block_logs");
-    AJAX.select.where.greater_equal("cms_users.status", 0);
     AJAX.select.offset(offset);
     AJAX.select.limit(limit);
     AJAX.select.join.left("cms_user_roles","cms_user_roles.id", "cms_users.role");
       
         if(keyword){
-            AJAX.select.where.or.like("cms_users.name", encode_Html(keyword));
-            AJAX.select.where.like("cms_users.username", encode_Html(keyword));
-            AJAX.select.where.or.like("cms_users.email", encode_Html(keyword));
-            AJAX.select.where.greater_equal("cms_users.status", 0);    
+            AJAX.select.query("(cms_users.name LIKE '%"+keyword+"%' OR cms_users.username LIKE '%"+keyword+"%' OR cms_users.email LIKE '%"+keyword+"%') AND cms_users.status >= 0");     
+        }else{
+            AJAX.select.where.greater_equal("cms_users.status", 0);
         }
 
     AJAX.select.exec(function(result){
@@ -89,13 +87,13 @@ function get_list(keyword){
 
         modal.loading(false);
     }, function(obj){
-        pagination.generate(obj.total_page, '.list_pagination', get_list);
+        pagination.generate(obj.total_page, '.list_pagination', get_data);
        });
 }
 
 pagination.onchange(function(){
     offset = $(this).val();
-    get_list();
+    get_data();
 })
 
 //Add user
@@ -122,7 +120,7 @@ $(document).on('click', '#btn_unblock', function(e){
                 AJAX.update.exec(function(result){
                     var obj = result;
                     modal.alert(update_success, function(){
-                        get_list();
+                        get_data();
                         $('.btn_status').hide();   
                     });
                 });
@@ -155,7 +153,7 @@ $(document).on('click', '.status_action', function(e){
                    obj = result;
                     if(result.success){
                         modal.alert(update_success, function(){
-                            get_list();
+                            get_data();
                             $('.btn_status').hide();
                         });   
                     }

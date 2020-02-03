@@ -84,15 +84,15 @@ function get_data(keyword){
 
     AJAX.select.table("pckg_no_drowse_products");
     AJAX.select.select("id, nd_product_name, status, nd_image_banner, nd_product_price, nd_product_pil, nd_product_description, update_date");
-    AJAX.select.where.greater_equal("status", 0);
     AJAX.select.offset(offset);
     AJAX.select.limit(limit);
     AJAX.select.order.asc("orders");
 
     if(keyword)
     {
-      AJAX.select.where.like("nd_product_name",keyword);
-      AJAX.select.where.or.like("nd_product_description", keyword);
+      AJAX.select.query("(pckg_no_drowse_products.nd_product_name LIKE '%"+keyword+"%' OR pckg_no_drowse_products.nd_product_description LIKE '%"+keyword+"%') AND pckg_no_drowse_products.status >= 0");
+    }else{
+      AJAX.select.where.greater_equal("pckg_no_drowse_products.status", 0);
     }
     // ajax get post
     AJAX.select.exec(function(result){
@@ -106,9 +106,9 @@ function get_data(keyword){
                 html += ' <td class="hide"><p class="order" data-order="" data-id='+y.id+'></p></td>';
                 html += ' <td style="background-color:  #c3c3c3;"><span style="color: #fff;" class="move-menu glyphicon glyphicon-th"></span></td>';
                 html += ' <td><input class = "select"  data-id="'+y.id+'" type ="checkbox"></td>';
-                html += ' <td>' +set_char_limit2(y.nd_product_name)+ '</td>';
-                html += ' <td>' +set_char_limit2(y.nd_image_banner)+ '</td>';
-                html += ' <td>' +set_char_limit(y.nd_product_description)+ '</td>';
+                html += ' <td title="'+y.nd_product_name+'">' +set_char_limit2(y.nd_product_name)+ '</td>';
+                html += ' <td title="'+y.nd_image_banner+'">' +set_char_limit2(y.nd_image_banner)+ '</td>';
+                html += ' <td title="'+y.nd_product_description+'">' +set_char_limit(y.nd_product_description)+ '</td>';
                 html += ' <td>' + moment(y.update_date).format('LLL')+ '</td>';
                 if(y.status == 1){
                     status = 'Active';
