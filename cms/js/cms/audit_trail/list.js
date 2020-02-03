@@ -142,6 +142,10 @@ $(document).on('click', '.view_history', function(e){
         var json2 = Object.keys(is_json(obj[0].new_data));
         var obj3 = is_json(obj[0].old_data);
         //new data
+        if(obj3){
+            console.log(obj3[0]["status"]);   
+        }
+        
         html += '<table class="col-md-6 table table-bordered" style="margin-top: 20px;">';
         html += '<tbody>';
         html += '<tr id="header">';
@@ -154,14 +158,37 @@ $(document).on('click', '.view_history', function(e){
             $.each(obj3[0], function(x,y){
                 html += '<tr>';
                 html += '<td style="width: 100px; background-color: #222d32; color: #fff; text-align:center;">' + x + '</td>';
+                console.log(x +' '+y);
+                if("status" == x){
+                   if(y == 1){
+                        y = "Active";
+                   }else if(y == -2 || obj2[x] == -2){
+                        y = "Deleted";
+                   }else if(y == 0 || obj2[x] == 0){
+                        y = "Inactive";
+                   }else{
+                        y = y;
+                   }
+
+                    if(obj2[x] == 1){
+                        obj2[x] = "Active";
+                   }else if(obj2[x] == -2){
+                        obj2[x] = "Deleted";
+                   }else if(obj2[x] == 0){
+                        obj2[x] = "Inactive";
+                   }else{
+                        obj2[x] =  obj2[x];
+                   }
+                }
+               
                 html += '<td style="width: 370px;">' + y + '</td>';
                 if(json2.indexOf(x) > -1){
+
                     if(obj2[x] != y){
                         html += '<td style="background-color: #c7cdfa;">'+ obj2[x] +'</td>';
                     } else {
-                        html += '<td>'+ obj2[x] +'</td>';     
+                        html += '<td>'+ obj2[x] +'</td>';      
                     }
-                    
                 } else {
                     html += '<td>'+y+'</td>';
                 }
