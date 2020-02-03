@@ -36,10 +36,8 @@
 </body>
 
 <script type="text/javascript">
-  
   AJAX.config.base_url("<?=base_url();?>"); 
-  var update_success = '<?=$this->standard->dialog("update_success");?>';
-
+  
   $(document).ready(function(){
     $('#search_query').attr("accept","/[^a-zA-Z0-9\u00f1\u00d1 ._,-\/]/g");
     $('#search_query').attr("onkeyup","this.value=this.value.replace(/[^a-zA-Z0-9\u00f1\u00d1 ._,-\/]/g,'');");
@@ -173,7 +171,7 @@ $(document).on('click','.btn_status',function(e){
   var status = $(this).attr("data-status");
   var id = "";
 
-  modal.confirm("Are you sure you want to Update this record?",function(result){
+  modal.standard(cms_status_message(status), function(result){
       if(result){
           $('.selectall').prop('checked', false);
           $('.select:checked').each(function(index) { 
@@ -190,7 +188,7 @@ $(document).on('click','.btn_status',function(e){
                   get_data();
                   $('.status_action').hide();
                 } else {
-                  modal.alert(status_action, function(){ 
+                  modal.alert(cms_status_message_dialog(status), function(){ 
                     location.href = content_management + '/site_faqs_questions';  
                 });
                  // console.log(obj);
