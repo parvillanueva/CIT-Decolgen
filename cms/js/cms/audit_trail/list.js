@@ -195,8 +195,31 @@ $(document).on('click', '.view_history', function(e){
                 html += '</tr>';
             });
         }else{
+
+
             var json_new_data = is_json(obj[0].new_data);
             $.each(json_new_data, function(x,y){
+                if("status" == x){
+                   if(y == 1){
+                        y = "Active";
+                   }else if(y == -2 || obj2[x] == -2){
+                        y = "Deleted";
+                   }else if(y == 0 || obj2[x] == 0){
+                        y = "Inactive";
+                   }else{
+                        y = y;
+                   }
+
+                    if(obj2[x] == 1){
+                        obj2[x] = "Active";
+                   }else if(obj2[x] == -2){
+                        obj2[x] = "Deleted";
+                   }else if(obj2[x] == 0){
+                        obj2[x] = "Inactive";
+                   }else{
+                        obj2[x] =  obj2[x];
+                   }
+                }
                 html += '<tr>';
                 html += '<td style="width: 100px; background-color: #222d32; color: #fff; text-align:center;">' + x + '</td>';
                 html += '<td style="width: 370px; background-color: #fbe7eb;">No Data</td>';
