@@ -2,7 +2,7 @@
 <?php
 defined("BASEPATH") OR exit("No direct script access allowed");
 
-class Site_try_now_details extends GS_Controller {
+class Site_decolgen_forte_details extends GS_Controller {
 
 	public function __construct() {
 		parent::__construct();
@@ -14,10 +14,10 @@ class Site_try_now_details extends GS_Controller {
 	public function index()
 	{
 		$data["title"] = "Content Management";
-		$data["PageName"] = ("Details");
+		$data["PageName"] = ("Try Decolgen Now Details");
 		$data['edit_title'] = true;
-		$data["content"] = "content_management/module/try_now/details/page";
-		$data['breadcrumb'] = array('Details' => '');
+		$data["content"] = "content_management/module/decolgen_forte_details/page";
+		$data['breadcrumb'] = array('Try Decolgen Now Details' => '');
 		$this->load->view("content_management/template/layout", $data);	
 	}
 

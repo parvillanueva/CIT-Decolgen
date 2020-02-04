@@ -14,10 +14,10 @@ class Site_try_decolgen_now_details extends GS_Controller {
 	public function index()
 	{
 		$data["title"] = "Content Management";
-		$data["PageName"] = ("Try Decolgen Now Details");
+		$data["PageName"] = ("Try Decolgen Details");
 		$data['edit_title'] = true;
-		$data["content"] = "content_management/module/try_decolgen_now_details/page";
-		$data['breadcrumb'] = array('Try Decolgen Now Details' => '');
+		$data["content"] = "content_management/module/try_decolgen_now/details/page";
+		$data['breadcrumb'] = array('Try Decolgen Details' => '');
 		$this->load->view("content_management/template/layout", $data);	
 	}
 

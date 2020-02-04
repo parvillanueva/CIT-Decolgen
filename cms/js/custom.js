@@ -1313,11 +1313,6 @@ function decode_Html (string) {
   });
 }
 
-var delete_success = '<?= $this->standard->dialog("delete_success"); ?>';
-var update_success = '<?= $this->standard->dialog("update_success"); ?>';
-var confirm_delete = '<?= $this->standard->confirm("confirm_delete"); ?>'; 
-var confirm_update = '<?= $this->standard->confirm("confirm_update"); ?>';
-
 function cms_status_message(status){
 	var message = '';
 	if(status === '-2'){

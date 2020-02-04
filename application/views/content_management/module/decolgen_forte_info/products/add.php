@@ -43,7 +43,7 @@
                 if(result){
                     modal.loading(true);
 
-                    AJAX.insert.table("pckg_try_now_products");
+                    AJAX.insert.table("pckg_decolgen_forte_info");
                     $.each(form_data, function(a,b) {
                         AJAX.insert.params(a, b);
                     });
@@ -51,7 +51,7 @@
                     AJAX.insert.exec(function(result){
                         modal.loading(false);
                         modal.alert("<?= $this->standard->dialog("add_success"); ?>", function(){
-                            location.href = '<?=base_url("content_management/site_try_now_products") ?>';
+                            location.href = '<?=base_url("content_management/site_decolgen_forte_info") ?>';
                         });
                     })
                 }
@@ -60,7 +60,7 @@
     });
 
     $(document).on('click', '#btn_close', function(e){
-        location.href = '<?=base_url("content_management/site_try_now_products") ?>';
+        location.href = '<?=base_url("content_management/site_decolgen_forte_info") ?>';
     });
 </script>
 <script type="text/javascript" > 

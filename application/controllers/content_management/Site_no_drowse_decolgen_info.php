@@ -16,7 +16,7 @@ class Site_no_drowse_decolgen_info extends GS_Controller {
 		$data["title"] = "Content Management";
 		$data["PageName"] = ("Info");
 		$data['edit_title'] = true;
-		$data["content"] = "content_management/module/no_drowse_decolgen_info/page";
+		$data["content"] = "content_management/module/no_drowse_decolgen/page";
 		$data['breadcrumb'] = array('Info' => '');
 		$this->load->view("content_management/template/layout", $data);	
 	}
@@ -26,7 +26,7 @@ class Site_no_drowse_decolgen_info extends GS_Controller {
 	$data["title"] = "Content Management";
 	$data["PageName"] = ("Info Create");
 	$data['breadcrumb'] = array('Info' => '', "Create" => "");
-	$data["content"] = "content_management/module/no_drowse_decolgen_info/add";
+	$data["content"] = "content_management/module/no_drowse_decolgen/add";
 	$this->load->view("content_management/template/layout", $data);	
 }
 
@@ -35,7 +35,7 @@ public function update()
 	$data["title"] = "Content Management";
 	$data["PageName"] = ("Info Update");
 	$data['breadcrumb'] = array('Info' => '', "Update" => "");
-	$data["content"] = "content_management/module/no_drowse_decolgen_info/edit";
+	$data["content"] = "content_management/module/no_drowse_decolgen/edit";
 	$this->load->view("content_management/template/layout", $data);	
 }
 }

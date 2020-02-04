@@ -5,7 +5,7 @@
 	?>
     <div class="box-body">
     	<?php 
-        $details = $this->load->details("pckg_try_now_details", 1);
+        $details = $this->load->details("pckg_decolgen_forte_details", 1);
         if ($this->uri->segment(4) !== NULL || !empty($this->uri->segment(4))) {
             $inputs = ["try_now_title","try_now_sub_title","try_now_mini_description","try_now_image_banner","try_now_image_background","try_now_image_background_two","try_now_image_banner_product","try_now_image_banner_details","try_now_banner_details","try_now_details_first_title","try_now_first_description","try_now_details_second_title","try_now_second_description"];
             $values = [$details[0]->try_now_title,$details[0]->sub_title,$details[0]->mini_description,$details[0]->image_banner,$details[0]->background_image,$details[0]->background_image_two,$details[0]->image_banner_product,$details[0]->image_banner_details,$details[0]->image_details,$details[0]->first_title,$details[0]->first_description,$details[0]->second_title,$details[0]->second_description];
@@ -47,7 +47,7 @@
                 if(result){
                     modal.loading(true);
 
-                    AJAX.update.table("pckg_try_now_details");
+                    AJAX.update.table("pckg_decolgen_forte_details");
                     AJAX.update.where("id", 1);
                     $.each(form_data, function(a,b) {
                         AJAX.update.params(a, b);
