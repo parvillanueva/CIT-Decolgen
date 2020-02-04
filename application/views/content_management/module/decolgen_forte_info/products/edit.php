@@ -6,7 +6,7 @@
     <div class="box-body">
         <?php 
         if (!$this->uri->segment(4) === NULL || !empty($this->uri->segment(4))) {
-            $details = $this->load->details("pckg_try_now_products", $this->uri->segment(4));
+            $details = $this->load->details("pckg_decolgen_forte_info", $this->uri->segment(4));
             $inputs = ["tn_product_name","tn_image_banner","tn_product_dosage","tn_product_content","status"];
             $values = [$details[0]->name,$details[0]->image_banner,$details[0]->dosage,$details[0]->content,$details[0]->status];
             $id = $this->standard->inputs($inputs, $values);
@@ -49,7 +49,7 @@
                 if(result){
                     modal.loading(true);
 
-                    AJAX.update.table("pckg_try_now_products");
+                    AJAX.update.table("pckg_decolgen_forte_info");
                     AJAX.update.where("id", "<?=$this->uri->segment(4);?>");
                     $.each(form_data, function(a,b) {
                         AJAX.update.params(a, b);
@@ -57,7 +57,7 @@
                     AJAX.update.exec(function(result){
                         modal.loading(false);
                         modal.alert("<?= $this->standard->dialog("update_success"); ?>", function(){
-                            location.href = '<?=base_url("content_management/site_try_now_products") ?>';
+                            location.href = '<?=base_url("content_management/site_decolgen_forte_info") ?>';
                         });
                     })
                 }
@@ -66,7 +66,7 @@
     });
 
     $(document).on('click', '#btn_close', function(e){
-        location.href = '<?=base_url("content_management/site_try_now_products") ?>';
+        location.href = '<?=base_url("content_management/site_decolgen_forte_info") ?>';
     });
 </script>
 <script type="text/javascript" > 

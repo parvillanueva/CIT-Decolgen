@@ -1,6 +1,6 @@
 <?php
-    $try_now_details = str_replace(base_url(), "", $this->load->details("pckg_try_now_details",1));
-    $details = $this->load->active_list("pckg_try_now_products", "status = 1", "id", "asc");
+    $try_now_details = str_replace(base_url(), "", $this->load->details("pckg_decolgen_forte_details",1));
+    $details = $this->load->active_list("pckg_decolgen_forte_info", "status = 1", "id", "asc");
 ?> 
 
 <style type="text/css">

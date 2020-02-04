@@ -17,16 +17,18 @@
         <table class= "table listdata table-bordered sorted_table">
             <thead>
                 <tr id="sortable">
-                  <th class="hide"></th>
+                    <th id="rem" class="hide"></th>
                     <th id="rem" style="width: 10px;"></th>
                     <th id="rem" style="width: 10px;"><input class ="selectall" type ="checkbox"></th>
-                    <th class='th-setter'>Name</th>
-                    <th class='th-setter'>Content</th>
+                    <th class='th-setter' style="width: 100px;">Product Name</th>
+                    <th class='th-setter' style="width: 100px;">Image</th>
+                    <th class='th-setter' style="width: 130px;">Description</th>
+                    <th class="th-setter" style="width: 140px;">Update Date</th>
                     <th class="th-setter" style="width: 90px;">Status</th>
                     <th id="rem" style="width: 40px; text-align:center;">Action</th>
                 </tr>  
             </thead>
-            <tbody class="tbody"></tbody>
+            <tbody id="table_body" class="table_body"></tbody>
         </table>
       <div class="list_pagination"></div>
     </div>
@@ -36,16 +38,16 @@
 </body>
 
 <script type="text/javascript">
-
-  var update_success = '<?=$this->standard->dialog("update_success");?>';
+  
   AJAX.config.base_url("<?=base_url();?>"); 
+  var update_success = '<?=$this->standard->dialog("update_success");?>';
 
   $(document).ready(function(){
-      $('#search_query').attr("accept","/[^a-zA-Z0-9\u00f1\u00d1 ._,-\/]/g");
-      $('#search_query').attr("onkeyup","this.value=this.value.replace(/[^a-zA-Z0-9\u00f1\u00d1 ._,-\/]/g,'');");
-      $(".table").addSortWidget();
-      $("#rem img").remove(); 
-      record_number();
+    $('#search_query').attr("accept","/[^a-zA-Z0-9\u00f1\u00d1 ._,-\/]/g");
+    $('#search_query').attr("onkeyup","this.value=this.value.replace(/[^a-zA-Z0-9\u00f1\u00d1 ._,-\/]/g,'');");
+    $(".table").addSortWidget();
+    $("#rem img").remove(); 
+    record_number();
     $(document).on('keypress', '#search_query', function(e) {
       query = "";                          
       if (e.keyCode == 13) {
@@ -54,6 +56,7 @@
       }
     });
 
+    $('.selectall').prop('checked', false);
     get_data();
     var sort_table = $('tbody').sortable();
 
@@ -64,12 +67,12 @@
             $(this).attr("data-order",order);
         });
         save_sort();
-    });      
+    });            
  });
 
 //add user
 $(document).on('click', '#btn_add', function(e){
-   location.href = ('<?= base_url()."content_management/"?>site_try_now_products/add');
+   location.href = ('<?= base_url()."content_management/"?>site_try_decolgen_products/add');
 });
 
  var limit = 10;
@@ -77,61 +80,61 @@ $(document).on('click', '#btn_add', function(e){
 
 function get_data(keyword){
     modal.loading(true);
-    var search_arr = [" name","content"];
+    var search_arr = ["no_drowse_image","nd_product_description"];
 
-    AJAX.select.table("pckg_try_now_products");
-    AJAX.select.select("id, status, name, image_banner, dosage, content");
+    AJAX.select.table("pckg_no_drowse_products");
+    AJAX.select.select("id, nd_product_name, status, nd_image_banner, nd_product_price, nd_product_pil, nd_product_description, update_date");
     AJAX.select.offset(offset);
     AJAX.select.limit(limit);
     AJAX.select.order.asc("orders");
 
     if(keyword)
     {
-        AJAX.select.query("(pckg_try_now_products.name LIKE '%"+keyword+"%' OR pckg_try_now_products.content LIKE '%"+keyword+"%') AND pckg_try_now_products.status >= 0");
+      AJAX.select.query("(pckg_no_drowse_products.nd_product_name LIKE '%"+keyword+"%' OR pckg_no_drowse_products.nd_product_description LIKE '%"+keyword+"%') AND pckg_no_drowse_products.status >= 0");
     }else{
-        AJAX.select.where.greater_equal("pckg_try_now_products.status", 0);
+      AJAX.select.where.greater_equal("pckg_no_drowse_products.status", 0);
     }
     // ajax get post
     AJAX.select.exec(function(result){
         var obj = result;
-        var htm = "";
+        var html = "";
         var status_action = null;
         
         if (obj.length > 0) {
-          $.each(obj, function(x,y){
-           
-            htm += "<tr>";
-            htm += "<td class='hide'><p class='order' data-order='' data-id="+y.id+"></p></td>";
-            htm += "<td style='background:#c3c3c3;'><span style='color: #fff;' class='move-menu glyphicon glyphicon-th'></span></td>"; 
-            htm +=   "<td><input class='select' data-status='"+y.status+"' data-id='"+y.id+"' type='checkbox'></td>";
-            htm += ' <td title="'+y.name+'">' +set_char_limit(y.name)+ '</td>';
-            htm += ' <td title="'+y.content+'">' +set_char_limit(y.content)+ '</td>';
-            if(y.status == 1){
-                status = 'Active';
-            }else{
-                status = 'Inactive';
-            }
-            htm += '<td>'+status+'</td>';
+            $.each(obj, function(x,y){
+                html += '<tr>';
+                html += ' <td class="hide"><p class="order" data-order="" data-id='+y.id+'></p></td>';
+                html += ' <td style="background-color:  #c3c3c3;"><span style="color: #fff;" class="move-menu glyphicon glyphicon-th"></span></td>';
+                html += ' <td><input class = "select"  data-id="'+y.id+'" type ="checkbox"></td>';
+                html += ' <td title="'+y.nd_product_name+'">' +set_char_limit2(y.nd_product_name)+ '</td>';
+                html += ' <td title="'+y.nd_image_banner+'">' +set_char_limit2(y.nd_image_banner)+ '</td>';
+                html += ' <td title="'+y.nd_product_description+'">' +set_char_limit(y.nd_product_description)+ '</td>';
+                html += ' <td>' + moment(y.update_date).format('LLL')+ '</td>';
+                if(y.status == 1){
+                    status = 'Active';
+                }else{
+                    status = 'Inactive';
+                }
+                html += '<td>'+status+'</td>';
+                html +=" <td class='center-content'><a href='"+content_management+"/site_try_decolgen_products/update/"+y.id+"' class='edit' title='edit'><span class='glyphicon glyphicon-pencil'></span></a></td>";
+                html += '</tr>';
 
-            htm +=   "<td class='center-content'><a href='<?= base_url()."content_management/"?>site_try_now_products/update/"+y.id+"' class='edit' data-status='"+y.status+"' id='"+y.id+"' title='edit'><span class='glyphicon glyphicon-pencil'></span></td>";
-            htm += "</tr>";
-          
-          });
-        } else {
-          htm += '<tr><td colspan="6" style="text-align: center;"><b>No records to show!</b></td></tr>';
+            });
+        }else{
+           html += '<tr><td colspan="8" style="text-align: center;"><b>No records to show!</b></td></tr>';
         }
-
-        $('.listdata tbody').html(htm);
-        modal.loading(false);
-    }, function(obj){
-        $('.total-record').html('of '+obj.total_record);
-        pagination.generate(obj.total_page, '.list_pagination', limit, 'tbody', 6);
+        
+        $('.table_body').html(html);
+        modal.loading(false); //hide loading
+    }, function (obj){
+       $('.total-record').html('of '+obj.total_record);
+       pagination.generate(obj.total_page, ".list_pagination", limit, 'table_body', 8);
     });
-  }
+}
 
 function record_number() {
   setInterval(function(){
-    var tbody = $('.tbody tr');
+    var tbody = $('.table_body tr');
     var texts = tbody.text();
     if(texts == "No records to show!"){
       $('.num-record').html('0');
@@ -154,7 +157,7 @@ function save_sort() {
   $('.order').each(function() {       
     var orders = $(this).attr("data-order");
 
-    AJAX.update.table("pckg_try_now_products");
+    AJAX.update.table("pckg_no_drowse_products");
     AJAX.update.where("id", $(this).attr("data-id"));
     AJAX.update.params("orders", orders);
 
@@ -173,7 +176,7 @@ $(document).on('click','.btn_status',function(e){
           $('.select:checked').each(function(index) { 
               id = $(this).attr('data-id');
 
-              AJAX.update.table("pckg_try_now_products");
+              AJAX.update.table("pckg_no_drowse_products");
               AJAX.update.where("id", id);
               AJAX.update.params("status", status);
               AJAX.update.params("update_date", moment(new Date()).format('YYYY-MM-DD HH:mm:ss'));
@@ -182,10 +185,11 @@ $(document).on('click','.btn_status',function(e){
                 var obj = result;
                 if (obj.length > 0) {
                   get_data();
+                
                   $('.status_action').hide();
-                }else {
+                } else {
                   modal.alert(cms_status_message_dialog(status), function(){ 
-                    location.href = content_management + '/site_try_now_products';  
+                    location.href = content_management + '/site_try_decolgen_products';  
                 });
                   console.log(obj);
                 }

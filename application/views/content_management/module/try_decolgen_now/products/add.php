@@ -136,7 +136,7 @@ function getSelectionStart(o) {
                         AJAX.insert.exec(function(result){
                             modal.loading(false);
                             modal.alert("<?= $this->standard->dialog("add_success"); ?>", function(){
-                                location.href = '<?=base_url("content_management/site_no_drowse_products") ?>';
+                                location.href = '<?=base_url("content_management/site_try_decolgen_products") ?>';
                             });
                         })
                     }
@@ -146,7 +146,7 @@ function getSelectionStart(o) {
     });
 
     $(document).on('click', '#btn_close', function(e){
-        location.href = '<?=base_url("content_management/site_no_drowse_products") ?>';
+        location.href = '<?=base_url("content_management/site_try_decolgen_products") ?>';
     });
 </script>
 <script type="text/javascript" > 
