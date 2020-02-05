@@ -299,8 +299,9 @@ p {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-image: url(../img/dc_kv.jpg);
-  height: calc(100vh - 90px);
+  min-height: calc(100vh - 90px);
   display: flex;
+  padding-bottom: 80px;
   align-items: center; }
   .dc-kv p {
     margin: 0px;
@@ -312,7 +313,7 @@ p {
     max-width: 600px;
     width: 100%;
     vertical-align: top;
-    margin-top: 80px; }
+    margin-top: 40px; }
   .dc-kv .dc-dec-logo {
     max-width: 100%;
     width: 100%;
@@ -322,7 +323,7 @@ p {
   color: #ffffff;
   display: inline-block;
   position: absolute;
-  bottom: 40px;
+  bottom: 20px;
   left: 50%;
   right: 50%;
   transform: translateX(-50%);
