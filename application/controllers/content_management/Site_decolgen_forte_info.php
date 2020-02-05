@@ -14,10 +14,10 @@ class Site_decolgen_forte_info extends GS_Controller {
 	public function index()
 	{
 		$data["title"] = "Content Management";
-		$data["PageName"] = ("Decolgen");
+		$data["PageName"] = ("Decolgen Forte Info");
 		$data['edit_title'] = true;
 		$data["content"] = "content_management/module/decolgen_forte_info/products/page";
-		$data['breadcrumb'] = array('Decolgen' => '');
+		$data['breadcrumb'] = array('Decolgen Forte Info' => '');
 		$this->load->view("content_management/template/layout", $data);	
 	}
 
