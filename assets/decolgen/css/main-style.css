@@ -17,6 +17,13 @@
   top: 5px;
   z-index: 2; }
 
+.dc-section .dc-asc {
+    position: absolute;
+    bottom: 20px;
+    font-size: 12px;
+    right: 20px;
+}
+
 @media only screen and (max-width: 767px) {
   .img-violator {
     height: 60px; }

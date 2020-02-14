@@ -1,6 +1,7 @@
 <?php
     $try_now_details = str_replace(base_url(), "", $this->load->details("pckg_decolgen_forte_details",1));
     $details = $this->load->active_list("pckg_decolgen_forte_info", "status = 1", "id", "asc");
+    $banner = str_replace(base_url(), "", $this->load->details("pckg_landing_banner",1));
 ?> 
 
 <style type="text/css">
@@ -82,6 +83,7 @@
                         </div>
                     </div>
                 </div>
+                <span class="dc-asc"><?= $banner[0]->landing_asc;?></span>
             </div>
         </div>
         </div>

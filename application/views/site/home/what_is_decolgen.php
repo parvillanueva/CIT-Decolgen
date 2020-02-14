@@ -1,5 +1,6 @@
 <?php
     $details = str_replace(base_url(), "", $this->load->details("pckg_what_is_decolgen",1));
+    $banner = str_replace(base_url(), "", $this->load->details("pckg_landing_banner",1));
 ?> 
 	<!-- SECTION 2 -->
 	<div class="dc-section" id="why_decolgen">
@@ -61,6 +62,7 @@
 	            </div>
 
 	        </div>
+	        <span class="dc-asc"><?= $banner[0]->landing_asc;?></span>
 	    </div>
 	</div>
 	<!-- END SECTION 2 -->

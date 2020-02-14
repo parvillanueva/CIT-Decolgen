@@ -8,6 +8,7 @@
     $products = $this->load->active_list("pckg_no_drowse_products", "status = 1", "orders", "asc");
     $try_now_decolen_info = $this->load->active_list("pckg_no_drowse_decolgen_info", "status = 1", "orders", "asc");
     $try_now_decolen_details = str_replace(base_url(), "", $this->load->details("pckg_try_decolgen_now_details",1));
+    $banner = str_replace(base_url(), "", $this->load->details("pckg_landing_banner",1));
 ?> 
 
     <!-- SECTION 3 -->
@@ -70,6 +71,7 @@
                     </div>
                 </div>
             </div>
+            <span class="dc-asc"><?= $banner[0]->landing_asc;?></span>
         </div>
     </div>
     <!-- END SECTION 3 -->
@@ -97,6 +99,7 @@
                         <?php } ?>
                 </div>
             </div>
+            <span class="dc-asc"><?= $banner[0]->landing_asc;?></span>
         </div>
     </div>
 
