@@ -5,10 +5,10 @@
 		$root = $_SERVER['HTTP_HOST'];
 		switch ($root) {
 			case 'decolgen.unilab.com.ph':
-				$db_host = "";
-				$db_username = "";
-				$db_password = "";
-				$db_database = "";
+				$db_host = "db-ulch-rds-01.ckzpvfwtpnna.ap-southeast-1.rds.amazonaws.com:3306";
+				$db_username = "decol_user";
+				$db_password = "Qkvq92*6";
+				$db_database = "decolgencomph_2020";
 				break;
 
 			case 'decolgen.webqa.unilab.com.ph':
